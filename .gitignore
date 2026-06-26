@@ -1,0 +1,31 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python (dacă rulezi scripturi de procesare)
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+venv/
+.env
+
+# Node (dacă adaugi tooling)
+node_modules/
+.npm
+
+# Temporare
+*.tmp
+*.bak
+*.orig
+
+# Nu include imagini neanonimizate accidental
+# (adaugă manual ce vrei în screenshots/)

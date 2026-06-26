@@ -1,0 +1,61 @@
+name: Validate Dataset
+
+on:
+  push:
+    paths:
+      - 'datasets/**'
+      - 'scams/**'
+  pull_request:
+    paths:
+      - 'datasets/**'
+      - 'scams/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate JSON and Markdown
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate scams.json
+        run: |
+          echo "Validating datasets/scams.json..."
+          python3 -c "
+          import json, sys
+          with open('datasets/scams.json') as f:
+              data = json.load(f)
+          print(f'✅ Valid JSON — {len(data)} intrări găsite')
+          required = ['id', 'title', 'platform', 'severity', 'country', 'year', 'tags', 'ai_dataset']
+          scam_entries = [d for d in data if d.get('ai_dataset', {}).get('label') == 'scam']
+          for entry in scam_entries:
+              for field in required:
+                  if field not in entry:
+                      print(f'❌ Câmp lipsă: {field} în {entry.get(\"id\", \"unknown\")}')
+                      sys.exit(1)
+          print(f'✅ Toate câmpurile obligatorii sunt prezente')
+          print(f'📊 Scam entries: {len(scam_entries)}')
+          legit = [d for d in data if d.get(\"ai_dataset\", {}).get(\"label\") == \"legitimate\"]
+          print(f'📊 Legitimate entries: {len(legit)}')
+          "
+
+      - name: Check for duplicate IDs
+        run: |
+          python3 -c "
+          import json
+          with open('datasets/scams.json') as f:
+              data = json.load(f)
+          ids = [d['id'] for d in data]
+          duplicates = [x for x in ids if ids.count(x) > 1]
+          if duplicates:
+              print(f'❌ ID-uri duplicate găsite: {set(duplicates)}')
+              exit(1)
+          print(f'✅ Nu există ID-uri duplicate')
+          "
+
+      - name: Validate Markdown files
+        run: |
+          echo "Checking Markdown files..."
+          count=$(find scams/ -name "*.md" | wc -l)
+          echo "✅ $count fișiere Markdown găsite în scams/"

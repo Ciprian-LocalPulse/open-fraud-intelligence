@@ -1,0 +1,337 @@
+[
+  {
+    "id": "olx-0001",
+    "title": "Fals cumpărător OLX — transport plătit în avans",
+    "platform": "olx",
+    "vector": ["whatsapp"],
+    "severity": "high",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["marketplace", "olx", "phishing", "whatsapp", "social-engineering", "curier-fals"],
+    "scenario": "Escrocul contactează vânzătorul pe OLX, mută conversația pe WhatsApp și trimite un link fals de confirmare plată.",
+    "red_flags": [
+      "Mută conversația de pe OLX pe WhatsApp",
+      "Insistă să plătească prin curier sau transfer OLX",
+      "Trimite un link extern, nu de pe olx.ro",
+      "Urgentează tranzacția",
+      "Număr de telefon cu prefix străin"
+    ],
+    "prevention": [
+      "Nu muta conversația în afara platformei OLX",
+      "Nu accesa linkuri primite prin WhatsApp legate de tranzacția OLX",
+      "Verifică URL-ul — paginile legitime OLX au domeniul olx.ro",
+      "Nu introduce datele cardului pe un link primit de la un cumpărător"
+    ],
+    "ai_dataset": {
+      "message": "Am plătit deja produsul. Accesați acest link pentru a confirma și a primi suma.",
+      "label": "scam",
+      "confidence": 0.98
+    }
+  },
+  {
+    "id": "whatsapp-0001",
+    "title": "Recuperare cont WhatsApp — cod de verificare",
+    "platform": "whatsapp",
+    "vector": ["whatsapp", "sms"],
+    "severity": "medium",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["whatsapp", "social-engineering", "cont-compromis", "cod-verificare", "account-takeover"],
+    "scenario": "Victima primește un SMS cu codul de verificare WhatsApp și imediat după, un prieten (cont compromis) îi cere codul.",
+    "red_flags": [
+      "Primești un SMS cu cod WhatsApp fără să fi cerut tu",
+      "Cineva îți cere imediat acel cod",
+      "Pretextul e că a trimis codul din greșeală pe numărul tău",
+      "Urgență artificială",
+      "Mesajele prietenului par diferite față de normal"
+    ],
+    "prevention": [
+      "Nu da niciodată coduri SMS primite de la WhatsApp",
+      "Sună prietenul pe telefon direct pentru confirmare",
+      "Activează verificarea în doi pași în WhatsApp"
+    ],
+    "ai_dataset": {
+      "message": "Salut, mi-a venit din greșeală un cod pe numărul tău. Poți să mi-l trimiți? E urgent.",
+      "label": "scam",
+      "confidence": 0.96
+    }
+  },
+  {
+    "id": "crypto-0001",
+    "title": "Investiții crypto cu profit garantat",
+    "platform": "instagram",
+    "vector": ["instagram", "facebook", "telegram", "whatsapp"],
+    "severity": "high",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["crypto", "investitii-false", "pig-butchering", "broker-fals", "social-media"],
+    "scenario": "Un broker fals convinge victima să investească pe o platformă crypto falsă care arată câștiguri fictive.",
+    "red_flags": [
+      "Profit garantat sau randamente nerealiste",
+      "Platformă de trading necunoscută",
+      "Presiune să investești rapid",
+      "Nu poți retrage fără taxă suplimentară",
+      "Brokerul contactează pe WhatsApp/Telegram"
+    ],
+    "prevention": [
+      "Nicio investiție legitimă nu garantează profit",
+      "Verifică platforma pe CoinMarketCap și CoinGecko",
+      "Caută numele platformei + scam pe Google",
+      "Verifică dacă brokerul e autorizat la ASF România"
+    ],
+    "ai_dataset": {
+      "message": "Te pot ajuta să câștigi 2000 EUR pe lună din crypto. Profit garantat, fără risc. Contactează-mă pe WhatsApp.",
+      "label": "scam",
+      "confidence": 0.99
+    }
+  },
+  {
+    "id": "sms-0001",
+    "title": "Fals curier — SMS phishing (smishing)",
+    "platform": "sms",
+    "vector": ["sms"],
+    "severity": "high",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["sms", "smishing", "phishing", "curier-fals", "card", "fancourier", "dpd", "dhl"],
+    "scenario": "Un SMS imită un curier și cere o taxă mică prin link fals pentru a fura datele cardului.",
+    "red_flags": [
+      "Nu ai un colet așteptat",
+      "URL-ul nu e domeniul oficial al curierului",
+      "Suma e mică (1–5 RON)",
+      "SMS vine de la număr obișnuit, nu sender oficial",
+      "Site-ul cere datele complete ale cardului"
+    ],
+    "prevention": [
+      "Nu accesa link-uri din SMS-uri despre colete",
+      "Verifică AWB-ul pe site-ul oficial al curierului",
+      "Curieri legitimi nu cer date de card prin SMS",
+      "Activează notificările de tranzacție la bancă"
+    ],
+    "ai_dataset": {
+      "message": "Coletul dvs nu a putut fi livrat. Accesati linkul pentru a achita taxa de reprogramare de 2.99 RON.",
+      "label": "scam",
+      "confidence": 0.97
+    }
+  },
+  {
+    "id": "facebook-0001",
+    "title": "Concurs / giveaway fals pe Facebook",
+    "platform": "facebook",
+    "vector": ["facebook", "messenger"],
+    "severity": "medium",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["facebook", "giveaway-fals", "brand-impersonation", "phishing", "date-personale"],
+    "scenario": "O pagină care imită un brand cunoscut anunță un concurs cu premii, colectând date personale sau taxe de expediere.",
+    "red_flags": [
+      "Pagina are un nume similar, nu identic cu brandul",
+      "Toți comentatorii spun că au câștigat",
+      "Pagina e recent creată sau cu puțini urmăritori reali",
+      "Premiile sunt nerealiste",
+      "Se cere plată pentru taxa de expediere"
+    ],
+    "prevention": [
+      "Verifică dacă pagina e verificată (bifă albastră) pe Facebook",
+      "Caută pagina oficială a brandului direct pe Facebook",
+      "Brandurile legitime nu cer plată pentru a ridica premii",
+      "Nu completa formulare cu CNP sau date bancare"
+    ],
+    "ai_dataset": {
+      "message": "Felicitari! Ai castigat un voucher de 500 RON de la Kaufland. Acceseaza linkul pentru a revendica premiul in 24 de ore.",
+      "label": "scam",
+      "confidence": 0.95
+    }
+  },
+  {
+    "id": "fake-jobs-0001",
+    "title": "Job remote fals — taxă de înscriere / formare",
+    "platform": "email",
+    "vector": ["email", "facebook", "linkedin", "olx"],
+    "severity": "medium",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["fake-jobs", "job-fals", "taxa-formare", "remote-work", "advance-fee"],
+    "scenario": "Victima primește o ofertă de muncă atractivă și e acceptată rapid, după care i se cere să plătească o taxă de formare.",
+    "red_flags": [
+      "Nicio experiență necesară pentru salariu mare",
+      "Interviul se face pe WhatsApp sau email, nu video",
+      "Compania nu poate fi găsită pe Google sau LinkedIn",
+      "Ți se cere să plătești ceva înainte de a începe",
+      "Email vine de pe gmail.com, nu domeniu corporativ"
+    ],
+    "prevention": [
+      "Angajatorii legitimi nu cer bani candidaților",
+      "Verifică compania pe RECOM sau Google",
+      "Caută recenzii pe Glassdoor sau Bestjobs",
+      "Nu plăti niciodată pentru un job înainte de a-l începe"
+    ],
+    "ai_dataset": {
+      "message": "Felicitari, ati fost selectat pentru pozitia de Data Entry. Pentru activarea contului trebuie sa achitati o taxa de formare de 299 RON.",
+      "label": "scam",
+      "confidence": 0.94
+    }
+  },
+  {
+    "id": "email-0001",
+    "title": "Phishing bancar — email fals BCR / BRD / ING",
+    "platform": "email",
+    "vector": ["email"],
+    "severity": "high",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["email", "phishing", "banking", "bcr", "brd", "ing", "raiffeisen", "credentiale"],
+    "scenario": "Un email cu design identic cu banca anunță o problemă urgentă și direcționează spre o pagină clonă care fură credențialele.",
+    "red_flags": [
+      "Email vine de pe domeniu suspect",
+      "URL-ul paginii nu e domeniul oficial al băncii",
+      "Ton urgent: contul va fi blocat",
+      "Ți se cere codul SMS",
+      "Certificatul SSL arată un domeniu diferit"
+    ],
+    "prevention": [
+      "Nu accesa linkuri din emailuri despre bănci",
+      "Verifică adresa de email a expeditorului",
+      "Băncile nu cer niciodată codul SMS prin email",
+      "Sună banca direct la numărul de pe spatele cardului"
+    ],
+    "ai_dataset": {
+      "message": "Am detectat activitate neobișnuită pe contul dvs. Vă rugăm să accesați linkul de mai jos pentru a verifica și a evita blocarea contului.",
+      "label": "scam",
+      "confidence": 0.98
+    }
+  },
+  {
+    "id": "fake-shops-0001",
+    "title": "Magazin online fals — produse inexistente",
+    "platform": "facebook",
+    "vector": ["facebook", "instagram", "google-ads"],
+    "severity": "high",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["fake-shops", "magazin-fals", "facebook-ads", "produse-contrafacute", "ecommerce"],
+    "scenario": "Reclame cu prețuri extrem de mici duc spre un magazin fals. Produsul nu sosește sau e complet diferit.",
+    "red_flags": [
+      "Prețuri sub 50% față de retail",
+      "Site creat recent",
+      "Adresa companiei e falsă sau inexistentă",
+      "Nu există CUI sau date fiscale valide",
+      "Plata se face doar prin transfer bancar"
+    ],
+    "prevention": [
+      "Verifică domeniul pe who.is",
+      "Caută numele magazinului + recenzii sau țeapă pe Google",
+      "Verifică CUI-ul pe ANAF",
+      "Preferă plata cu cardul pentru chargeback"
+    ],
+    "ai_dataset": {
+      "message": "LICHIDARE DE STOC! Nike Air Force 1 autentici — 89 RON! Livrare gratuita in 3 zile. Stoc limitat, comanda acum!",
+      "label": "scam",
+      "confidence": 0.93
+    }
+  },
+  {
+    "id": "telegram-0001",
+    "title": "Grup Telegram fals de investiții / semnale de trading",
+    "platform": "telegram",
+    "vector": ["telegram"],
+    "severity": "high",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["telegram", "crypto", "trading-signals", "grup-fals", "investitii", "pump-and-dump"],
+    "scenario": "Victima e invitată într-un grup Telegram cu mii de membri unde sunt promovate semnale false și platforme de trading frauduloase.",
+    "red_flags": [
+      "Invitație nesolicitate în grup Telegram",
+      "Mii de membri dar puține conversații reale",
+      "Capturi de ecran cu profituri enorme, neverificabile",
+      "Presiune să treci la pachetul VIP plătit",
+      "Platforma de trading recomandată nu e reglementată"
+    ],
+    "prevention": [
+      "Nu există semnale garantate în trading",
+      "Verifică dacă platforma e autorizată la ASF sau FCA",
+      "Nu plăti pentru acces la grupuri de investiții"
+    ],
+    "ai_dataset": {
+      "message": "Buna ziua! Te-am adaugat in grupul nostru de semnale crypto VIP. Membrii au castigat 340 USDT ieri. Abonament VIP lunar: 199 EUR.",
+      "label": "scam",
+      "confidence": 0.96
+    }
+  },
+  {
+    "id": "instagram-0001",
+    "title": "Cont Instagram compromis — cerere de împrumut",
+    "platform": "instagram",
+    "vector": ["instagram"],
+    "severity": "medium",
+    "country": "Romania",
+    "year": 2025,
+    "active": true,
+    "tags": ["instagram", "cont-compromis", "imprumut-fals", "social-engineering", "account-takeover"],
+    "scenario": "Escrocul preia contul unui utilizator și trimite DM-uri prietenilor cerând un împrumut urgent.",
+    "red_flags": [
+      "Mesaj neașteptat de la un prieten care nu îți scrie de obicei",
+      "Urgență extremă și presiune temporală",
+      "Cere transfer pe Revolut, Western Union sau crypto",
+      "Nu vrea să vorbească la telefon sau video",
+      "Stilul de scriere e diferit față de prietenul real"
+    ],
+    "prevention": [
+      "Sună prietenul pe telefon înainte de orice transfer",
+      "Pune o întrebare personală pe care doar prietenul real ar ști-o",
+      "Nu transfera bani fără confirmare vocală sau video"
+    ],
+    "ai_dataset": {
+      "message": "Buna! Scuza ca te deranjez dar am o urgenta. Mi s-a blocat cardul, poti sa imi trimiti 300 RON pe Revolut? Iti dau inapoi maine.",
+      "label": "scam",
+      "confidence": 0.91
+    }
+  },
+  {
+    "id": "legit-0001",
+    "title": "Mesaj legitim — cumpărător OLX real",
+    "platform": "olx",
+    "vector": ["olx"],
+    "severity": null,
+    "country": "Romania",
+    "year": 2025,
+    "active": null,
+    "tags": ["legitimate", "olx"],
+    "scenario": "Exemplu de mesaj legitim pentru antrenarea modelelor AI",
+    "red_flags": [],
+    "prevention": [],
+    "ai_dataset": {
+      "message": "Bună ziua, sunt interesat de produsul dvs. Mai este disponibil? Putem discuta prețul?",
+      "label": "legitimate",
+      "confidence": 0.97
+    }
+  },
+  {
+    "id": "legit-0002",
+    "title": "Mesaj legitim — livrare reală FAN Courier",
+    "platform": "sms",
+    "vector": ["sms"],
+    "severity": null,
+    "country": "Romania",
+    "year": 2025,
+    "active": null,
+    "tags": ["legitimate", "sms", "curier"],
+    "scenario": "Exemplu de SMS legitim de la curier pentru antrenarea modelelor AI",
+    "red_flags": [],
+    "prevention": [],
+    "ai_dataset": {
+      "message": "FAN Courier: Coletul AWB 1234567890 va fi livrat astazi intre 10:00-14:00. Urmarire: fancourier.ro",
+      "label": "legitimate",
+      "confidence": 0.95
+    }
+  }
+]
