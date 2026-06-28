@@ -87,6 +87,72 @@ real. Pentru detalii despre sursele fiecărei intrări, vezi câmpul
 **Contribuții cu fraude noi documentate, cu sursă oficială sau comunitară
 verificabilă, sunt binevenite** — vezi [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## 💛 Susține proiectul
+
+Open Fraud Intelligence este întreținut de un singur dezvoltator, pe cont
+propriu, fără finanțare instituțională sau sponsorizare corporativă. Timpul
+investit în documentarea fraudelor, întreținerea uneltelor și verificarea
+surselor este, în prezent, susținut integral din resurse personale.
+
+Dacă proiectul ți-a fost de folos — fie ca cercetător, jurnalist, dezvoltator
+sau pur și simplu cineva interesat de protecția împotriva fraudelor online —
+și vrei să contribui la continuarea lui, poți face o donație prin transfer
+bancar (Wise), către titularul **Ciprian Stefan Plesca**:
+
+<details>
+<summary><strong>🇪🇺 Cont EUR</strong> (transfer SEPA local sau SWIFT internațional)</summary>
+
+| | |
+|---|---|
+| Titular | Ciprian Stefan Plesca |
+| IBAN | `BE83 9679 1975 8915` |
+| SWIFT/BIC | `TRWIBEB1XXX` |
+| Adresă bancă | Wise, Rue du Trône 100, 3rd floor, Brussels, 1050, Belgia |
+
+</details>
+
+<details>
+<summary><strong>🇬🇧 Cont GBP</strong> (transfer local UK sau SWIFT internațional)</summary>
+
+| | |
+|---|---|
+| Titular | Ciprian Stefan Plesca |
+| Număr de cont | `92055372` |
+| Sort code | `23-14-70` |
+| IBAN | `GB68 TRWI 2314 7092 0553 72` |
+| SWIFT/BIC | `TRWIGB2LXXX` |
+| Adresă bancă | Wise Payments Limited, 1st Floor, Worship Square, 65 Clifton Street, London, EC2A 4JE, UK |
+
+</details>
+
+<details>
+<summary><strong>🇺🇸 Cont USD</strong> (transfer local SUA sau SWIFT internațional)</summary>
+
+| | |
+|---|---|
+| Titular | Ciprian Stefan Plesca |
+| Tip cont | Checking |
+| Număr de rutare (ACH/Wire) | `026073150` |
+| Număr de cont | `8314225367` |
+| SWIFT/BIC | `CMFGUS33` |
+| Adresă bancă | Community Federal Savings Bank, 89-16 Jamaica Ave, Woodhaven, NY 11421, SUA |
+
+</details>
+
+<details>
+<summary><strong>🇷🇴 Cont RON</strong> (transfer local din România)</summary>
+
+| | |
+|---|---|
+| Titular | Ciprian Stefan Plesca |
+| IBAN | `RO94 BREL 0005 6026 8420 0100` |
+
+</details>
+
+> 💡 Folosește contul din moneda în care trimiți, pentru a evita comisioane
+> inutile de schimb valutar. Orice sumă contează și e folosită direct pentru
+> timpul de cercetare, documentare și întreținere a acestui proiect.
+
 ## Licență
 
 - **Date** (`datasets/`, `ontology/`): [CC0-1.0](LICENSE) — domeniu public.
