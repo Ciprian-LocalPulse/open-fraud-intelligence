@@ -1,0 +1,342 @@
+name: OFI — CI/CD Pipeline Complet
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1'  # Luni dimineața — raport săptămânal
+  workflow_dispatch:
+
+jobs:
+
+  # ─── 1. JSON Schema Validation ───────────────────────────────────────────
+  schema-validation:
+    name: 📋 Schema Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install validators
+        run: pip install jsonschema check-jsonschema --break-system-packages 2>/dev/null || pip install jsonschema check-jsonschema
+
+      - name: Validate scams_v2.json against schema
+        run: |
+          python3 -c "
+          import json, jsonschema, sys
+          
+          with open('schemas/scam.schema.json') as f:
+              schema = json.load(f)
+          
+          with open('datasets/scams_v2.json') as f:
+              data = json.load(f)
+          
+          errors = []
+          for entry in data:
+              try:
+                  jsonschema.validate(entry, schema)
+              except jsonschema.ValidationError as e:
+                  errors.append(f'[{entry.get(\"id\", \"?\")}] {e.message}')
+          
+          if errors:
+              print(f'❌ {len(errors)} erori de validare schema:')
+              for e in errors: print(f'   {e}')
+              sys.exit(1)
+          else:
+              print(f'✅ Schema validă — {len(data)} intrări verificate')
+          "
+
+  # ─── 2. JSON Validation ──────────────────────────────────────────────────
+  json-validation:
+    name: 📊 JSON Dataset Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON syntax
+        run: |
+          for file in datasets/*.json; do
+            python3 -c "import json; json.load(open('$file'))" \
+              && echo "✅ $file" \
+              || (echo "❌ $file invalid JSON" && exit 1)
+          done
+
+      - name: Check for duplicate IDs
+        run: |
+          python3 -c "
+          import json
+          with open('datasets/scams_v2.json') as f:
+              data = json.load(f)
+          ids = [d.get('id') for d in data if d.get('id')]
+          dupes = [x for x in ids if ids.count(x) > 1]
+          if dupes:
+              print(f'❌ ID-uri duplicate: {set(dupes)}')
+              exit(1)
+          print(f'✅ ID-uri unice: {len(ids)}')
+          "
+
+      - name: Check for duplicate UUIDs
+        run: |
+          python3 -c "
+          import json
+          with open('datasets/scams_v2.json') as f:
+              data = json.load(f)
+          uuids = [d.get('uuid') for d in data if d.get('uuid')]
+          dupes = [x for x in uuids if uuids.count(x) > 1]
+          if dupes:
+              print(f'❌ UUID-uri duplicate: {set(dupes)}')
+              exit(1)
+          print(f'✅ UUID-uri unice: {len(uuids)}')
+          "
+
+      - name: Validate AI dataset balance
+        run: |
+          python3 -c "
+          import json
+          with open('datasets/scams_v2.json') as f:
+              data = json.load(f)
+          scam  = sum(1 for d in data if d.get('ai_dataset',{}).get('label')=='scam')
+          legit = sum(1 for d in data if d.get('ai_dataset',{}).get('label')=='legitimate')
+          ratio = legit/scam if scam else 0
+          print(f'Scam: {scam} | Legitimate: {legit} | Ratio legit/scam: {ratio:.2f}')
+          if ratio < 0.1:
+              print('⚠️  Dataset dezechilibrat — adaugă mai multe exemple legitimate')
+          else:
+              print('✅ Echilibru dataset acceptabil')
+          "
+
+  # ─── 3. Markdown Validation ──────────────────────────────────────────────
+  markdown-validation:
+    name: 📝 Markdown Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check Markdown structure
+        run: |
+          python3 -c "
+          from pathlib import Path
+          errors = []
+          for md in Path('scams').rglob('*.md'):
+              content = md.read_text(encoding='utf-8')
+              for section in ['Semnale de avertizare', 'Cum te protejezi']:
+                  if section not in content:
+                      errors.append(f'{md}: lipsă secțiune \"{section}\"')
+          if errors:
+              for e in errors: print(f'⚠️  {e}')
+          else:
+              mds = list(Path('scams').rglob('*.md'))
+              print(f'✅ {len(mds)} fișiere Markdown valide')
+          "
+
+  # ─── 4. Duplicate Detection ──────────────────────────────────────────────
+  duplicate-detection:
+    name: 🔍 Duplicate Message Detection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect duplicate AI messages
+        run: |
+          python3 -c "
+          import json, hashlib
+          from collections import defaultdict
+          with open('datasets/scams_v2.json') as f:
+              data = json.load(f)
+          hashes = defaultdict(list)
+          for d in data:
+              msg = d.get('ai_dataset',{}).get('message','')
+              if msg:
+                  h = hashlib.md5(msg.strip().lower().encode()).hexdigest()
+                  hashes[h].append(d.get('id','?'))
+          dupes = {h: ids for h, ids in hashes.items() if len(ids) > 1}
+          if dupes:
+              print(f'⚠️  Mesaje duplicate detectate:')
+              for h, ids in dupes.items():
+                  print(f'   {ids}')
+          else:
+              print(f'✅ Niciun mesaj duplicat')
+          "
+
+  # ─── 5. Dead Link Detection ──────────────────────────────────────────────
+  dead-link-detection:
+    name: 🔗 Dead Link Detection
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links in documentation
+        run: |
+          pip install requests --break-system-packages 2>/dev/null || pip install requests
+          python3 -c "
+          import re, requests
+          from pathlib import Path
+          
+          urls = set()
+          for md in list(Path('docs').glob('*.md')) + [Path('README.md')]:
+              if md.exists():
+                  content = md.read_text(encoding='utf-8')
+                  found = re.findall(r'https?://[^\s\)\"\']+', content)
+                  urls.update(found)
+          
+          dead = []
+          for url in list(urls)[:20]:  # Limită pentru demo
+              try:
+                  r = requests.head(url, timeout=10, allow_redirects=True)
+                  if r.status_code >= 400:
+                      dead.append((url, r.status_code))
+              except Exception as e:
+                  dead.append((url, str(e)[:50]))
+          
+          if dead:
+              print(f'⚠️  Link-uri moarte ({len(dead)}):')
+              for url, status in dead:
+                  print(f'   [{status}] {url}')
+          else:
+              print(f'✅ Toate link-urile verificate sunt funcționale')
+          "
+
+  # ─── 6. Statistics Report ────────────────────────────────────────────────
+  statistics:
+    name: 📈 Generate Statistics
+    runs-on: ubuntu-latest
+    needs: [json-validation]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate statistics.json
+        run: |
+          python3 -c "
+          import json
+          from datetime import datetime
+          from collections import Counter
+          
+          with open('datasets/scams_v2.json') as f:
+              data = json.load(f)
+          
+          scam  = [d for d in data if d.get('ai_dataset',{}).get('label')=='scam']
+          legit = [d for d in data if d.get('ai_dataset',{}).get('label')=='legitimate']
+          
+          stats = {
+              'generated_at':     datetime.utcnow().isoformat() + 'Z',
+              'total':            len(data),
+              'scam_count':       len(scam),
+              'legitimate_count': len(legit),
+              'platform_dist':    dict(Counter(d.get('platform') for d in data).most_common()),
+              'severity_dist':    dict(Counter(d.get('severity') for d in scam).most_common()),
+              'year_dist':        dict(Counter(d.get('year') for d in data if d.get('year')).most_common()),
+              'top_tags':         dict(Counter(t for d in data for t in d.get('tags',[])).most_common(15)),
+              'verified_count':   sum(1 for d in data if d.get('verification',{}).get('status') in ('verified','official_source')),
+              'with_ioc':         sum(1 for d in data if any(d.get('ioc',{}).get(k) for k in ['domains','urls','phones'])),
+              'with_mitre':       sum(1 for d in data if d.get('mitre_attack'))
+          }
+          
+          with open('statistics/statistics.json', 'w') as f:
+              json.dump(stats, f, ensure_ascii=False, indent=2)
+          
+          print(f'✅ statistics.json generat')
+          print(f'   Total: {stats[\"total\"]} | Scam: {stats[\"scam_count\"]} | Legit: {stats[\"legitimate_count\"]}')
+          "
+
+      - name: Upload statistics artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: statistics
+          path: statistics/statistics.json
+
+  # ─── 7. Quality Scoring ──────────────────────────────────────────────────
+  quality-scoring:
+    name: ⭐ Quality Scoring
+    runs-on: ubuntu-latest
+    needs: [json-validation]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Score all entries
+        run: |
+          python3 -c "
+          import json
+          from datetime import datetime
+          
+          def score_entry(e):
+              required = ['uuid','id','title','platform','severity','scenario','red_flags','prevention','ai_dataset','tags']
+              optional = ['ioc','mitre_attack','capec','scam_dna','timeline','references']
+              req = sum(1 for f in required if e.get(f)) / len(required)
+              opt = sum(1 for f in optional if e.get(f)) / len(optional)
+              completeness = round(req * 0.7 + opt * 0.3, 4)
+              
+              v = e.get('verification', {})
+              evidence = min(1.0, (
+                  (0.3 if v.get('reporter_count', 0) > 0 else 0) +
+                  min(0.3, v.get('reporter_count', 0) / 100 * 0.3) +
+                  (0.2 if v.get('evidence_count', 0) > 0 else 0) +
+                  (0.2 if v.get('official_source') else 0)
+              ))
+              
+              ver_map = {'official_source': 1.0, 'verified': 0.9, 'community_verified': 0.6, 'pending': 0.3, 'false_positive': 0.0}
+              verification = ver_map.get(v.get('status', 'pending'), 0.2)
+              
+              overall = round(completeness * 0.30 + evidence * 0.25 + verification * 0.30 + 0.5 * 0.15, 4)
+              return {'completeness': completeness, 'evidence': evidence, 'verification': verification, 'overall': overall}
+          
+          with open('datasets/scams_v2.json') as f:
+              data = json.load(f)
+          
+          scores = []
+          for d in data:
+              s = score_entry(d)
+              scores.append({'id': d.get('id'), 'title': d.get('title',''), **s})
+          
+          avg = sum(s['overall'] for s in scores) / len(scores) if scores else 0
+          low = [s for s in scores if s['overall'] < 0.5]
+          
+          print(f'✅ Scor mediu calitate: {avg:.2%}')
+          if low:
+              print(f'⚠️  Intrări cu calitate scăzută ({len(low)}):')
+              for s in sorted(low, key=lambda x: x['overall'])[:5]:
+                  print(f'   [{s[\"id\"]}] {s[\"overall\"]:.2%} — {s[\"title\"][:50]}')
+          "
+
+  # ─── 8. Release Automation ───────────────────────────────────────────────
+  release:
+    name: 🚀 Release Automation
+    runs-on: ubuntu-latest
+    needs: [schema-validation, json-validation, duplicate-detection]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update dataset_metadata.json timestamp
+        run: |
+          python3 -c "
+          import json
+          from datetime import datetime, timezone
+          
+          with open('datasets/dataset_metadata.json') as f:
+              meta = json.load(f)
+          
+          meta['last_updated'] = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+          
+          with open('datasets/scams_v2.json') as f:
+              data = json.load(f)
+          
+          scam  = sum(1 for d in data if d.get('ai_dataset',{}).get('label')=='scam')
+          legit = sum(1 for d in data if d.get('ai_dataset',{}).get('label')=='legitimate')
+          
+          meta['statistics']['total_entries']   = len(data)
+          meta['statistics']['scam_entries']     = scam
+          meta['statistics']['legitimate_entries'] = legit
+          meta['statistics']['verified_entries'] = sum(1 for d in data if d.get('verification',{}).get('status') in ('verified','official_source'))
+          
+          with open('datasets/dataset_metadata.json', 'w') as f:
+              json.dump(meta, f, ensure_ascii=False, indent=2)
+          
+          print(f'✅ Metadata actualizată: {len(data)} intrări')
+          "

@@ -1,0 +1,295 @@
+{
+  "generated_at": "2026-06-28T12:47:09.882269+00:00",
+  "totals": {
+    "entries": 7,
+    "verified_entries": 1,
+    "verification_rate": 0.143,
+    "campaigns": 1,
+    "avg_quality_score": 0.829,
+    "avg_severity_score": 7.09,
+    "estimated_total_median_loss_ron": 27500
+  },
+  "top_platforms": [
+    [
+      "sms",
+      2
+    ],
+    [
+      "olx",
+      1
+    ],
+    [
+      "facebook",
+      1
+    ],
+    [
+      "telegram",
+      1
+    ],
+    [
+      "web",
+      1
+    ],
+    [
+      "email",
+      1
+    ]
+  ],
+  "top_severities": [
+    [
+      "High",
+      5
+    ],
+    [
+      "Medium",
+      2
+    ]
+  ],
+  "top_tags": [
+    [
+      "crypto",
+      3
+    ],
+    [
+      "whatsapp",
+      2
+    ],
+    [
+      "social-engineering",
+      2
+    ],
+    [
+      "investitii-false",
+      2
+    ],
+    [
+      "uzurpare-institutie",
+      2
+    ],
+    [
+      "marketplace",
+      1
+    ],
+    [
+      "olx",
+      1
+    ],
+    [
+      "phishing",
+      1
+    ],
+    [
+      "curier-fals",
+      1
+    ],
+    [
+      "fake-jobs",
+      1
+    ],
+    [
+      "sms",
+      1
+    ],
+    [
+      "telegram",
+      1
+    ],
+    [
+      "piramidal",
+      1
+    ],
+    [
+      "comision-fals",
+      1
+    ],
+    [
+      "smishing",
+      1
+    ]
+  ],
+  "top_techniques": [
+    [
+      "Marketplace redirect phishing with fake payment confirmation",
+      1
+    ],
+    [
+      "Job-offer smishing funneling into multi-platform pyramid/crypto scheme",
+      1
+    ],
+    [
+      "Account-takeover smishing via emotional pretext and 2FA code phishing",
+      1
+    ],
+    [
+      "Fake government-backed investment scheme via social media ads",
+      1
+    ],
+    [
+      "Fake trading platform with simulated profits, promoted via private social-media groups",
+      1
+    ],
+    [
+      "Fake media-branded ads promoting fictitious investment platforms",
+      1
+    ],
+    [
+      "Fake official document impersonating multiple institutions to phish crypto holders",
+      1
+    ]
+  ],
+  "top_psychology_tactics": [
+    [
+      "authority",
+      7
+    ],
+    [
+      "greed",
+      5
+    ],
+    [
+      "social_proof",
+      4
+    ],
+    [
+      "urgency",
+      2
+    ],
+    [
+      "fear",
+      2
+    ],
+    [
+      "empathy",
+      1
+    ]
+  ],
+  "top_payment_methods": [
+    [
+      "transfer_bancar",
+      6
+    ],
+    [
+      "card",
+      3
+    ],
+    [
+      "crypto",
+      3
+    ]
+  ],
+  "top_brands_abused": [
+    [
+      "Fan Courier",
+      1
+    ],
+    [
+      "OLX",
+      1
+    ],
+    [
+      "DPD",
+      1
+    ],
+    [
+      "OLX Pay",
+      1
+    ],
+    [
+      "WhatsApp",
+      1
+    ],
+    [
+      "Ministerul Finanțelor",
+      1
+    ],
+    [
+      "TXEX",
+      1
+    ],
+    [
+      "Digi24",
+      1
+    ],
+    [
+      "DNSC",
+      1
+    ],
+    [
+      "Europol",
+      1
+    ]
+  ],
+  "ioc_counts": {
+    "domains": 3,
+    "urls": 2,
+    "phones": 2,
+    "emails": 0,
+    "wallets": 0,
+    "usernames": 0,
+    "ipv4": 0,
+    "ipv6": 0,
+    "hashes": 0
+  },
+  "campaigns": [
+    {
+      "campaign_id": "CAMP-OLX-2024-001",
+      "name": "Operation Fake Courier Romania",
+      "entries": [
+        "olx-0001"
+      ],
+      "first_seen": "2023-06-01",
+      "last_seen": "2025-07-01"
+    }
+  ],
+  "top_scams_by_severity": [
+    {
+      "id": "olx-0001",
+      "title": "Fals cumpărător OLX — transport plătit în avans",
+      "severity": "High",
+      "severity_score": 7.8,
+      "platform": "olx"
+    },
+    {
+      "id": "crypto-0003",
+      "title": "TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok",
+      "severity": "High",
+      "severity_score": 7.6,
+      "platform": "telegram"
+    },
+    {
+      "id": "crypto-0002",
+      "title": "Fals \"program de investiții susținut de stat\" — uzurpare a imaginii Ministerului Finanțelor",
+      "severity": "High",
+      "severity_score": 7.5,
+      "platform": "facebook"
+    },
+    {
+      "id": "crypto-0005",
+      "title": "Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive",
+      "severity": "High",
+      "severity_score": 7.2,
+      "platform": "email"
+    },
+    {
+      "id": "whatsapp-0002",
+      "title": "Smishing \"Votează-o pe Adeline\" — deturnare de conturi WhatsApp printr-un sondaj fals",
+      "severity": "High",
+      "severity_score": 7.0,
+      "platform": "sms"
+    },
+    {
+      "id": "crypto-0004",
+      "title": "Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții",
+      "severity": "Medium",
+      "severity_score": 6.5,
+      "platform": "web"
+    },
+    {
+      "id": "sms-0002",
+      "title": "Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto",
+      "severity": "Medium",
+      "severity_score": 6.0,
+      "platform": "sms"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+graph OFI {
+  rankdir=LR; bgcolor="transparent"; fontname="Helvetica";
+  node [fontname="Helvetica", fontsize=11];
+  edge [fontname="Helvetica", fontsize=9, color="#94a3b8"];
+  "entry:olx-0001" [label="olx-0001", color="#7c3aed", shape="ellipse", fontcolor="white", style="filled"];
+  "campaign:CAMP-OLX-2024-001" [label="CAMP-OLX-2024-001", color="#92400e", shape="hexagon", fontcolor="white", style="filled"];
+  "entry:sms-0002" [label="sms-0002", color="#7c3aed", shape="ellipse", fontcolor="white", style="filled"];
+  "entry:whatsapp-0002" [label="whatsapp-0002", color="#7c3aed", shape="ellipse", fontcolor="white", style="filled"];
+  "entry:crypto-0002" [label="crypto-0002", color="#7c3aed", shape="ellipse", fontcolor="white", style="filled"];
+  "entry:crypto-0003" [label="crypto-0003", color="#7c3aed", shape="ellipse", fontcolor="white", style="filled"];
+  "entry:crypto-0004" [label="crypto-0004", color="#7c3aed", shape="ellipse", fontcolor="white", style="filled"];
+  "entry:crypto-0005" [label="crypto-0005", color="#7c3aed", shape="ellipse", fontcolor="white", style="filled"];
+  "entry:olx-0001" -- "campaign:CAMP-OLX-2024-001" [penwidth=2];
+}

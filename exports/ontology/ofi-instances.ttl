@@ -1,0 +1,163 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ofi: <https://open-fraud-intelligence.github.io/ontology#> .
+@prefix ofidata: <https://open-fraud-intelligence.github.io/data#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ofidata:crypto-0002 a ofi:ScamReport ;
+    rdfs:label "Fals \"program de investiții susținut de stat\" — uzurpare a imaginii Ministerului Finanțelor"@ro ;
+    dcterms:description "Pe rețele sociale circulă reclame care promovează o pretinsă \"platformă de investiții susținută de stat\", asociată abuziv cu Ministerul Finanțelor, promițând câștiguri garantate de până la 150%. Reclamele conduc către pagini care imită identitatea vizuală a unor instituții oficiale și solicită date de contact și, ulterior, o investiție inițială care nu mai poate fi recuperată."@ro ;
+    ofi:exploitsTechnique ofidata:technique-crypto-0002 ;
+    ofi:report_active true ;
+    ofi:report_country "Romania" ;
+    ofi:report_platform "facebook" ;
+    ofi:report_severity "High" ;
+    ofi:report_severityScore 7.5e+00 ;
+    ofi:report_tag "facebook-ads",
+        "investitii-false",
+        "randament-garantat",
+        "uzurpare-institutie" ;
+    ofi:report_year 2025 .
+
+ofidata:crypto-0003 a ofi:ScamReport ;
+    rdfs:label "TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok"@ro ;
+    dcterms:description "Sub denumirea \"TXEX\" și variante similare, escrocii promovează platforme de investiții care par legitime, dar simulează profituri fictive pe ecran, în timp ce fondurile depuse de victime sunt colectate direct. Victimele sunt introduse în grupuri private pe WhatsApp, Telegram sau Signal, coordonate de pretinși \"mentori\" sau experți, și recrutate inclusiv prin clipuri pe TikTok. Fenomenul nu este limitat la România — autorități din Noua Zeelandă, Australia și Albania au emis avertismente similare privind aceleași platforme."@ro ;
+    ofi:exploitsTechnique ofidata:technique-crypto-0003 ;
+    ofi:report_active true ;
+    ofi:report_country "Romania" ;
+    ofi:report_platform "telegram" ;
+    ofi:report_severity "High" ;
+    ofi:report_severityScore 7.6e+00 ;
+    ofi:report_tag "crypto",
+        "grup-privat",
+        "mentor-fals",
+        "platforma-falsa",
+        "txex" ;
+    ofi:report_year 2025 .
+
+ofidata:crypto-0004 a ofi:ScamReport ;
+    rdfs:label "Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții"@ro ;
+    dcterms:description "Un val de pagini false imită identitatea unor branduri media cunoscute (printre care Digi24) pentru a promova platforme fictive de investiții. Anunțurile sunt amplificate prin spațiile publicitare ale site-urilor de știri reale, fapt care le crește credibilitatea. Campania vizează în special persoanele vârstnice sau pe cele interesate de suplimentarea veniturilor."@ro ;
+    ofi:exploitsTechnique ofidata:technique-crypto-0004 ;
+    ofi:report_active true ;
+    ofi:report_country "Romania" ;
+    ofi:report_platform "web" ;
+    ofi:report_severity "Medium" ;
+    ofi:report_severityScore 6.5e+00 ;
+    ofi:report_tag "investitii-false",
+        "publicitate-falsa",
+        "uzurpare-brand-media",
+        "varstnici" ;
+    ofi:report_year 2026 .
+
+ofidata:crypto-0005 a ofi:ScamReport ;
+    rdfs:label "Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive"@ro ;
+    dcterms:description "Românii care dețin criptomonede sunt vizați de o escrocherie care circulă sub forma unei pretinse citații oficiale, folosind abuziv însemnele DNSC, sigla Uniunii Europene și logo-urile Europol/EC3. Documentul fals pretinde că oferă informații despre o procedură de returnare a fondurilor în criptoactive, dar nu are nicio legătură reală cu vreo instituție europeană sau națională, scopul fiind obținerea de date personale sau financiare."@ro ;
+    ofi:exploitsTechnique ofidata:technique-crypto-0005 ;
+    ofi:report_active true ;
+    ofi:report_country "Romania" ;
+    ofi:report_platform "email" ;
+    ofi:report_severity "High" ;
+    ofi:report_severityScore 7.2e+00 ;
+    ofi:report_tag "crypto",
+        "document-fals",
+        "europol",
+        "recuperare-fonduri",
+        "uzurpare-institutie" ;
+    ofi:report_year 2025 .
+
+ofidata:olx-0001 a ofi:ScamReport ;
+    rdfs:label "Fals cumpărător OLX — transport plătit în avans"@ro ;
+    dcterms:description "Escrocul contactează vânzătorul pe OLX, exprimă interes pentru produs și solicită mutarea conversației pe WhatsApp. Odată acolo, pretinde că a efectuat plata și trimite un link fals care imită Fan Courier sau OLX Pay, solicitând datele de card ale vânzătorului pentru 'confirmarea primirii banilor'."@ro ;
+    ofi:exploitsTechnique ofidata:technique-olx-0001 ;
+    ofi:hasIndicator ofidata:domain-fancourier-plata.ro,
+        ofidata:domain-olx-confirmare.ro,
+        ofidata:domain-olx-pay-secure.com ;
+    ofi:memberOfCampaign ofidata:CAMP-OLX-2024-001 ;
+    ofi:report_active true ;
+    ofi:report_country "Romania" ;
+    ofi:report_platform "olx" ;
+    ofi:report_severity "High" ;
+    ofi:report_severityScore 7.8e+00 ;
+    ofi:report_tag "curier-fals",
+        "marketplace",
+        "olx",
+        "phishing",
+        "social-engineering",
+        "whatsapp" ;
+    ofi:report_year 2025 .
+
+ofidata:sms-0002 a ofi:ScamReport ;
+    rdfs:label "Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto"@ro ;
+    dcterms:description "Victima primește un SMS nesolicitat care anunță că a fost selectată pentru un loc de muncă part-time sau full-time, cu mențiunea unei durate neobișnuite ('peste 900 de zile'). Mesajul conține un link care redirecționează către o conversație WhatsApp cu un cont necunoscut. Acolo, atacatorii promit câștiguri rapide din comisioane pentru 'comenzi virtuale' menite să crească artificial vânzările unor comercianți cunoscuți. Victima este îndrumată să creeze un cont pe un site care cere date personale, apoi este redirecționată către un canal de Telegram (cu aproape 50.000 de urmăritori la momentul alertei) unde i se explică pas cu pas mecanismul, care se dovedește a fi o schemă piramidală cu o componentă de investiții în criptomonede."@ro ;
+    ofi:exploitsTechnique ofidata:technique-sms-0002 ;
+    ofi:report_active true ;
+    ofi:report_country "Romania" ;
+    ofi:report_platform "sms" ;
+    ofi:report_severity "Medium" ;
+    ofi:report_severityScore 6e+00 ;
+    ofi:report_tag "comision-fals",
+        "crypto",
+        "fake-jobs",
+        "piramidal",
+        "sms",
+        "telegram" ;
+    ofi:report_year 2022 .
+
+ofidata:whatsapp-0002 a ofi:ScamReport ;
+    rdfs:label "Smishing \"Votează-o pe Adeline\" — deturnare de conturi WhatsApp printr-un sondaj fals"@ro ;
+    dcterms:description "Atacatorii trimit un mesaj SMS care imită un mesaj personal, cerând destinatarului să voteze 'Adeline' într-un sondaj fals, pretins legat de o bursă de studii în Franța. Linkul din mesaj conduce la o pagină care solicită codul de autentificare WhatsApp al victimei. Introducerea codului permite atacatorilor să compromită contul, pe care îl folosesc apoi pentru a propaga același mesaj către lista de contacte a victimei și pentru a cere bani 'urgent' celor din lista de contacte, dându-se drept victima inițială."@ro ;
+    ofi:exploitsTechnique ofidata:technique-whatsapp-0002 ;
+    ofi:report_active true ;
+    ofi:report_country "Romania" ;
+    ofi:report_platform "sms" ;
+    ofi:report_severity "High" ;
+    ofi:report_severityScore 7e+00 ;
+    ofi:report_tag "deturnare-cont",
+        "smishing",
+        "social-engineering",
+        "sondaj-fals",
+        "whatsapp" ;
+    ofi:report_year 2025 .
+
+ofidata:CAMP-OLX-2024-001 a ofi:Campaign ;
+    rdfs:label "Operation Fake Courier Romania"@ro .
+
+ofidata:domain-fancourier-plata.ro a ofi:Indicator ;
+    ofi:indicator_kind "domain" ;
+    ofi:indicator_value "fancourier-plata.ro" .
+
+ofidata:domain-olx-confirmare.ro a ofi:Indicator ;
+    ofi:indicator_kind "domain" ;
+    ofi:indicator_value "olx-confirmare.ro" .
+
+ofidata:domain-olx-pay-secure.com a ofi:Indicator ;
+    ofi:indicator_kind "domain" ;
+    ofi:indicator_value "olx-pay-secure.com" .
+
+ofidata:technique-crypto-0002 a ofi:Technique ;
+    rdfs:label "Fake government-backed investment scheme via social media ads"@en .
+
+ofidata:technique-crypto-0003 a ofi:Technique ;
+    rdfs:label "Fake trading platform with simulated profits, promoted via private social-media groups"@en .
+
+ofidata:technique-crypto-0004 a ofi:Technique ;
+    rdfs:label "Fake media-branded ads promoting fictitious investment platforms"@en .
+
+ofidata:technique-crypto-0005 a ofi:Technique ;
+    rdfs:label "Fake official document impersonating multiple institutions to phish crypto holders"@en .
+
+ofidata:technique-olx-0001 a ofi:Technique ;
+    rdfs:label "Marketplace redirect phishing with fake payment confirmation"@en ;
+    ofi:technique_capecId "CAPEC-194",
+        "CAPEC-98" ;
+    ofi:technique_mitreAttackId "T1056",
+        "T1566",
+        "T1586" .
+
+ofidata:technique-sms-0002 a ofi:Technique ;
+    rdfs:label "Job-offer smishing funneling into multi-platform pyramid/crypto scheme"@en .
+
+ofidata:technique-whatsapp-0002 a ofi:Technique ;
+    rdfs:label "Account-takeover smishing via emotional pretext and 2FA code phishing"@en .
+

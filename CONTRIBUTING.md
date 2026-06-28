@@ -1,91 +1,56 @@
-# 🤝 Ghid pentru Contribuitori
+# Cum contribui la Open Fraud Intelligence
 
-Mulțumim că vrei să contribui la **Open Fraud Intelligence**! Fiecare adăugare protejează un potențial utilizator de a pierde bani sau date personale.
+Mulțumim pentru interesul de a contribui! OFI crește doar prin intrări
+**verificabile** — preferăm un dataset mic și corect unui dataset mare și
+nesigur.
 
----
+## 1. Adaugă o intrare nouă de fraudă
 
-## 📋 Reguli de bază
+1. Verifică mai întâi în `datasets/scams_v2.json` că fraudă nu este deja
+   documentată (caută după `platform`, `tags` sau termeni din `scenario`).
+2. Copiază structura unei intrări existente și completează toate câmpurile
+   obligatorii din `schemas/scam.schema.json`.
+3. **Sursă obligatorie**: fiecare intrare nouă trebuie să aibă cel puțin una
+   din următoarele:
+   - un `verification.official_source` (alertă DNSC/CERT-RO, comunicat al
+     Poliției Române, articol dintr-o sursă media credibilă care citează o
+     instituție oficială), SAU
+   - `verification.status: "community_verified"` cu o explicație în
+     `confidence.source` despre cum a fost colectată și verificată dovada
+     (capturi de ecran anonimizate, raportări multiple independente etc.)
+4. **Nu inventa** numere precise (`evidence_count`, `reporter_count`) dacă
+   nu provin dintr-o sursă reală — lasă câmpurile opționale necompletate
+   în loc să pui o cifră plauzibilă, dar inventată.
+5. Anonimizează complet orice victimă — fără nume, fără numere de telefon
+   ale victimelor, fără capturi de ecran care identifică o persoană reală.
+6. Validează local înainte de a trimite PR:
+   ```bash
+   python3 -c "
+   import json, jsonschema
+   schema = json.load(open('schemas/scam.schema.json'))
+   data = json.load(open('datasets/scams_v2.json'))
+   for e in data: jsonschema.validate(e, schema)
+   print('OK')
+   "
+   ```
 
-1. **Anonimizează** orice date personale (numere de telefon, nume reale, IBAN-uri)
-2. **Nu include** link-uri active spre site-uri de phishing
-3. **Verifică** că frauda nu e deja documentată (caută înainte de a adăuga)
-4. **Fii obiectiv** — descrie ce s-a întâmplat, fără emoții
-5. **Limba** — acceptăm intrări în română și engleză
+## 2. Adaugă o intrare în `test_data/` (fixture sintetică)
 
----
+Dacă vrei să testezi o unealtă (clustering, graf) cu mai multe exemple
+fictive, adaugă-le în `test_data/sample_scams_fixtures.json`, **niciodată**
+în `datasets/scams_v2.json`. Documentează clar în PR că sunt sintetice.
 
-## 🗂️ Cum adaugi o nouă fraudă
+## 3. Contribuții de cod
 
-### Pasul 1 — Fork și clone
+- `ofi_sdk/` — SDK-ul Python; păstrează compatibilitatea cu `scripts/fraud_cli.py`.
+- `tools/` — unelte independente (graph, dashboard, ontology, rag, clustering);
+  fiecare trebuie să ruleze standalone cu `--input`/`--output` ca argumente CLI.
+- Rulează CI local înainte de PR (vezi `.github/workflows/ci.yml`).
 
-```bash
-git clone https://github.com/yourusername/open-fraud-intelligence.git
-cd open-fraud-intelligence
-```
+## 4. Raportarea unei vulnerabilități de securitate
 
-### Pasul 2 — Copiază template-ul
+Nu folosi un issue public — vezi [SECURITY.md](SECURITY.md).
 
-```bash
-cp templates/scam-template.md scams/[platforma]/[nume-scurt-descriptiv].md
-```
+## 5. Codul de conduită
 
-Exemplu:
-```bash
-cp templates/scam-template.md scams/olx/fals-cumparator-transport-olx.md
-```
-
-### Pasul 3 — Completează fișierul
-
-Deschide fișierul și completează toate câmpurile din template.
-
-### Pasul 4 — Adaugă în dataset
-
-Adaugă și intrarea corespunzătoare în `datasets/scams.json`.
-
-### Pasul 5 — Pull Request
-
-```bash
-git add .
-git commit -m "feat: adaugă fals cumpărător OLX cu transport plătit"
-git push origin main
-```
-
-Deschide un Pull Request cu titlul clar.
-
----
-
-## 📸 Screenshot-uri
-
-Dacă ai capturi de ecran:
-- **Anonimizează** orice informație personală (blur / pixelate)
-- Salvează în `/screenshots/[platforma]/`
-- Format acceptat: `.png`, `.jpg`, `.webp`
-- Maxim 5 MB per imagine
-
----
-
-## ✅ Checklist înainte de Pull Request
-
-- [ ] Datele personale sunt anonimizate
-- [ ] Fișierul respectă structura din template
-- [ ] Intrarea e adăugată și în `datasets/scams.json`
-- [ ] Nu există duplicate
-- [ ] Titlul PR-ului e descriptiv
-
----
-
-## 🏷️ Convenții de denumire fișiere
-
-Format: `[tip-frauda]-[detaliu-scurt].md`
-
-Exemple:
-- `fals-cumparator-transport.md`
-- `phishing-bcr-2024.md`
-- `job-remote-taxa-inscriere.md`
-- `crypto-profit-garantat.md`
-
----
-
-## 💬 Întrebări?
-
-Deschide un **Issue** cu eticheta `question`.
+Toate contribuțiile trebuie să respecte [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).

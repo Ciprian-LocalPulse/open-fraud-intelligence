@@ -1,0 +1,625 @@
+{
+  "response": [
+    {
+      "Event": {
+        "uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "info": "Fals cumpărător OLX — transport plătit în avans",
+        "date": "2025-01-15",
+        "timestamp": 1782650822,
+        "published": true,
+        "distribution": 1,
+        "threat_level_id": "2",
+        "analysis": "2",
+        "org": {
+          "name": "Open Fraud Intelligence"
+        },
+        "orgc": {
+          "name": "Open Fraud Intelligence"
+        },
+        "Attribute": [
+          {
+            "uuid": "6feb04d1-c853-451f-a3b2-5e6e6f5d040d",
+            "category": "Network activity",
+            "type": "domain",
+            "value": "fancourier-plata.ro",
+            "comment": "Phishing domain — olx-0001",
+            "to_ids": true,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "702f538c-8607-463b-ae26-775276691fa2",
+            "category": "Network activity",
+            "type": "domain",
+            "value": "olx-confirmare.ro",
+            "comment": "Phishing domain — olx-0001",
+            "to_ids": true,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "40e08ad1-1ad6-456f-b834-07d074cb29e4",
+            "category": "Network activity",
+            "type": "domain",
+            "value": "olx-pay-secure.com",
+            "comment": "Phishing domain — olx-0001",
+            "to_ids": true,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "9c7556fe-8812-4820-8b2e-9c54321c2f46",
+            "category": "Network activity",
+            "type": "url",
+            "value": "https://fancourier-plata.ro/confirmare",
+            "comment": "Phishing URL — olx-0001",
+            "to_ids": true,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "9bd7a76d-7e1f-4b3f-aeff-5aebe805d5ea",
+            "category": "Network activity",
+            "type": "url",
+            "value": "https://olx-confirmare.ro/plata",
+            "comment": "Phishing URL — olx-0001",
+            "to_ids": true,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "24ae8d27-4bdd-499c-8763-9b4740c56ef2",
+            "category": "Person",
+            "type": "phone-number",
+            "value": "+44XXXXXXXX",
+            "comment": "Scammer phone — olx-0001",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "c94c07c5-6033-4afc-ba1a-00c8f56e36ce",
+            "category": "Person",
+            "type": "phone-number",
+            "value": "+39XXXXXXXX",
+            "comment": "Scammer phone — olx-0001",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "e4c66571-6e1d-42e3-9b81-021f6e20e584",
+            "category": "Payload content",
+            "type": "text",
+            "value": "Am plătit deja produsul. Accesați acest link pentru a confirma și a primi suma.",
+            "comment": "Scam message pattern [conf=0.98]",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "95a4c475-68d3-4396-878c-19d4be388ffb",
+            "category": "External analysis",
+            "type": "comment",
+            "value": "SCENARIO:\nEscrocul contactează vânzătorul pe OLX, exprimă interes pentru produs și solicită mutarea conversației pe WhatsApp. Odată acolo, pretinde că a efectuat plata și trimite un link fals care imită Fan Courier sau OLX Pay, solicitând datele de card ale vânzătorului pentru 'confirmarea primirii banilor'.\n\nRED FLAGS:\n- Mută conversația de pe OLX pe WhatsApp sau Telegram\n- Pretinde că a plătit înainte de confirmare\n- Trimite link extern, nu de pe olx.ro\n- Urgentează tranzacția cu presiune de timp\n- Număr de telefon cu prefix internațional (+44, +39, +33)\n- Acceptă prețul fără nicio negociere\n\nPREVENTION:\n- Nu muta conversația în afara platformei OLX\n- Vânzătorul NU trebuie să confirme nimic printr-un link\n- Verifică URL-ul — paginile legitime OLX au domeniul strict olx.ro\n- Nu introduce datele cardului pe linkuri primite de la cumpărători\n- Fan Courier și DPD nu solicită date de card vânzătorului",
+            "comment": "OFI Analysis",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          }
+        ],
+        "Object": [],
+        "Tag": [
+          {
+            "name": "tlp:white",
+            "colour": "#ffffff"
+          },
+          {
+            "name": "ofi:severity=\"High\"",
+            "colour": "#cc0000"
+          },
+          {
+            "name": "ofi:platform=\"olx\"",
+            "colour": "#0066cc"
+          },
+          {
+            "name": "ofi:marketplace",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:olx",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:phishing",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:whatsapp",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:social-engineering",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:curier-fals",
+            "colour": "#006688"
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Phishing - T1566\"",
+            "colour": "#2c3e50"
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Compromise Accounts - T1586\"",
+            "colour": "#2c3e50"
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Input Capture - T1056\"",
+            "colour": "#2c3e50"
+          }
+        ],
+        "Galaxy": [],
+        "RelatedEvent": []
+      }
+    },
+    {
+      "Event": {
+        "uuid": "91361c21-7aa1-4d18-be74-7a75f9500007",
+        "info": "Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto",
+        "date": "2026-06-28",
+        "timestamp": 1782650822,
+        "published": true,
+        "distribution": 1,
+        "threat_level_id": "3",
+        "analysis": "2",
+        "org": {
+          "name": "Open Fraud Intelligence"
+        },
+        "orgc": {
+          "name": "Open Fraud Intelligence"
+        },
+        "Attribute": [
+          {
+            "uuid": "0d994d70-39b6-49be-a9c8-8f3765b4248b",
+            "category": "Payload content",
+            "type": "text",
+            "value": "Buna, ati fost selectat pentru un job part-time/full time, mai mult de 900 de zile. Accesati acest link pentru a accepta postul vacant.",
+            "comment": "Scam message pattern [conf=0.95]",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "e4b7cc31-0b3f-489e-85f2-ea6435ca423d",
+            "category": "External analysis",
+            "type": "comment",
+            "value": "SCENARIO:\nVictima primește un SMS nesolicitat care anunță că a fost selectată pentru un loc de muncă part-time sau full-time, cu mențiunea unei durate neobișnuite ('peste 900 de zile'). Mesajul conține un link care redirecționează către o conversație WhatsApp cu un cont necunoscut. Acolo, atacatorii promit câștiguri rapide din comisioane pentru 'comenzi virtuale' menite să crească artificial vânzările unor comercianți cunoscuți. Victima este îndrumată să creeze un cont pe un site care cere date personale, apoi este redirecționată către un canal de Telegram (cu aproape 50.000 de urmăritori la momentul alertei) unde i se explică pas cu pas mecanismul, care se dovedește a fi o schemă piramidală cu o componentă de investiții în criptomonede.\n\nRED FLAGS:\n- Ofertă de angajare primită brut, prin SMS, fără proces de recrutare\n- Durată de angajare absurdă sau formulare neobișnuită ('900 de zile')\n- Mutarea conversației succesiv pe WhatsApp, apoi pe Telegram\n- Promisiunea de câștig rapid din 'comisioane' pe comenzi virtuale\n- Cerere de a investi bani proprii pentru a debloca comisioane mai mari\n- Structură de recrutare a altor 'clienți' (semn de schemă piramidală)\n\nPREVENTION:\n- Ofertele legitime de angajare nu vin prin SMS de la necunoscuți\n- Nu accesați linkuri din SMS-uri nesolicitate despre joburi\n- Verificați orice ofertă pe canalele oficiale ale companiei menționate\n- Nu furnizați date personale sau bancare unor contacte necunoscute pe WhatsApp/Telegram\n- Raportați tentativa la DNSC (1911 sau alerts@dnsc.ro)",
+            "comment": "OFI Analysis",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          }
+        ],
+        "Object": [],
+        "Tag": [
+          {
+            "name": "tlp:white",
+            "colour": "#ffffff"
+          },
+          {
+            "name": "ofi:severity=\"Medium\"",
+            "colour": "#ff6600"
+          },
+          {
+            "name": "ofi:platform=\"sms\"",
+            "colour": "#0066cc"
+          },
+          {
+            "name": "ofi:fake-jobs",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:sms",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:telegram",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:piramidal",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:crypto",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:comision-fals",
+            "colour": "#006688"
+          }
+        ],
+        "Galaxy": [],
+        "RelatedEvent": []
+      }
+    },
+    {
+      "Event": {
+        "uuid": "28081f4e-d67f-4b16-ae65-41224e5b225d",
+        "info": "Smishing \"Votează-o pe Adeline\" — deturnare de conturi WhatsApp printr-un sondaj fals",
+        "date": "2026-06-28",
+        "timestamp": 1782650822,
+        "published": true,
+        "distribution": 1,
+        "threat_level_id": "2",
+        "analysis": "2",
+        "org": {
+          "name": "Open Fraud Intelligence"
+        },
+        "orgc": {
+          "name": "Open Fraud Intelligence"
+        },
+        "Attribute": [
+          {
+            "uuid": "ece18500-80ad-48e1-a221-9845c8db80a5",
+            "category": "Payload content",
+            "type": "text",
+            "value": "Buna! Va rog sa o votati pe Adeline in acest sondaj, este fiica prietenei mele din Bucuresti, premiul principal este o bursa pentru invatamant gratuit in Franta, asta este foarte important pentru ea.",
+            "comment": "Scam message pattern [conf=0.97]",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "dd4694dd-6815-4aca-8db9-61c8554f8312",
+            "category": "External analysis",
+            "type": "comment",
+            "value": "SCENARIO:\nAtacatorii trimit un mesaj SMS care imită un mesaj personal, cerând destinatarului să voteze 'Adeline' într-un sondaj fals, pretins legat de o bursă de studii în Franța. Linkul din mesaj conduce la o pagină care solicită codul de autentificare WhatsApp al victimei. Introducerea codului permite atacatorilor să compromită contul, pe care îl folosesc apoi pentru a propaga același mesaj către lista de contacte a victimei și pentru a cere bani 'urgent' celor din lista de contacte, dându-se drept victima inițială.\n\nRED FLAGS:\n- Mesaj care pare personal, dar vine de la un număr necunoscut\n- Apel emoțional urgent (copil, bursă, situație disperată)\n- Cere accesarea unui link pentru o acțiune banală (\"votare\")\n- Pagina solicită un cod de autentificare/verificare în 2 pași\n- Ulterior, mesaje de cerere de bani \"urgent\" de la un contact cunoscut, dar cu exprimare neobișnuită\n\nPREVENTION:\n- Nu accesați linkuri din SMS-uri de la surse necunoscute\n- Nu introduceți niciun cod de autentificare primit prin SMS pe pagini externe\n- Verificați telefonic, pe alt canal, dacă un contact vă cere bani urgent\n- Activați autentificarea în doi factori pe WhatsApp cu PIN propriu\n- Raportați mesajele suspecte la DNSC (pnrisc.dnsc.ro) sau la operatorul telefonic",
+            "comment": "OFI Analysis",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          }
+        ],
+        "Object": [],
+        "Tag": [
+          {
+            "name": "tlp:white",
+            "colour": "#ffffff"
+          },
+          {
+            "name": "ofi:severity=\"High\"",
+            "colour": "#cc0000"
+          },
+          {
+            "name": "ofi:platform=\"sms\"",
+            "colour": "#0066cc"
+          },
+          {
+            "name": "ofi:smishing",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:whatsapp",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:deturnare-cont",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:sondaj-fals",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:social-engineering",
+            "colour": "#006688"
+          }
+        ],
+        "Galaxy": [],
+        "RelatedEvent": []
+      }
+    },
+    {
+      "Event": {
+        "uuid": "89592085-8882-4c73-b51c-2e190060dc30",
+        "info": "Fals \"program de investiții susținut de stat\" — uzurpare a imaginii Ministerului Finanțelor",
+        "date": "2026-06-28",
+        "timestamp": 1782650822,
+        "published": true,
+        "distribution": 1,
+        "threat_level_id": "2",
+        "analysis": "2",
+        "org": {
+          "name": "Open Fraud Intelligence"
+        },
+        "orgc": {
+          "name": "Open Fraud Intelligence"
+        },
+        "Attribute": [
+          {
+            "uuid": "ade4f91d-8762-42f9-97ff-b3ab36ff12cf",
+            "category": "Payload content",
+            "type": "text",
+            "value": "Programul de investitii sustinut de statul roman va ofera un castig garantat de pana la 150%. Lasati-va datele de contact pentru a fi contactat de un consultant.",
+            "comment": "Scam message pattern [conf=0.95]",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "62726203-c3cd-40b4-ab75-ef652fe44acc",
+            "category": "External analysis",
+            "type": "comment",
+            "value": "SCENARIO:\nPe rețele sociale circulă reclame care promovează o pretinsă \"platformă de investiții susținută de stat\", asociată abuziv cu Ministerul Finanțelor, promițând câștiguri garantate de până la 150%. Reclamele conduc către pagini care imită identitatea vizuală a unor instituții oficiale și solicită date de contact și, ulterior, o investiție inițială care nu mai poate fi recuperată.\n\nRED FLAGS:\n- Randamente garantate, fără risc — nicio investiție reală nu garantează asta\n- Asociere cu o instituție de stat într-o reclamă pe social media\n- Presiune pentru a investi rapid \"cât mai e valabilă oferta\"\n- Contact inițial prin reclamă, nu printr-un canal oficial guvernamental\n- Solicitare de transfer bancar direct către un cont sau wallet privat\n\nPREVENTION:\n- Nicio instituție publică nu promovează investiții prin reclame pe social media\n- Verificați orice anunț guvernamental direct pe site-ul oficial (.gov.ro)\n- Fiți sceptici la randamente garantate de orice procent\n- Nu transferați bani unor \"consultanți\" contactați în urma unei reclame\n- Raportați reclamele suspecte la DNSC (pnrisc.dnsc.ro)",
+            "comment": "OFI Analysis",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          }
+        ],
+        "Object": [],
+        "Tag": [
+          {
+            "name": "tlp:white",
+            "colour": "#ffffff"
+          },
+          {
+            "name": "ofi:severity=\"High\"",
+            "colour": "#cc0000"
+          },
+          {
+            "name": "ofi:platform=\"facebook\"",
+            "colour": "#0066cc"
+          },
+          {
+            "name": "ofi:investitii-false",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:uzurpare-institutie",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:facebook-ads",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:randament-garantat",
+            "colour": "#006688"
+          }
+        ],
+        "Galaxy": [],
+        "RelatedEvent": []
+      }
+    },
+    {
+      "Event": {
+        "uuid": "8066574e-ae27-4cdf-9553-44534cdea8ce",
+        "info": "TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok",
+        "date": "2026-06-28",
+        "timestamp": 1782650822,
+        "published": true,
+        "distribution": 1,
+        "threat_level_id": "2",
+        "analysis": "2",
+        "org": {
+          "name": "Open Fraud Intelligence"
+        },
+        "orgc": {
+          "name": "Open Fraud Intelligence"
+        },
+        "Attribute": [
+          {
+            "uuid": "337ae7ea-fd4a-451b-8bd6-733b65f29e23",
+            "category": "Payload content",
+            "type": "text",
+            "value": "Te invit in grupul nostru privat de investitii. Cu mentoratul echipei noastre, platforma TXEX iti garanteaza profit constant lunar.",
+            "comment": "Scam message pattern [conf=0.93]",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "dccaaba6-39e5-4f50-b1ba-ee68b527923b",
+            "category": "External analysis",
+            "type": "comment",
+            "value": "SCENARIO:\nSub denumirea \"TXEX\" și variante similare, escrocii promovează platforme de investiții care par legitime, dar simulează profituri fictive pe ecran, în timp ce fondurile depuse de victime sunt colectate direct. Victimele sunt introduse în grupuri private pe WhatsApp, Telegram sau Signal, coordonate de pretinși \"mentori\" sau experți, și recrutate inclusiv prin clipuri pe TikTok. Fenomenul nu este limitat la România — autorități din Noua Zeelandă, Australia și Albania au emis avertismente similare privind aceleași platforme.\n\nRED FLAGS:\n- Platformă de tranzacționare necunoscută, nereglementată, promovată pe rețele sociale\n- Grup privat coordonat de un \"mentor\" sau \"expert\" anonim\n- Profituri afișate care cresc constant, fără volatilitate reală\n- Domenii care se schimbă frecvent sub nume similare\n- Comisioane neașteptate apărute exact la momentul retragerii\n\nPREVENTION:\n- Verificați dacă platforma este autorizată de ASF/autoritatea de reglementare relevantă\n- Nu investiți pe baza recomandării unui \"mentor\" cunoscut online, necunoscut în realitate\n- Tratați cu suspiciune orice platformă care nu permite retrageri fără condiții suplimentare\n- Nu vă bazați pe profitul afișat în interfață ca dovadă de legitimitate\n- Raportați platforma la DNSC și verificați avertismentele internaționale existente",
+            "comment": "OFI Analysis",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          }
+        ],
+        "Object": [],
+        "Tag": [
+          {
+            "name": "tlp:white",
+            "colour": "#ffffff"
+          },
+          {
+            "name": "ofi:severity=\"High\"",
+            "colour": "#cc0000"
+          },
+          {
+            "name": "ofi:platform=\"telegram\"",
+            "colour": "#0066cc"
+          },
+          {
+            "name": "ofi:crypto",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:platforma-falsa",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:grup-privat",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:mentor-fals",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:txex",
+            "colour": "#006688"
+          }
+        ],
+        "Galaxy": [],
+        "RelatedEvent": []
+      }
+    },
+    {
+      "Event": {
+        "uuid": "b14a73bb-f3c0-42ac-9466-5998b0723769",
+        "info": "Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții",
+        "date": "2026-06-28",
+        "timestamp": 1782650822,
+        "published": true,
+        "distribution": 1,
+        "threat_level_id": "3",
+        "analysis": "2",
+        "org": {
+          "name": "Open Fraud Intelligence"
+        },
+        "orgc": {
+          "name": "Open Fraud Intelligence"
+        },
+        "Attribute": [
+          {
+            "uuid": "502a188d-643a-4e19-84fa-79cb585295ab",
+            "category": "Payload content",
+            "type": "text",
+            "value": "Articol exclusiv: o noua platforma de investitii permite oricui sa obtina un venit suplimentar sigur, fara riscuri. Lasa-ti datele pentru a fi contactat.",
+            "comment": "Scam message pattern [conf=0.9]",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "ce2e9c76-1ea8-4dd7-bf27-90826f380849",
+            "category": "External analysis",
+            "type": "comment",
+            "value": "SCENARIO:\nUn val de pagini false imită identitatea unor branduri media cunoscute (printre care Digi24) pentru a promova platforme fictive de investiții. Anunțurile sunt amplificate prin spațiile publicitare ale site-urilor de știri reale, fapt care le crește credibilitatea. Campania vizează în special persoanele vârstnice sau pe cele interesate de suplimentarea veniturilor.\n\nRED FLAGS:\n- Articol care pare să provină de la un brand media cunoscut, dar link-ul nu duce pe domeniul oficial\n- Conținut sponsorizat care promovează o platformă de investiții necunoscută\n- Vizare explicită a persoanelor vârstnice prin tonul și formatul anunțului\n- Promisiuni de venit pasiv suplimentar, fără explicarea reală a riscurilor\n\nPREVENTION:\n- Verificați întotdeauna domeniul real al articolului, nu doar aspectul vizual\n- Brandurile media nu promovează platforme de investiții în nume propriu\n- Discutați cu un membru al familiei înainte de a investi în urma unei reclame online\n- Raportați reclamele false către DNSC și către brandul media uzurpat",
+            "comment": "OFI Analysis",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          }
+        ],
+        "Object": [],
+        "Tag": [
+          {
+            "name": "tlp:white",
+            "colour": "#ffffff"
+          },
+          {
+            "name": "ofi:severity=\"Medium\"",
+            "colour": "#ff6600"
+          },
+          {
+            "name": "ofi:platform=\"web\"",
+            "colour": "#0066cc"
+          },
+          {
+            "name": "ofi:uzurpare-brand-media",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:publicitate-falsa",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:investitii-false",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:varstnici",
+            "colour": "#006688"
+          }
+        ],
+        "Galaxy": [],
+        "RelatedEvent": []
+      }
+    },
+    {
+      "Event": {
+        "uuid": "b61f0354-e363-4b31-99f1-24afbffdd7b8",
+        "info": "Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive",
+        "date": "2026-06-28",
+        "timestamp": 1782650822,
+        "published": true,
+        "distribution": 1,
+        "threat_level_id": "2",
+        "analysis": "2",
+        "org": {
+          "name": "Open Fraud Intelligence"
+        },
+        "orgc": {
+          "name": "Open Fraud Intelligence"
+        },
+        "Attribute": [
+          {
+            "uuid": "be05ab60-689a-4dd6-a026-556f466dc142",
+            "category": "Payload content",
+            "type": "text",
+            "value": "In urma plangerii dumneavoastra, ati fost selectat pentru procedura oficiala de returnare a fondurilor in criptoactive. Pentru a continua, va rugam sa furnizati datele contului dvs.",
+            "comment": "Scam message pattern [conf=0.9]",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          },
+          {
+            "uuid": "8462d124-313e-429b-bf85-3127dfee9a85",
+            "category": "External analysis",
+            "type": "comment",
+            "value": "SCENARIO:\nRomânii care dețin criptomonede sunt vizați de o escrocherie care circulă sub forma unei pretinse citații oficiale, folosind abuziv însemnele DNSC, sigla Uniunii Europene și logo-urile Europol/EC3. Documentul fals pretinde că oferă informații despre o procedură de returnare a fondurilor în criptoactive, dar nu are nicio legătură reală cu vreo instituție europeană sau națională, scopul fiind obținerea de date personale sau financiare.\n\nRED FLAGS:\n- Document oficial primit prin email, neasociat unui canal guvernamental verificabil\n- Combinație de sigle ale mai multor instituții (DNSC + UE + Europol) — semn tipic de fals\n- Promisiunea unei recuperări de fonduri în schimbul unor date personale\n- Limbaj juridic ornamentat, dar fără referințe verificabile la un dosar real\n\nPREVENTION:\n- Verificați direct pe site-ul oficial DNSC (dnsc.ro) sau Europol orice document primit\n- Nicio instituție nu solicită date financiare prin email pentru \"recuperarea\" de fonduri\n- Nu răspundeți și nu furnizați date; raportați documentul la DNSC\n- Contactați direct instituția menționată printr-un canal oficial cunoscut, nu prin linkurile din document",
+            "comment": "OFI Analysis",
+            "to_ids": false,
+            "distribution": 1,
+            "timestamp": 1782650822
+          }
+        ],
+        "Object": [],
+        "Tag": [
+          {
+            "name": "tlp:white",
+            "colour": "#ffffff"
+          },
+          {
+            "name": "ofi:severity=\"High\"",
+            "colour": "#cc0000"
+          },
+          {
+            "name": "ofi:platform=\"email\"",
+            "colour": "#0066cc"
+          },
+          {
+            "name": "ofi:uzurpare-institutie",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:crypto",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:document-fals",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:europol",
+            "colour": "#006688"
+          },
+          {
+            "name": "ofi:recuperare-fonduri",
+            "colour": "#006688"
+          }
+        ],
+        "Galaxy": [],
+        "RelatedEvent": []
+      }
+    }
+  ]
+}

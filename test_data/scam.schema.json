@@ -1,0 +1,353 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-fraud-intelligence.github.io/schemas/scam.schema.json",
+  "title": "Open Fraud Intelligence — Scam Entry",
+  "description": "Schema oficială pentru o intrare în baza de date Open Fraud Intelligence",
+  "type": "object",
+  "required": [
+    "uuid", "id", "schema_version", "dataset_version",
+    "title", "platform", "severity", "country", "year",
+    "active", "tags", "scenario", "red_flags", "prevention",
+    "ai_dataset", "verification", "confidence", "created_at", "last_updated"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Identificator unic universal — UUID v4",
+      "examples": ["f47ac10b-58cc-4372-a567-0e02b2c3d479"]
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-]+-\\d{4}$",
+      "description": "ID lizibil de formă platform-NNNN",
+      "examples": ["olx-0001", "whatsapp-0042"]
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Versiunea schemei (SemVer)",
+      "examples": ["2.0.0"]
+    },
+    "dataset_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Versiunea dataset-ului la momentul creării",
+      "examples": ["2.0.0"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data și ora creării intrării (ISO 8601)"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Data și ora ultimei modificări"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 200,
+      "description": "Titlul descriptiv al fraudei"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "olx", "whatsapp", "facebook", "instagram", "telegram",
+        "email", "sms", "crypto", "fake-jobs", "fake-shops",
+        "telefon", "vinted", "web", "twitter", "linkedin",
+        "fizic", "autovit", "storia", "tiktok", "youtube", "discord"
+      ],
+      "description": "Platforma principală a fraudei"
+    },
+    "vector": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Vectorii de atac utilizați"
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["Critical", "High", "Medium", "Low", "Informational"],
+      "description": "Nivelul de severitate conform matricei OFI"
+    },
+    "severity_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Scor numeric de severitate (0-10, similar CVSS)"
+    },
+    "country": {
+      "type": "string",
+      "description": "Țara principală afectată (ISO 3166-1 alpha-2 sau nume complet)"
+    },
+    "regions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Regiuni/țări suplimentare afectate"
+    },
+    "year": {
+      "type": ["integer", "null"],
+      "minimum": 2010,
+      "maximum": 2030,
+      "description": "Anul primei documentări"
+    },
+    "active": {
+      "type": ["boolean", "null"],
+      "description": "Frauda este activă în prezent"
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 2 },
+      "description": "Etichete pentru clasificare și căutare"
+    },
+    "scenario": {
+      "type": "string",
+      "minLength": 30,
+      "description": "Descrierea narativă a scenariului de fraudă"
+    },
+    "steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Pașii fraudei în ordine cronologică"
+    },
+    "red_flags": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Semnale de avertizare identificate"
+    },
+    "prevention": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Măsuri de prevenire recomandate"
+    },
+    "verification": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["verified", "community_verified", "official_source", "pending", "false_positive"],
+          "description": "Statusul verificării intrării"
+        },
+        "verified_by": {
+          "type": ["string", "null"],
+          "description": "Organizația sau persoana care a verificat"
+        },
+        "verified_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "official_source": {
+          "type": ["string", "null"],
+          "description": "URL sursă oficială (CERT-RO, Poliție, etc.)"
+        },
+        "evidence_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Numărul de dovezi disponibile"
+        },
+        "reporter_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Numărul de raportări primite"
+        }
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": ["score", "method"],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Scor de încredere global (0.0 - 1.0)"
+        },
+        "method": {
+          "type": "string",
+          "enum": ["manual_review", "community_vote", "automated", "expert_review", "official_report"],
+          "description": "Metoda prin care s-a determinat scorul"
+        },
+        "source": {
+          "type": ["string", "null"],
+          "description": "Sursa primară a datelor de confidence"
+        }
+      }
+    },
+    "ioc": {
+      "type": "object",
+      "description": "Indicatori de Compromitere",
+      "properties": {
+        "phones":    { "type": "array", "items": { "type": "string" } },
+        "emails":    { "type": "array", "items": { "type": "string", "format": "email" } },
+        "domains":   { "type": "array", "items": { "type": "string" } },
+        "urls":      { "type": "array", "items": { "type": "string" } },
+        "wallets":   { "type": "array", "items": { "type": "string" } },
+        "usernames": { "type": "array", "items": { "type": "string" } },
+        "ipv4":      { "type": "array", "items": { "type": "string", "format": "ipv4" } },
+        "ipv6":      { "type": "array", "items": { "type": "string", "format": "ipv6" } },
+        "hashes":    { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "mitre_attack": {
+      "type": "array",
+      "description": "Mapare MITRE ATT&CK",
+      "items": {
+        "type": "object",
+        "required": ["technique_id", "technique_name"],
+        "properties": {
+          "technique_id":   { "type": "string", "pattern": "^T\\d{4}(\\.\\d{3})?$" },
+          "technique_name": { "type": "string" },
+          "tactic":         { "type": "string" },
+          "url":            { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "capec": {
+      "type": "array",
+      "description": "Mapare CAPEC (Common Attack Pattern Enumeration)",
+      "items": {
+        "type": "object",
+        "required": ["capec_id", "name"],
+        "properties": {
+          "capec_id": { "type": "string", "pattern": "^CAPEC-\\d+$" },
+          "name":     { "type": "string" },
+          "url":      { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "scam_dna": {
+      "type": "object",
+      "description": "Amprenta unică a fraudei — Scam DNA",
+      "properties": {
+        "technique":  { "type": "string" },
+        "psychology": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["urgency", "authority", "scarcity", "reciprocity", "social_proof", "fear", "greed", "empathy", "romance"]
+          }
+        },
+        "payment_methods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["card", "transfer_bancar", "crypto", "western_union", "revolut", "paypal", "voucher", "cash", "moneygram"]
+          }
+        },
+        "target_profile": {
+          "type": "object",
+          "properties": {
+            "age_group":        { "type": "array", "items": { "type": "string" } },
+            "vulnerability":    { "type": "array", "items": { "type": "string" } },
+            "digital_literacy": { "type": "string", "enum": ["low", "medium", "high", "any"] }
+          }
+        },
+        "urgency_level": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "language_markers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "brand_abuse": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "typical_loss_ron": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "number" },
+            "max": { "type": "number" },
+            "median": { "type": "number" }
+          }
+        },
+        "fingerprint": {
+          "type": "string",
+          "description": "Hash SHA-256 al componentelor DNA pentru deduplicare și similaritate"
+        }
+      }
+    },
+    "campaign": {
+      "type": "object",
+      "description": "Informații despre campania din care face parte",
+      "properties": {
+        "campaign_id":   { "type": ["string", "null"] },
+        "campaign_name": { "type": ["string", "null"] },
+        "actor_id":      { "type": ["string", "null"] },
+        "first_seen":    { "type": ["string", "null"], "format": "date" },
+        "last_seen":     { "type": ["string", "null"], "format": "date" },
+        "related_ids":   { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "description": "Scor automat de calitate al intrării",
+      "properties": {
+        "completeness":  { "type": "number", "minimum": 0, "maximum": 1 },
+        "evidence":      { "type": "number", "minimum": 0, "maximum": 1 },
+        "verification":  { "type": "number", "minimum": 0, "maximum": 1 },
+        "freshness":     { "type": "number", "minimum": 0, "maximum": 1 },
+        "overall":       { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "ai_dataset": {
+      "type": "object",
+      "required": ["message", "label", "confidence"],
+      "properties": {
+        "message":     { "type": "string", "minLength": 5 },
+        "label": {
+          "type": "string",
+          "enum": ["scam", "legitimate", "suspicious"]
+        },
+        "confidence":  { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "language":    { "type": "string", "default": "ro" },
+        "translations": {
+          "type": "object",
+          "description": "Traduceri ale mesajului pentru dataset multilingual",
+          "properties": {
+            "en": { "type": "string" },
+            "fr": { "type": "string" },
+            "de": { "type": "string" },
+            "it": { "type": "string" },
+            "es": { "type": "string" },
+            "pl": { "type": "string" }
+          }
+        }
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "description": "Istoricul evoluției fraudei",
+      "items": {
+        "type": "object",
+        "required": ["date", "event"],
+        "properties": {
+          "date":        { "type": "string", "format": "date" },
+          "event":       { "type": "string" },
+          "description": { "type": "string" },
+          "source":      { "type": ["string", "null"] }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title":  { "type": "string" },
+          "url":    { "type": "string" },
+          "source": { "type": "string" },
+          "date":   { "type": "string", "format": "date" },
+          "type": {
+            "type": "string",
+            "enum": ["news", "official", "research", "community", "social_media"]
+          }
+        }
+      }
+    }
+  }
+}

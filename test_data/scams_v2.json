@@ -1,0 +1,196 @@
+[
+  {
+    "uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "id": "olx-0001",
+    "schema_version": "2.0.0",
+    "dataset_version": "2.0.0",
+    "created_at": "2025-01-15T10:00:00Z",
+    "last_updated": "2025-07-01T12:00:00Z",
+    "title": "Fals cumpărător OLX — transport plătit în avans",
+    "platform": "olx",
+    "vector": ["whatsapp"],
+    "severity": "High",
+    "severity_score": 7.8,
+    "country": "Romania",
+    "regions": ["Romania", "Moldova"],
+    "year": 2025,
+    "active": true,
+    "tags": ["marketplace", "olx", "phishing", "whatsapp", "social-engineering", "curier-fals"],
+    "scenario": "Escrocul contactează vânzătorul pe OLX, exprimă interes pentru produs și solicită mutarea conversației pe WhatsApp. Odată acolo, pretinde că a efectuat plata și trimite un link fals care imită Fan Courier sau OLX Pay, solicitând datele de card ale vânzătorului pentru 'confirmarea primirii banilor'.",
+    "steps": [
+      "Escrocul găsește anunțul pe OLX și trimite mesaj de interes",
+      "Solicită numărul de WhatsApp pentru detalii",
+      "Pe WhatsApp, afirmă că a plătit prin curier sau OLX Pay",
+      "Trimite link fals: fancourier-plata.ro sau olx-confirmare.ro",
+      "Pagina falsă solicită IBAN sau date complete de card",
+      "Datele sunt folosite instant pentru tranzacții frauduloase"
+    ],
+    "red_flags": [
+      "Mută conversația de pe OLX pe WhatsApp sau Telegram",
+      "Pretinde că a plătit înainte de confirmare",
+      "Trimite link extern, nu de pe olx.ro",
+      "Urgentează tranzacția cu presiune de timp",
+      "Număr de telefon cu prefix internațional (+44, +39, +33)",
+      "Acceptă prețul fără nicio negociere"
+    ],
+    "prevention": [
+      "Nu muta conversația în afara platformei OLX",
+      "Vânzătorul NU trebuie să confirme nimic printr-un link",
+      "Verifică URL-ul — paginile legitime OLX au domeniul strict olx.ro",
+      "Nu introduce datele cardului pe linkuri primite de la cumpărători",
+      "Fan Courier și DPD nu solicită date de card vânzătorului"
+    ],
+    "verification": {
+      "status": "verified",
+      "verified_by": "CERT-RO",
+      "verified_at": "2025-03-10T09:00:00Z",
+      "official_source": "https://cert.ro/citeste/alerta-frauda-olx-2025",
+      "evidence_count": 47,
+      "reporter_count": 312
+    },
+    "confidence": {
+      "score": 0.98,
+      "method": "official_report",
+      "source": "CERT-RO + Poliția Română + raportări comunitate"
+    },
+    "ioc": {
+      "phones": ["+44XXXXXXXX", "+39XXXXXXXX"],
+      "emails": [],
+      "domains": ["fancourier-plata.ro", "olx-confirmare.ro", "olx-pay-secure.com"],
+      "urls": ["https://fancourier-plata.ro/confirmare", "https://olx-confirmare.ro/plata"],
+      "wallets": [],
+      "usernames": [],
+      "ipv4": [],
+      "ipv6": [],
+      "hashes": []
+    },
+    "mitre_attack": [
+      {
+        "technique_id": "T1566",
+        "technique_name": "Phishing",
+        "tactic": "Initial Access",
+        "url": "https://attack.mitre.org/techniques/T1566/"
+      },
+      {
+        "technique_id": "T1586",
+        "technique_name": "Compromise Accounts",
+        "tactic": "Resource Development",
+        "url": "https://attack.mitre.org/techniques/T1586/"
+      },
+      {
+        "technique_id": "T1056",
+        "technique_name": "Input Capture",
+        "tactic": "Collection",
+        "url": "https://attack.mitre.org/techniques/T1056/"
+      }
+    ],
+    "capec": [
+      {
+        "capec_id": "CAPEC-98",
+        "name": "Phishing",
+        "url": "https://capec.mitre.org/data/definitions/98.html"
+      },
+      {
+        "capec_id": "CAPEC-194",
+        "name": "Fake the Source of Data",
+        "url": "https://capec.mitre.org/data/definitions/194.html"
+      }
+    ],
+    "scam_dna": {
+      "technique": "Marketplace redirect phishing with fake payment confirmation",
+      "psychology": ["urgency", "authority", "social_proof"],
+      "payment_methods": ["card", "transfer_bancar"],
+      "target_profile": {
+        "age_group": ["18-35", "35-55"],
+        "vulnerability": ["first_time_seller", "inexperienced_online_user"],
+        "digital_literacy": "low"
+      },
+      "urgency_level": 4,
+      "language_markers": [
+        "am plătit deja",
+        "confirmați primirea",
+        "accesați linkul",
+        "urgent",
+        "azi trebuie"
+      ],
+      "brand_abuse": ["Fan Courier", "OLX", "DPD", "OLX Pay"],
+      "typical_loss_ron": {
+        "min": 500,
+        "max": 15000,
+        "median": 2500
+      },
+      "fingerprint": "a3f2c1d8e9b4567890abcdef1234567890abcdef1234567890abcdef12345678"
+    },
+    "campaign": {
+      "campaign_id": "CAMP-OLX-2024-001",
+      "campaign_name": "Operation Fake Courier Romania",
+      "actor_id": null,
+      "first_seen": "2023-06-01",
+      "last_seen": "2025-07-01",
+      "related_ids": ["olx-0002", "olx-0003", "sms-0001"]
+    },
+    "quality": {
+      "completeness": 1.0,
+      "evidence": 0.95,
+      "verification": 1.0,
+      "freshness": 0.90,
+      "overall": 0.96
+    },
+    "ai_dataset": {
+      "message": "Am plătit deja produsul. Accesați acest link pentru a confirma și a primi suma.",
+      "label": "scam",
+      "confidence": 0.98,
+      "language": "ro",
+      "translations": {
+        "en": "I have already paid for the product. Please access this link to confirm and receive the amount.",
+        "fr": "J'ai déjà payé le produit. Accédez à ce lien pour confirmer et recevoir la somme.",
+        "de": "Ich habe bereits für das Produkt bezahlt. Bitte klicken Sie auf diesen Link, um den Betrag zu bestätigen und zu erhalten.",
+        "it": "Ho già pagato il prodotto. Accedi a questo link per confermare e ricevere l'importo.",
+        "es": "Ya pagué el producto. Accede a este enlace para confirmar y recibir el importe.",
+        "pl": "Zapłaciłem już za produkt. Kliknij ten link, aby potwierdzić i otrzymać kwotę."
+      }
+    },
+    "timeline": [
+      {
+        "date": "2023-06-01",
+        "event": "Prima documentare",
+        "description": "Primele raportări ale acestui tip de fraudă pe OLX România",
+        "source": null
+      },
+      {
+        "date": "2024-01-15",
+        "event": "Escaladare semnificativă",
+        "description": "Creștere cu 340% a raportărilor față de trimestrul anterior",
+        "source": "https://cert.ro/raport-anual-2024"
+      },
+      {
+        "date": "2024-09-01",
+        "event": "Variantă nouă detectată",
+        "description": "Escrocii au început să folosească domenii .eu și .de pentru a părea mai legitimi",
+        "source": null
+      },
+      {
+        "date": "2025-02-01",
+        "event": "Alertă oficială CERT-RO",
+        "description": "CERT-RO emite alertă publică și colaborează cu OLX pentru măsuri de prevenire",
+        "source": "https://cert.ro/alerta-olx-2025"
+      }
+    ],
+    "references": [
+      {
+        "title": "Alertă CERT-RO: Fraudă pe OLX cu fals curier",
+        "url": "https://cert.ro/alerta-olx-2025",
+        "source": "CERT-RO",
+        "date": "2025-02-01",
+        "type": "official"
+      },
+      {
+        "title": "Poliția Română: Recomandări pentru cumpărătorii și vânzătorii online",
+        "url": "https://www.politiaromana.ro/fraude-online",
+        "source": "Poliția Română",
+        "date": "2024-11-15",
+        "type": "official"
+      }
+    ]
+  }
+]

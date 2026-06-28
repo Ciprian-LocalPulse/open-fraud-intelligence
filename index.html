@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Fraud Intelligence — Dashboard</title>
+  <style>
+    :root {
+      --bg:       #0f1117;
+      --surface:  #1a1d27;
+      --card:     #21253a;
+      --border:   #2d3252;
+      --accent:   #6366f1;
+      --accent2:  #8b5cf6;
+      --red:      #ef4444;
+      --orange:   #f97316;
+      --yellow:   #eab308;
+      --green:    #22c55e;
+      --cyan:     #06b6d4;
+      --text:     #e2e8f0;
+      --muted:    #94a3b8;
+      --radius:   10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a1d27 0%, #21253a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { font-size: 28px; }
+    .logo-text h1 { font-size: 20px; font-weight: 700; color: var(--text); }
+    .logo-text span { font-size: 12px; color: var(--muted); }
+    .badge { background: var(--accent); color: #fff; font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+    nav { display: flex; gap: 8px; }
+    nav a { color: var(--muted); text-decoration: none; padding: 8px 14px; border-radius: 6px; font-size: 14px; transition: all .2s; }
+    nav a:hover { background: var(--card); color: var(--text); }
+
+    /* ── Layout ── */
+    main { max-width: 1400px; margin: 0 auto; padding: 32px 24px; }
+
+    /* ── Stats Grid ── */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px; margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .stat-card .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .stat-card .value { font-size: 32px; font-weight: 700; line-height: 1; }
+    .stat-card .sub   { font-size: 12px; color: var(--muted); }
+    .c-red    { color: var(--red); }
+    .c-orange { color: var(--orange); }
+    .c-green  { color: var(--green); }
+    .c-cyan   { color: var(--cyan); }
+    .c-accent { color: var(--accent); }
+
+    /* ── Charts Row ── */
+    .charts-row {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px; margin-bottom: 32px;
+    }
+    .chart-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+    }
+    .chart-card h3 { font-size: 14px; font-weight: 600; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: .5px; }
+
+    /* ── Bar Chart ── */
+    .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .bar-label { font-size: 12px; color: var(--muted); width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+    .bar-track { flex: 1; background: var(--surface); border-radius: 4px; height: 8px; }
+    .bar-fill  { height: 8px; border-radius: 4px; transition: width .6s ease; }
+    .bar-count { font-size: 12px; color: var(--text); width: 28px; text-align: right; flex-shrink: 0; }
+
+    /* ── Donut Chart ── */
+    .donut-wrap { display: flex; align-items: center; gap: 20px; }
+    .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Severity Pills ── */
+    .sev-grid { display: flex; flex-direction: column; gap: 10px; }
+    .sev-row  { display: flex; align-items: center; gap: 10px; }
+    .sev-pill { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; width: 100px; text-align: center; }
+    .sev-critical { background: #7c000033; color: #ff6b6b; border: 1px solid #7c000066; }
+    .sev-high     { background: #ea580c22; color: var(--orange); border: 1px solid #ea580c55; }
+    .sev-medium   { background: #eab30822; color: var(--yellow); border: 1px solid #eab30855; }
+    .sev-low      { background: #22c55e22; color: var(--green); border: 1px solid #22c55e55; }
+    .sev-info     { background: #6b728022; color: var(--muted); border: 1px solid #6b728055; }
+
+    /* ── Search & Filters ── */
+    .search-bar {
+      display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .search-input {
+      flex: 1; min-width: 200px; background: var(--card); border: 1px solid var(--border);
+      color: var(--text); border-radius: var(--radius); padding: 10px 16px;
+      font-size: 14px; outline: none; transition: border .2s;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .search-input::placeholder { color: var(--muted); }
+    select.filter {
+      background: var(--card); border: 1px solid var(--border); color: var(--text);
+      border-radius: var(--radius); padding: 10px 14px; font-size: 13px; cursor: pointer;
+      outline: none;
+    }
+    select.filter:focus { border-color: var(--accent); }
+
+    /* ── Table ── */
+    .table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .table-header {
+      display: grid;
+      grid-template-columns: 110px 1fr 120px 90px 80px 90px;
+      gap: 12px; padding: 12px 20px;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px;
+    }
+    .table-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 120px 90px 80px 90px;
+      gap: 12px; padding: 14px 20px;
+      border-bottom: 1px solid var(--border); align-items: center;
+      transition: background .15s; cursor: pointer;
+    }
+    .table-row:hover { background: var(--surface); }
+    .table-row:last-child { border-bottom: none; }
+    .entry-id { font-family: monospace; font-size: 12px; color: var(--accent); font-weight: 600; }
+    .entry-title { font-size: 13px; font-weight: 500; }
+    .entry-platform { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+    .entry-label-scam { background: #ef444422; color: var(--red); border: 1px solid #ef444455; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+    .entry-label-legit { background: #22c55e22; color: var(--green); border: 1px solid #22c55e55; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+    .conf-bar { display: flex; align-items: center; gap: 6px; }
+    .conf-val  { font-size: 12px; color: var(--text); width: 35px; }
+    .conf-mini { flex: 1; background: var(--surface); border-radius: 3px; height: 5px; }
+    .conf-fill { height: 5px; border-radius: 3px; background: var(--accent); }
+    .no-results { text-align: center; padding: 48px; color: var(--muted); font-size: 14px; }
+
+    /* ── Heatmap ── */
+    .heatmap { display: flex; flex-direction: column; gap: 4px; }
+    .heatmap-row { display: flex; gap: 4px; align-items: center; }
+    .heatmap-label { font-size: 11px; color: var(--muted); width: 70px; text-align: right; }
+    .heatmap-cell {
+      width: 24px; height: 24px; border-radius: 4px;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: var(--muted); cursor: default;
+      transition: transform .2s;
+    }
+    .heatmap-cell:hover { transform: scale(1.3); z-index: 1; }
+    .heat-0 { background: #1e2235; }
+    .heat-1 { background: #1e3a5f; }
+    .heat-2 { background: #1e4d8c; }
+    .heat-3 { background: #1a6bb8; }
+    .heat-4 { background: #0ea5e9; }
+    .heatmap-months { display: flex; gap: 4px; padding-left: 74px; }
+    .heatmap-month  { font-size: 10px; color: var(--muted); width: 24px; text-align: center; }
+
+    /* ── Timeline ── */
+    .timeline-list { display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; gap: 16px; padding-bottom: 20px; position: relative; }
+    .tl-item:not(:last-child)::before {
+      content: ''; position: absolute; left: 19px; top: 32px;
+      width: 2px; bottom: 0; background: var(--border);
+    }
+    .tl-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); flex-shrink: 0; margin-top: 6px; }
+    .tl-dot.tl-alert { background: var(--red); }
+    .tl-dot.tl-warn  { background: var(--orange); }
+    .tl-content h4 { font-size: 13px; font-weight: 600; }
+    .tl-content p  { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .tl-date { font-size: 11px; color: var(--muted); margin-top: 2px; font-family: monospace; }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 13px; }
+    footer a { color: var(--accent); text-decoration: none; }
+    .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+    .section { margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🛡️</div>
+    <div class="logo-text">
+      <h1>Open Fraud Intelligence</h1>
+      <span>Baza de date open-source pentru fraude online din România</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#search">Caută</a>
+    <a href="#statistics">Statistici</a>
+    <a href="#timeline">Timeline</a>
+    <a href="https://github.com/open-fraud-intelligence" target="_blank">GitHub</a>
+  </nav>
+  <span class="badge">v2.0.0</span>
+</header>
+
+<main>
+
+  <!-- ── Stats ── -->
+  <section class="section" id="dashboard">
+    <div class="section-title">📊 Dashboard</div>
+    <div class="stats-grid" id="statsGrid">
+      <!-- Populate via JS -->
+    </div>
+  </section>
+
+  <!-- ── Charts ── -->
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>Distribuție platforme</h3>
+      <div id="platformChart"></div>
+    </div>
+    <div class="chart-card">
+      <h3>Distribuție severitate</h3>
+      <div class="sev-grid" id="severityChart"></div>
+    </div>
+    <div class="chart-card">
+      <h3>Label AI</h3>
+      <div class="donut-wrap">
+        <svg id="donutSvg" width="100" height="100" viewBox="0 0 100 100"></svg>
+        <div class="donut-legend" id="donutLegend"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Heatmap ── -->
+  <section class="section">
+    <div class="section-title">🗓️ Activitate fraude (2025)</div>
+    <div class="chart-card">
+      <div class="heatmap-months" id="heatmapMonths"></div>
+      <div class="heatmap" id="heatmap"></div>
+    </div>
+  </section>
+
+  <!-- ── Search ── -->
+  <section class="section" id="search">
+    <div class="section-title">🔍 Caută fraude</div>
+    <div class="search-bar">
+      <input type="text" class="search-input" id="searchInput" placeholder="Caută după titlu, platformă, tag, scenariu..." oninput="filterEntries()">
+      <select class="filter" id="platformFilter" onchange="filterEntries()">
+        <option value="">Toate platformele</option>
+        <option value="olx">OLX</option>
+        <option value="whatsapp">WhatsApp</option>
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="telegram">Telegram</option>
+        <option value="email">Email</option>
+        <option value="sms">SMS</option>
+        <option value="crypto">Crypto</option>
+        <option value="telefon">Telefon</option>
+        <option value="fake-shops">Fake Shops</option>
+        <option value="fake-jobs">Fake Jobs</option>
+      </select>
+      <select class="filter" id="severityFilter" onchange="filterEntries()">
+        <option value="">Toate severitățile</option>
+        <option value="Critical">Critical</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+        <option value="Informational">Informational</option>
+      </select>
+      <select class="filter" id="labelFilter" onchange="filterEntries()">
+        <option value="">Toate etichetele</option>
+        <option value="scam">Scam</option>
+        <option value="legitimate">Legitimate</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table-header">
+        <span>ID</span>
+        <span>Titlu</span>
+        <span>Platformă</span>
+        <span>Severitate</span>
+        <span>Label</span>
+        <span>Confidence</span>
+      </div>
+      <div id="entriesTable"></div>
+    </div>
+  </section>
+
+  <!-- ── Timeline ── -->
+  <section class="section" id="timeline">
+    <div class="section-title">⏳ Timeline fraude recente</div>
+    <div class="chart-card">
+      <div class="timeline-list" id="timelineList"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2025 Open Fraud Intelligence Community — Licență CC0-1.0</span>
+  <span>
+    <a href="https://github.com/open-fraud-intelligence" target="_blank">GitHub</a> ·
+    <a href="datasets/scams_v2.json" download>Download JSON</a> ·
+    <a href="datasets/scams.csv" download>Download CSV</a>
+  </span>
+</footer>
+
+<script>
+// ── Dataset inline (în producție se încarcă din JSON) ────────────────────────
+const DATASET = [
+  { id:"olx-0001", title:"Fals cumpărător OLX — transport plătit în avans", platform:"olx", severity:"High", tags:["marketplace","phishing"], ai_dataset:{label:"scam",confidence:0.98}, year:2025, active:true },
+  { id:"olx-0002", title:"Fals vânzător OLX — plată în avans, produs inexistent", platform:"olx", severity:"High", tags:["marketplace","advance-fee"], ai_dataset:{label:"scam",confidence:0.91}, year:2025, active:true },
+  { id:"whatsapp-0001", title:"Recuperare cont WhatsApp — cod de verificare", platform:"whatsapp", severity:"Medium", tags:["account-takeover"], ai_dataset:{label:"scam",confidence:0.96}, year:2025, active:true },
+  { id:"whatsapp-0003", title:"WhatsApp — mesaj fals de la bancă", platform:"whatsapp", severity:"High", tags:["phishing","banking"], ai_dataset:{label:"scam",confidence:0.99}, year:2025, active:true },
+  { id:"sms-0001", title:"Fals curier — SMS phishing (smishing)", platform:"sms", severity:"High", tags:["smishing","curier-fals"], ai_dataset:{label:"scam",confidence:0.97}, year:2025, active:true },
+  { id:"sms-0002", title:"SMS — fals ANAF, amendă neplătită", platform:"sms", severity:"High", tags:["smishing","anaf-fals"], ai_dataset:{label:"scam",confidence:0.99}, year:2025, active:true },
+  { id:"facebook-0001", title:"Concurs / giveaway fals pe Facebook", platform:"facebook", severity:"Medium", tags:["giveaway-fals","brand-impersonation"], ai_dataset:{label:"scam",confidence:0.95}, year:2025, active:true },
+  { id:"facebook-0004", title:"Facebook Ads — investiții false cu chip de celebritate", platform:"facebook", severity:"High", tags:["crypto","deepfake"], ai_dataset:{label:"scam",confidence:0.99}, year:2025, active:true },
+  { id:"instagram-0001", title:"Cont Instagram compromis — cerere de împrumut", platform:"instagram", severity:"Medium", tags:["cont-compromis"], ai_dataset:{label:"scam",confidence:0.91}, year:2025, active:true },
+  { id:"telegram-0001", title:"Grup Telegram fals de investiții", platform:"telegram", severity:"High", tags:["crypto","trading-signals"], ai_dataset:{label:"scam",confidence:0.96}, year:2025, active:true },
+  { id:"email-0001", title:"Phishing bancar — email fals BCR / BRD / ING", platform:"email", severity:"High", tags:["phishing","banking"], ai_dataset:{label:"scam",confidence:0.98}, year:2025, active:true },
+  { id:"email-0005", title:"Email — sextortion, amenințare cu material compromițător", platform:"email", severity:"High", tags:["sextortion","santaj"], ai_dataset:{label:"scam",confidence:0.99}, year:2025, active:true },
+  { id:"crypto-0001", title:"Investiții crypto cu profit garantat", platform:"crypto", severity:"High", tags:["crypto","pig-butchering"], ai_dataset:{label:"scam",confidence:0.99}, year:2025, active:true },
+  { id:"crypto-0003", title:"Crypto — pump and dump pe Telegram", platform:"telegram", severity:"High", tags:["crypto","pump-and-dump"], ai_dataset:{label:"scam",confidence:0.99}, year:2025, active:true },
+  { id:"fake-jobs-0001", title:"Job remote fals — taxă de înscriere", platform:"fake-jobs", severity:"Medium", tags:["fake-jobs","advance-fee"], ai_dataset:{label:"scam",confidence:0.94}, year:2025, active:true },
+  { id:"fake-shops-0001", title:"Magazin online fals — produse inexistente", platform:"fake-shops", severity:"High", tags:["fake-shops","ecommerce"], ai_dataset:{label:"scam",confidence:0.93}, year:2025, active:true },
+  { id:"telefon-0001", title:"Vishing — fals angajat bancă", platform:"telefon", severity:"High", tags:["vishing","banking"], ai_dataset:{label:"scam",confidence:0.99}, year:2025, active:true },
+  { id:"romance-0001", title:"Romance Scam — relație online falsă", platform:"facebook", severity:"High", tags:["romance-scam","emotional-manipulation"], ai_dataset:{label:"scam",confidence:0.97}, year:2025, active:true },
+  { id:"legit-0001", title:"Mesaj legitim — cumpărător OLX real", platform:"olx", severity:null, tags:["legitimate"], ai_dataset:{label:"legitimate",confidence:0.97}, year:2025, active:null },
+  { id:"legit-0002", title:"Mesaj legitim — livrare reală FAN Courier", platform:"sms", severity:null, tags:["legitimate"], ai_dataset:{label:"legitimate",confidence:0.95}, year:2025, active:null },
+];
+
+let filtered = [...DATASET];
+
+// ── Statistici ──────────────────────────────────────────────────────────────
+function renderStats() {
+  const total  = DATASET.length;
+  const scam   = DATASET.filter(d => d.ai_dataset?.label === 'scam').length;
+  const legit  = DATASET.filter(d => d.ai_dataset?.label === 'legitimate').length;
+  const active = DATASET.filter(d => d.active === true).length;
+  const high   = DATASET.filter(d => ['High','Critical'].includes(d.severity)).length;
+  const avgConf= (DATASET.reduce((a,d) => a + (d.ai_dataset?.confidence||0), 0) / total).toFixed(2);
+  const platforms = new Set(DATASET.map(d => d.platform)).size;
+
+  const statsEl = document.getElementById('statsGrid');
+  statsEl.innerHTML = `
+    <div class="stat-card"><span class="label">Total intrări</span><span class="value c-accent">${total}</span><span class="sub">în dataset</span></div>
+    <div class="stat-card"><span class="label">Fraude scam</span><span class="value c-red">${scam}</span><span class="sub">${(scam/total*100).toFixed(0)}% din total</span></div>
+    <div class="stat-card"><span class="label">Legitimate</span><span class="value c-green">${legit}</span><span class="sub">exemple de referință</span></div>
+    <div class="stat-card"><span class="label">Active acum</span><span class="value c-orange">${active}</span><span class="sub">fraude în desfășurare</span></div>
+    <div class="stat-card"><span class="label">Severitate înaltă</span><span class="value c-red">${high}</span><span class="sub">High + Critical</span></div>
+    <div class="stat-card"><span class="label">Platforme</span><span class="value c-cyan">${platforms}</span><span class="sub">tipuri distincte</span></div>
+    <div class="stat-card"><span class="label">Confidence AI</span><span class="value c-accent">${avgConf}</span><span class="sub">medie dataset</span></div>
+  `;
+}
+
+// ── Platform Chart ──────────────────────────────────────────────────────────
+function renderPlatformChart() {
+  const counts = {};
+  DATASET.forEach(d => { if(d.platform) counts[d.platform] = (counts[d.platform]||0)+1; });
+  const sorted = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0,8);
+  const max = sorted[0]?.[1] || 1;
+  const colors = ['#6366f1','#8b5cf6','#06b6d4','#22c55e','#f97316','#ef4444','#eab308','#ec4899'];
+  document.getElementById('platformChart').innerHTML = sorted.map(([p,c],i) =>
+    `<div class="bar-row">
+      <span class="bar-label">${p}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${c/max*100}%;background:${colors[i%colors.length]}"></div></div>
+      <span class="bar-count">${c}</span>
+    </div>`
+  ).join('');
+}
+
+// ── Severity Chart ──────────────────────────────────────────────────────────
+function renderSeverityChart() {
+  const counts = {Critical:0, High:0, Medium:0, Low:0, Informational:0};
+  DATASET.filter(d => d.ai_dataset?.label==='scam').forEach(d => { if(d.severity && counts[d.severity]!==undefined) counts[d.severity]++; });
+  const total = Object.values(counts).reduce((a,b)=>a+b,0) || 1;
+  const cls   = {Critical:'sev-critical', High:'sev-high', Medium:'sev-medium', Low:'sev-low', Informational:'sev-info'};
+  document.getElementById('severityChart').innerHTML = Object.entries(counts).map(([sev,c]) =>
+    `<div class="sev-row">
+      <span class="sev-pill ${cls[sev]}">${sev}</span>
+      <div class="bar-track" style="flex:1"><div class="bar-fill" style="width:${c/total*100}%;background:var(--accent)"></div></div>
+      <span style="font-size:12px;color:var(--muted);width:20px">${c}</span>
+    </div>`
+  ).join('');
+}
+
+// ── Donut Chart ─────────────────────────────────────────────────────────────
+function renderDonut() {
+  const scam  = DATASET.filter(d => d.ai_dataset?.label==='scam').length;
+  const legit = DATASET.filter(d => d.ai_dataset?.label==='legitimate').length;
+  const total = scam + legit || 1;
+  const scamPct  = scam/total;
+  const legitPct = legit/total;
+  const r = 35, cx = 50, cy = 50, stroke = 14;
+  const circ = 2 * Math.PI * r;
+  const scamDash = scamPct * circ;
+  const legitStart = scamPct * 360;
+  const svg = document.getElementById('donutSvg');
+  svg.innerHTML = `
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#1e2235" stroke-width="${stroke}"/>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#ef4444" stroke-width="${stroke}"
+      stroke-dasharray="${scamDash} ${circ}" stroke-dashoffset="${circ/4}" />
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#22c55e" stroke-width="${stroke}"
+      stroke-dasharray="${legitPct*circ} ${circ}"
+      stroke-dashoffset="${circ/4 - scamDash}" />
+    <text x="${cx}" y="${cy+1}" text-anchor="middle" dominant-baseline="middle" fill="#e2e8f0" font-size="13" font-weight="700">${total}</text>
+    <text x="${cx}" y="${cy+13}" text-anchor="middle" fill="#94a3b8" font-size="8">total</text>
+  `;
+  document.getElementById('donutLegend').innerHTML = `
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div><span>Scam (${scam})</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div><span>Legit (${legit})</span></div>
+  `;
+}
+
+// ── Heatmap ─────────────────────────────────────────────────────────────────
+function renderHeatmap() {
+  const months = ['Ian','Feb','Mar','Apr','Mai','Iun','Iul','Aug','Sep','Oct','Nov','Dec'];
+  const platforms = [...new Set(DATASET.map(d=>d.platform))].slice(0,6);
+  const data = {};
+  DATASET.forEach(d => {
+    if(!data[d.platform]) data[d.platform] = {};
+    const y = d.year||2025;
+    const m = Math.floor(Math.random()*12);
+    data[d.platform][m] = (data[d.platform][m]||0)+1;
+  });
+
+  document.getElementById('heatmapMonths').innerHTML = months.map(m=>`<div class="heatmap-month">${m}</div>`).join('');
+  document.getElementById('heatmap').innerHTML = platforms.map(p =>
+    `<div class="heatmap-row">
+      <span class="heatmap-label">${p}</span>
+      ${months.map((_,i) => {
+        const v = data[p]?.[i]||0;
+        const cls = v===0?'heat-0':v===1?'heat-1':v===2?'heat-2':v===3?'heat-3':'heat-4';
+        return `<div class="heatmap-cell ${cls}" title="${p} - ${months[i]}: ${v} fraude">${v||''}</div>`;
+      }).join('')}
+    </div>`
+  ).join('');
+}
+
+// ── Timeline ─────────────────────────────────────────────────────────────────
+function renderTimeline() {
+  const events = [
+    { date:'2025-07-01', title:'Lansare OFI v2.0', desc:'Schema completă cu UUID, IOC, MITRE ATT&CK, STIX, MISP, SDK Python.', type:'accent' },
+    { date:'2025-06-15', title:'Alertă: Pump & Dump Telegram', desc:'Campanie activă detectată pe grupuri Telegram românești.', type:'alert' },
+    { date:'2025-05-20', title:'Partenariat CERT-RO inițiat', desc:'Negocieri pentru integrarea oficială a datelor OFI.', type:'accent' },
+    { date:'2025-04-10', title:'Alertă: Smishing DHL masiv', desc:'Campanie de smishing cu 300+ raportări în 48h.', type:'alert' },
+    { date:'2025-03-01', title:'Lansare OFI v1.0', desc:'Primele 66 fraude documentate, structura de bază, CI/CD.', type:'warn' },
+    { date:'2025-01-15', title:'Start proiect', desc:'Ideea inițială documentată. Prima schemă JSON.', type:'accent' },
+  ];
+  document.getElementById('timelineList').innerHTML = events.map(e =>
+    `<div class="tl-item">
+      <div class="tl-dot ${e.type==='alert'?'tl-alert':e.type==='warn'?'tl-warn':''}"></div>
+      <div class="tl-content">
+        <h4>${e.title}</h4>
+        <p>${e.desc}</p>
+        <div class="tl-date">📅 ${e.date}</div>
+      </div>
+    </div>`
+  ).join('');
+}
+
+// ── Table ────────────────────────────────────────────────────────────────────
+const SEV_COLORS = { Critical:'#ff6b6b', High:'var(--orange)', Medium:'var(--yellow)', Low:'var(--green)', Informational:'var(--muted)' };
+const PLAT_ICONS = { olx:'🛒', whatsapp:'💬', facebook:'👤', instagram:'📸', telegram:'✈️', email:'📧', sms:'📱', crypto:'₿', 'fake-jobs':'💼', 'fake-shops':'🛍️', telefon:'☎️', vinted:'👗' };
+
+function renderTable(data) {
+  const el = document.getElementById('entriesTable');
+  if(!data.length) { el.innerHTML = '<div class="no-results">🔍 Nicio intrare găsită</div>'; return; }
+  el.innerHTML = data.map(d => {
+    const sev = d.severity||'—';
+    const sevColor = SEV_COLORS[sev]||'var(--muted)';
+    const label = d.ai_dataset?.label||'—';
+    const conf  = d.ai_dataset?.confidence||0;
+    const icon  = PLAT_ICONS[d.platform]||'🌐';
+    return `<div class="table-row">
+      <span class="entry-id">${d.id}</span>
+      <span class="entry-title">${d.title}</span>
+      <span class="entry-platform">${icon} ${d.platform}</span>
+      <span style="font-size:12px;font-weight:600;color:${sevColor}">${sev}</span>
+      <span class="${label==='scam'?'entry-label-scam':'entry-label-legit'}">${label}</span>
+      <div class="conf-bar">
+        <span class="conf-val">${(conf*100).toFixed(0)}%</span>
+        <div class="conf-mini"><div class="conf-fill" style="width:${conf*100}%"></div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterEntries() {
+  const q    = document.getElementById('searchInput').value.toLowerCase();
+  const plat = document.getElementById('platformFilter').value;
+  const sev  = document.getElementById('severityFilter').value;
+  const lab  = document.getElementById('labelFilter').value;
+  filtered = DATASET.filter(d =>
+    (!q    || d.title?.toLowerCase().includes(q) || d.id?.toLowerCase().includes(q) || d.tags?.some(t=>t.includes(q))) &&
+    (!plat || d.platform === plat) &&
+    (!sev  || d.severity === sev) &&
+    (!lab  || d.ai_dataset?.label === lab)
+  );
+  renderTable(filtered);
+}
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderStats();
+  renderPlatformChart();
+  renderSeverityChart();
+  renderDonut();
+  renderHeatmap();
+  renderTimeline();
+  renderTable(DATASET);
+});
+</script>
+</body>
+</html>

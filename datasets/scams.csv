@@ -1,13 +1,8 @@
-id,title,platform,severity,country,year,active,tags,ai_label,ai_confidence
-olx-0001,Fals cumpărător OLX — transport plătit în avans,olx,high,Romania,2025,true,"marketplace,olx,phishing,whatsapp,social-engineering,curier-fals",scam,0.98
-whatsapp-0001,Recuperare cont WhatsApp — cod de verificare,whatsapp,medium,Romania,2025,true,"whatsapp,social-engineering,cont-compromis,cod-verificare,account-takeover",scam,0.96
-crypto-0001,Investiții crypto cu profit garantat,instagram,high,Romania,2025,true,"crypto,investitii-false,pig-butchering,broker-fals,social-media",scam,0.99
-sms-0001,Fals curier — SMS phishing (smishing),sms,high,Romania,2025,true,"sms,smishing,phishing,curier-fals,card,fancourier,dpd,dhl",scam,0.97
-facebook-0001,Concurs / giveaway fals pe Facebook,facebook,medium,Romania,2025,true,"facebook,giveaway-fals,brand-impersonation,phishing,date-personale",scam,0.95
-fake-jobs-0001,Job remote fals — taxă de înscriere / formare,email,medium,Romania,2025,true,"fake-jobs,job-fals,taxa-formare,remote-work,advance-fee",scam,0.94
-email-0001,Phishing bancar — email fals BCR / BRD / ING,email,high,Romania,2025,true,"email,phishing,banking,bcr,brd,ing,raiffeisen,credentiale",scam,0.98
-fake-shops-0001,Magazin online fals — produse inexistente,facebook,high,Romania,2025,true,"fake-shops,magazin-fals,facebook-ads,produse-contrafacute,ecommerce",scam,0.93
-telegram-0001,Grup Telegram fals de investiții / semnale de trading,telegram,high,Romania,2025,true,"telegram,crypto,trading-signals,grup-fals,investitii,pump-and-dump",scam,0.96
-instagram-0001,Cont Instagram compromis — cerere de împrumut,instagram,medium,Romania,2025,true,"instagram,cont-compromis,imprumut-fals,social-engineering,account-takeover",scam,0.91
-legit-0001,Mesaj legitim — cumpărător OLX real,olx,,Romania,2025,,"legitimate,olx",legitimate,0.97
-legit-0002,Mesaj legitim — livrare reală FAN Courier,sms,,Romania,2025,,"legitimate,sms,curier",legitimate,0.95
+id,title,platform,severity,country,year,ai_label,ai_confidence
+olx-0001,Fals cumpărător OLX — transport plătit în avans,olx,High,Romania,2025,scam,0.98
+sms-0002,Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto,sms,Medium,Romania,2022,scam,0.95
+whatsapp-0002,"Smishing ""Votează-o pe Adeline"" — deturnare de conturi WhatsApp printr-un sondaj fals",sms,High,Romania,2025,scam,0.97
+crypto-0002,"Fals ""program de investiții susținut de stat"" — uzurpare a imaginii Ministerului Finanțelor",facebook,High,Romania,2025,scam,0.95
+crypto-0003,"TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok",telegram,High,Romania,2025,scam,0.93
+crypto-0004,Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții,web,Medium,Romania,2026,scam,0.9
+crypto-0005,Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive,email,High,Romania,2025,scam,0.9

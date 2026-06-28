@@ -1,0 +1,364 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "kind": "platform",
+      "label": "olx",
+      "color": "#1d4ed8",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "platform:olx"
+    },
+    {
+      "kind": "technique",
+      "label": "Marketplace redirect phishing with fake payment confirmation",
+      "color": "#b91c1c",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "entry_ids": [
+        "olx-0001"
+      ],
+      "id": "technique:Marketplace redirect phishing with fake payment confirmation"
+    },
+    {
+      "kind": "vector",
+      "label": "whatsapp",
+      "color": "#0891b2",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "vector:whatsapp"
+    },
+    {
+      "kind": "payment",
+      "label": "card",
+      "color": "#15803d",
+      "shape": "diamond",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "payment:card"
+    },
+    {
+      "kind": "payment",
+      "label": "transfer_bancar",
+      "color": "#15803d",
+      "shape": "diamond",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "payment:transfer_bancar"
+    },
+    {
+      "kind": "platform",
+      "label": "sms",
+      "color": "#1d4ed8",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "platform:sms"
+    },
+    {
+      "kind": "technique",
+      "label": "Job-offer smishing funneling into multi-platform pyramid/crypto scheme",
+      "color": "#b91c1c",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "entry_ids": [
+        "sms-0002"
+      ],
+      "id": "technique:Job-offer smishing funneling into multi-platform pyramid/crypto scheme"
+    },
+    {
+      "kind": "vector",
+      "label": "telegram",
+      "color": "#0891b2",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "vector:telegram"
+    },
+    {
+      "kind": "payment",
+      "label": "crypto",
+      "color": "#15803d",
+      "shape": "diamond",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "payment:crypto"
+    },
+    {
+      "kind": "technique",
+      "label": "Account-takeover smishing via emotional pretext and 2FA code phishing",
+      "color": "#b91c1c",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "entry_ids": [
+        "whatsapp-0002"
+      ],
+      "id": "technique:Account-takeover smishing via emotional pretext and 2FA code phishing"
+    },
+    {
+      "kind": "platform",
+      "label": "facebook",
+      "color": "#1d4ed8",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "platform:facebook"
+    },
+    {
+      "kind": "technique",
+      "label": "Fake government-backed investment scheme via social media ads",
+      "color": "#b91c1c",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "entry_ids": [
+        "crypto-0002"
+      ],
+      "id": "technique:Fake government-backed investment scheme via social media ads"
+    },
+    {
+      "kind": "vector",
+      "label": "web",
+      "color": "#0891b2",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "vector:web"
+    },
+    {
+      "kind": "platform",
+      "label": "telegram",
+      "color": "#1d4ed8",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "platform:telegram"
+    },
+    {
+      "kind": "technique",
+      "label": "Fake trading platform with simulated profits, promoted via private social-media groups",
+      "color": "#b91c1c",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "entry_ids": [
+        "crypto-0003"
+      ],
+      "id": "technique:Fake trading platform with simulated profits, promoted via private social-media groups"
+    },
+    {
+      "kind": "vector",
+      "label": "tiktok",
+      "color": "#0891b2",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "vector:tiktok"
+    },
+    {
+      "kind": "platform",
+      "label": "web",
+      "color": "#1d4ed8",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "platform:web"
+    },
+    {
+      "kind": "technique",
+      "label": "Fake media-branded ads promoting fictitious investment platforms",
+      "color": "#b91c1c",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "entry_ids": [
+        "crypto-0004"
+      ],
+      "id": "technique:Fake media-branded ads promoting fictitious investment platforms"
+    },
+    {
+      "kind": "vector",
+      "label": "facebook",
+      "color": "#0891b2",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "vector:facebook"
+    },
+    {
+      "kind": "platform",
+      "label": "email",
+      "color": "#1d4ed8",
+      "shape": "box",
+      "fontcolor": "white",
+      "style": "filled",
+      "id": "platform:email"
+    },
+    {
+      "kind": "technique",
+      "label": "Fake official document impersonating multiple institutions to phish crypto holders",
+      "color": "#b91c1c",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "entry_ids": [
+        "crypto-0005"
+      ],
+      "id": "technique:Fake official document impersonating multiple institutions to phish crypto holders"
+    }
+  ],
+  "links": [
+    {
+      "weight": 1,
+      "source": "platform:olx",
+      "target": "vector:whatsapp"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Marketplace redirect phishing with fake payment confirmation",
+      "target": "payment:card"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Marketplace redirect phishing with fake payment confirmation",
+      "target": "payment:transfer_bancar"
+    },
+    {
+      "weight": 1,
+      "source": "vector:whatsapp",
+      "target": "technique:Marketplace redirect phishing with fake payment confirmation"
+    },
+    {
+      "weight": 1,
+      "source": "vector:whatsapp",
+      "target": "technique:Job-offer smishing funneling into multi-platform pyramid/crypto scheme"
+    },
+    {
+      "weight": 1,
+      "source": "vector:whatsapp",
+      "target": "technique:Account-takeover smishing via emotional pretext and 2FA code phishing"
+    },
+    {
+      "weight": 1,
+      "source": "vector:whatsapp",
+      "target": "technique:Fake trading platform with simulated profits, promoted via private social-media groups"
+    },
+    {
+      "weight": 2,
+      "source": "platform:sms",
+      "target": "vector:whatsapp"
+    },
+    {
+      "weight": 1,
+      "source": "platform:sms",
+      "target": "vector:telegram"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Job-offer smishing funneling into multi-platform pyramid/crypto scheme",
+      "target": "payment:crypto"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Job-offer smishing funneling into multi-platform pyramid/crypto scheme",
+      "target": "payment:transfer_bancar"
+    },
+    {
+      "weight": 1,
+      "source": "vector:telegram",
+      "target": "technique:Job-offer smishing funneling into multi-platform pyramid/crypto scheme"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Account-takeover smishing via emotional pretext and 2FA code phishing",
+      "target": "payment:transfer_bancar"
+    },
+    {
+      "weight": 1,
+      "source": "platform:facebook",
+      "target": "vector:web"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Fake government-backed investment scheme via social media ads",
+      "target": "payment:transfer_bancar"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Fake government-backed investment scheme via social media ads",
+      "target": "payment:card"
+    },
+    {
+      "weight": 1,
+      "source": "vector:web",
+      "target": "technique:Fake government-backed investment scheme via social media ads"
+    },
+    {
+      "weight": 1,
+      "source": "vector:web",
+      "target": "technique:Fake official document impersonating multiple institutions to phish crypto holders"
+    },
+    {
+      "weight": 1,
+      "source": "platform:telegram",
+      "target": "vector:whatsapp"
+    },
+    {
+      "weight": 1,
+      "source": "platform:telegram",
+      "target": "vector:tiktok"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Fake trading platform with simulated profits, promoted via private social-media groups",
+      "target": "payment:crypto"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Fake trading platform with simulated profits, promoted via private social-media groups",
+      "target": "payment:transfer_bancar"
+    },
+    {
+      "weight": 1,
+      "source": "vector:tiktok",
+      "target": "technique:Fake trading platform with simulated profits, promoted via private social-media groups"
+    },
+    {
+      "weight": 1,
+      "source": "platform:web",
+      "target": "vector:facebook"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Fake media-branded ads promoting fictitious investment platforms",
+      "target": "payment:transfer_bancar"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Fake media-branded ads promoting fictitious investment platforms",
+      "target": "payment:card"
+    },
+    {
+      "weight": 1,
+      "source": "vector:facebook",
+      "target": "technique:Fake media-branded ads promoting fictitious investment platforms"
+    },
+    {
+      "weight": 1,
+      "source": "platform:email",
+      "target": "vector:web"
+    },
+    {
+      "weight": 1,
+      "source": "technique:Fake official document impersonating multiple institutions to phish crypto holders",
+      "target": "payment:crypto"
+    }
+  ]
+}

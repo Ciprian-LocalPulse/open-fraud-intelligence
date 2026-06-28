@@ -1,0 +1,154 @@
+{
+  "$schema": "https://open-fraud-intelligence.github.io/schemas/ontology.schema.json",
+  "version": "2.0.0",
+  "description": "Ontologia completă Open Fraud Intelligence — Knowledge Graph pentru fraude online",
+  "entities": {
+    "Victim": {
+      "description": "Persoana sau organizația vizată de fraudă",
+      "properties": {
+        "age_group":        { "type": "string", "enum": ["<18", "18-25", "25-35", "35-50", "50-65", ">65", "unknown"] },
+        "digital_literacy": { "type": "string", "enum": ["low", "medium", "high"] },
+        "vulnerability":    { "type": "array", "items": { "type": "string" } },
+        "location":         { "type": "string" },
+        "loss_amount_ron":  { "type": "number" },
+        "reported":         { "type": "boolean" }
+      }
+    },
+    "Actor": {
+      "description": "Individul sau grupul care efectuează frauda",
+      "properties": {
+        "actor_id":       { "type": "string" },
+        "type":           { "type": "string", "enum": ["individual", "organized_group", "state_sponsored", "unknown"] },
+        "origin_country": { "type": "string" },
+        "sophistication": { "type": "string", "enum": ["novice", "intermediate", "expert", "nation_state"] },
+        "known_aliases":  { "type": "array", "items": { "type": "string" } },
+        "ioc_refs":       { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "Platform": {
+      "description": "Platforma sau canalul utilizat pentru fraudă",
+      "properties": {
+        "name":        { "type": "string" },
+        "type":        { "type": "string", "enum": ["social_media", "marketplace", "messaging", "email", "phone", "web", "physical"] },
+        "country":     { "type": "string" },
+        "moderated":   { "type": "boolean" },
+        "reporting_url": { "type": "string" }
+      }
+    },
+    "Technique": {
+      "description": "Tehnica sau tactica de fraudă",
+      "properties": {
+        "name":           { "type": "string" },
+        "category":       { "type": "string" },
+        "mitre_attack_id": { "type": "string" },
+        "capec_id":       { "type": "string" },
+        "description":    { "type": "string" },
+        "psychology":     { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "Payment": {
+      "description": "Metoda de plată sau transferul financiar implicat",
+      "properties": {
+        "method":          { "type": "string" },
+        "reversible":      { "type": "boolean" },
+        "traceability":    { "type": "string", "enum": ["high", "medium", "low", "none"] },
+        "typical_amount":  { "type": "object" },
+        "recovery_chance": { "type": "string", "enum": ["high", "medium", "low", "impossible"] }
+      }
+    },
+    "Asset": {
+      "description": "Activele vizate sau compromise",
+      "properties": {
+        "type":        { "type": "string", "enum": ["money", "personal_data", "credentials", "identity", "property", "crypto", "intellectual_property"] },
+        "value_ron":   { "type": "number" },
+        "sensitivity": { "type": "string", "enum": ["low", "medium", "high", "critical"] }
+      }
+    },
+    "Infrastructure": {
+      "description": "Infrastructura tehnică a escrocilor",
+      "properties": {
+        "domains":     { "type": "array", "items": { "type": "string" } },
+        "ips":         { "type": "array", "items": { "type": "string" } },
+        "hosting":     { "type": "string" },
+        "registration_country": { "type": "string" },
+        "age_days":    { "type": "integer" },
+        "ssl":         { "type": "boolean" }
+      }
+    },
+    "Outcome": {
+      "description": "Rezultatul fraudei",
+      "properties": {
+        "victim_loss_ron":  { "type": "number" },
+        "data_compromised": { "type": "array", "items": { "type": "string" } },
+        "reported_to":      { "type": "array", "items": { "type": "string" } },
+        "recovered_ron":    { "type": "number" },
+        "prosecution":      { "type": "boolean" }
+      }
+    },
+    "Evidence": {
+      "description": "Dovezile disponibile pentru documentarea fraudei",
+      "properties": {
+        "type":        { "type": "string", "enum": ["screenshot", "message_log", "transaction", "domain_record", "victim_report", "official_report"] },
+        "anonymized":  { "type": "boolean" },
+        "hash":        { "type": "string" },
+        "source":      { "type": "string" },
+        "date":        { "type": "string", "format": "date" }
+      }
+    },
+    "Campaign": {
+      "description": "O campanie de fraudă organizată",
+      "properties": {
+        "campaign_id":    { "type": "string" },
+        "name":           { "type": "string" },
+        "start_date":     { "type": "string", "format": "date" },
+        "end_date":       { "type": ["string", "null"], "format": "date" },
+        "active":         { "type": "boolean" },
+        "total_victims":  { "type": "integer" },
+        "total_loss_ron": { "type": "number" },
+        "platforms":      { "type": "array", "items": { "type": "string" } },
+        "countries":      { "type": "array", "items": { "type": "string" } },
+        "actor_id":       { "type": ["string", "null"] }
+      }
+    }
+  },
+  "relationships": [
+    { "from": "Campaign",   "relation": "uses",          "to": "Technique",       "description": "O campanie folosește una sau mai multe tehnici" },
+    { "from": "Campaign",   "relation": "targets",       "to": "Victim",          "description": "O campanie vizează un profil de victimă" },
+    { "from": "Campaign",   "relation": "operated_by",   "to": "Actor",           "description": "O campanie e operată de un actor" },
+    { "from": "Campaign",   "relation": "uses",          "to": "Infrastructure",  "description": "O campanie utilizează infrastructură tehnică" },
+    { "from": "Campaign",   "relation": "results_in",    "to": "Outcome",         "description": "O campanie produce un outcome" },
+    { "from": "Actor",      "relation": "exploits",      "to": "Platform",        "description": "Un actor exploatează o platformă" },
+    { "from": "Actor",      "relation": "steals",        "to": "Asset",           "description": "Un actor fură active" },
+    { "from": "Technique",  "relation": "leverages",     "to": "Platform",        "description": "O tehnică utilizează o platformă" },
+    { "from": "Technique",  "relation": "targets_asset", "to": "Asset",           "description": "O tehnică vizează un tip de activ" },
+    { "from": "Technique",  "relation": "uses_payment",  "to": "Payment",         "description": "O tehnică implică o metodă de plată" },
+    { "from": "Victim",     "relation": "loses",         "to": "Asset",           "description": "O victimă pierde active" },
+    { "from": "Victim",     "relation": "reports",       "to": "Evidence",        "description": "O victimă furnizează dovezi" },
+    { "from": "Evidence",   "relation": "documents",     "to": "Campaign",        "description": "O dovadă documentează o campanie" }
+  ],
+  "example_graph": {
+    "description": "Exemplu de Knowledge Graph pentru frauda OLX-0001",
+    "nodes": [
+      { "id": "campaign-1",      "type": "Campaign",      "label": "Operation Fake Courier Romania" },
+      { "id": "actor-unknown",   "type": "Actor",         "label": "Grup organizat escroci OLX" },
+      { "id": "technique-1",     "type": "Technique",     "label": "Marketplace redirect phishing" },
+      { "id": "platform-olx",    "type": "Platform",      "label": "OLX.ro" },
+      { "id": "platform-wa",     "type": "Platform",      "label": "WhatsApp" },
+      { "id": "payment-card",    "type": "Payment",       "label": "Date card bancar" },
+      { "id": "asset-financial", "type": "Asset",         "label": "Fonduri bancare" },
+      { "id": "victim-seller",   "type": "Victim",        "label": "Vânzător OLX (profil tipic)" },
+      { "id": "infra-1",         "type": "Infrastructure","label": "fancourier-plata.ro" }
+    ],
+    "edges": [
+      { "from": "campaign-1",      "to": "technique-1",     "relation": "uses" },
+      { "from": "campaign-1",      "to": "actor-unknown",   "relation": "operated_by" },
+      { "from": "campaign-1",      "to": "victim-seller",   "relation": "targets" },
+      { "from": "technique-1",     "to": "platform-olx",    "relation": "leverages" },
+      { "from": "technique-1",     "to": "platform-wa",     "relation": "leverages" },
+      { "from": "technique-1",     "to": "payment-card",    "relation": "uses_payment" },
+      { "from": "actor-unknown",   "to": "platform-olx",    "relation": "exploits" },
+      { "from": "victim-seller",   "to": "asset-financial", "relation": "loses" },
+      { "from": "campaign-1",      "to": "infra-1",         "relation": "uses" }
+    ]
+  }
+}

@@ -1,208 +1,101 @@
-# 🛡️ Open Fraud Intelligence
+# 🛡️ Open Fraud Intelligence (OFI)
 
-> Baza de date open-source pentru fraude și înșelătorii online din România
+**Bază de date deschisă și set de unelte pentru documentarea, analiza și prevenirea
+fraudelor online care vizează utilizatorii din România.**
 
-[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/open-fraud-intelligence?style=social)](https://github.com/yourusername/open-fraud-intelligence)
-
----
-
-## 📖 Despre proiect
-
-**Open Fraud Intelligence** este o bază de cunoștințe comunitară, actualizată constant, despre metodele de fraudă online folosite în România. Scopul este să ofere cetățenilor, cercetătorilor, jurnaliștilor și dezvoltatorilor un catalog structurat și accesibil cu tipare de înșelătorie.
-
-> "Dacă ai primit un mesaj suspect, probabil e deja documentat aici."
+[![Schema](https://img.shields.io/badge/schema-v2.0.0-blue)]()
+[![License: CC0-1.0](https://img.shields.io/badge/data-CC0--1.0-lightgrey)]()
+[![Code: MIT](https://img.shields.io/badge/code-MIT-green)]()
 
 ---
 
-## ⚡ Top 10 fraude frecvente în 2025
+## Ce este OFI
 
-| # | Tip | Platformă | Severitate |
-|---|-----|-----------|------------|
-| 1 | Fals curier (Fan Courier / DPD) | SMS / Email | 🔴 Înalt |
-| 2 | Fals cumpărător OLX | WhatsApp | 🔴 Înalt |
-| 3 | Investiții crypto garantate | Telegram / Instagram | 🔴 Înalt |
-| 4 | Job remote cu taxă de înscriere | Email / Facebook | 🟠 Mediu |
-| 5 | Recuperare cont WhatsApp | WhatsApp | 🟠 Mediu |
-| 6 | Fals reprezentant bancă | Telefon | 🔴 Înalt |
-| 7 | Câștig fals la loterie / giveaway | Facebook / Instagram | 🟡 Scăzut |
-| 8 | Fals magazin online | Facebook Ads | 🔴 Înalt |
-| 9 | Înșelătorie romantică (Romance Scam) | Facebook / Telegram | 🔴 Înalt |
-| 10 | Phishing BRD / BCR / ING | Email | 🔴 Înalt |
+OFI documentează tipare de fraudă (nu victime individuale) într-un format
+structurat, validabil automat, pregătit pentru:
 
----
+- 🔎 **Căutare și filtrare** rapidă a fraudelor cunoscute (CLI, dashboard web)
+- 🤖 **Antrenare/evaluare modele AI** de detectare a mesajelor scam (`ai_dataset`, RAG chunks)
+- 🕸️ **Analiză de campanie** — grafuri de relații între fraude înrudite
+- 🔗 **Interoperabilitate** cu unelte de threat intelligence (export STIX 2.1, MISP)
+- 🧠 **Ontologie formală** (OWL/RDF/TTL) pentru integrare cu Protégé / OpenCTI
 
-## 📂 Structura repository-ului
+## Structura proiectului
 
 ```
-open-fraud-intelligence/
-│
-├── scams/
-│   ├── olx/              # Fraude pe platforme de anunțuri
-│   ├── whatsapp/         # Înșelătorii via WhatsApp
-│   ├── facebook/         # Fraude pe Facebook / Messenger
-│   ├── instagram/        # Fraude pe Instagram
-│   ├── telegram/         # Fraude pe Telegram
-│   ├── email/            # Phishing prin email
-│   ├── sms/              # Fraude prin SMS
-│   ├── crypto/           # Scheme crypto / investiții false
-│   ├── fake-jobs/        # Oferte de muncă false
-│   └── fake-shops/       # Magazine online false
-│
-├── datasets/
-│   ├── scams.json        # Toate intrările în format JSON
-│   └── scams.csv         # Toate intrările în format CSV
-│
-├── screenshots/          # Capturi de ecran cu exemple reale (anonimizate)
-│
-├── templates/
-│   └── scam-template.md  # Template pentru contribuitori
-│
-├── docs/
-│   ├── red-flags.md      # Semne generale de avertizare
-│   ├── reporting-guide.md # Cum raportezi o fraudă autorităților
-│   └── scam-taxonomy.md  # Taxonomia completă a fraudelor
-│
-└── CONTRIBUTING.md       # Ghid pentru contribuitori
+ofi_sdk/              SDK Python (OFIClient, ScamDNAEngine)
+schemas/               schema.json — schema JSON Schema a unei intrări
+datasets/              scams_v2.json, multilingual_dataset.json, dataset_metadata.json
+ontology/              ofi-ontology.json, severity-matrix.json (definiții sursă)
+scripts/               fraud_cli.py, benchmark.py, misp_export.py, stix_export.py
+tools/                 graph_export, dashboard_generator, ontology_export, rag_export, cluster_campaigns
+exports/               output generat de tools/ (graf, dashboard, ontologie OWL, RAG, clustere)
+test_data/             fixtures sintetice — NU fac parte din dataset-ul real
+notebooks/             OFI_Analysis.ipynb — analiză exploratorie
+web/                   index.html — dashboard static
+.github/workflows/     ci.yml — validare schema + teste automate
 ```
 
----
+## Instalare rapidă
 
-## 🔍 Taxonomia fraudelor
-
-```
-Fraudă
-│
-├── Financiară
-│   ├── Crypto & Investiții false
-│   ├── Phishing bancar
-│   └── Carduri / Transferuri bancare
-│
-├── Marketplace
-│   ├── OLX / Storia / Publi24
-│   ├── Facebook Marketplace
-│   └── Vinted / eBay
-│
-├── Social Engineering
-│   ├── WhatsApp (recuperare cont, coduri)
-│   ├── SMS (smishing)
-│   └── Telefon (vishing)
-│
-├── Romantică / Emoțională
-│   ├── Romance Scam
-│   └── Sextortion
-│
-├── Locuri de Muncă
-│   ├── Job-uri false cu avans
-│   └── Traficare prin oferte false
-│
-└── Comerț Electronic
-    ├── Magazine false
-    └── Livrare falsă
+```bash
+git clone https://github.com/Ciprian-LocalPulse/open-fraud-intelligence.git
+cd open-fraud-intelligence
+pip install -r requirements.txt
+export PYTHONPATH=.   # necesar ca scripts/ și tools/ să găsească pachetul ofi_sdk/
 ```
 
----
+> ⚠️ Pachetul `ofi_sdk` **trebuie** să fie un director cu `__init__.py` la
+> rădăcina repo-ului (nu un fișier `__init__.py` izolat) — altfel
+> `from ofi_sdk import OFIClient` din `scripts/fraud_cli.py` nu va găsi modulul.
 
-## 🤖 Componenta AI / Dataset
+## Utilizare
 
-Fiecare intrare include etichete pentru antrenarea modelelor de detecție:
+```bash
+# Statistici generale
+python3 scripts/fraud_cli.py stats
 
-```json
-{
-  "message": "Bună ziua, am plătit produsul. Accesați acest link pentru confirmare.",
-  "label": "scam",
-  "confidence": 0.97
-}
+# Caută fraude după platformă/severitate
+python3 scripts/fraud_cli.py search --platform crypto --severity High
+
+# Amprentă Scam DNA + fraude similare
+python3 scripts/fraud_cli.py dna olx-0001
+python3 scripts/fraud_cli.py similar olx-0001 --threshold 0.4
+
+# Export interoperabil
+python3 scripts/fraud_cli.py export --format stix --output bundle.json
+python3 scripts/fraud_cli.py export --format misp --output misp.json
+python3 scripts/fraud_cli.py export --format csv  --output datasets/scams.csv
+
+# Unelte de analiză avansată
+python3 tools/graph/graph_export.py        --input datasets/scams_v2.json --mode all --output exports/graph/ofi
+python3 tools/dashboard/dashboard_generator.py --input datasets/scams_v2.json --outdir exports/dashboard
+python3 tools/ontology/ontology_export.py  --ontology ontology/ofi-ontology.json --dataset datasets/scams_v2.json --outdir exports/ontology
+python3 tools/rag/rag_export.py            --input datasets/scams_v2.json --output exports/rag/chunks.jsonl
+python3 tools/clustering/cluster_campaigns.py --input datasets/scams_v2.json --threshold 0.35 --output exports/clustering/campaign_clusters.json
 ```
 
-Dataset-ul complet este disponibil în [`datasets/scams.json`](datasets/scams.json) și poate fi folosit pentru:
-- Antrenarea modelelor de clasificare text
-- Cercetare academică în cybersecurity
-- Filtre automate de mesaje
+## Starea dataset-ului — transparență
 
----
+Dataset-ul real (`datasets/scams_v2.json`) conține în prezent **7 intrări**
+complet documentate, conforme schema v2. Acesta este în mod deliberat mic și
+crește doar prin intrări verificabile — vezi `test_data/` pentru fixture-uri
+sintetice folosite **doar** la testarea uneltelor, niciodată în dataset-ul
+real. Pentru detalii despre sursele fiecărei intrări, vezi câmpul
+`verification.official_source` din fiecare intrare.
 
-## 🤝 Cum contribui
+**Contribuții cu fraude noi documentate, cu sursă oficială sau comunitară
+verificabilă, sunt binevenite** — vezi [CONTRIBUTING.md](CONTRIBUTING.md).
 
-1. **Fork** acest repository
-2. Copiază [`templates/scam-template.md`](templates/scam-template.md)
-3. Completează cu detaliile fraudei
-4. Deschide un **Pull Request**
+## Licență
 
-Citește [CONTRIBUTING.md](CONTRIBUTING.md) pentru detalii complete.
+- **Date** (`datasets/`, `ontology/`): [CC0-1.0](LICENSE) — domeniu public.
+- **Cod** (`ofi_sdk/`, `scripts/`, `tools/`): MIT — vezi [LICENSE](LICENSE).
 
----
+## Documente conexe
 
-## 📢 Raportează o fraudă autorităților
-
-| Autoritate | Contact |
-|------------|---------|
-| DIICOT | [diicot.ro](https://www.diicot.ro) |
-| ANAF (fraude fiscale) | [anaf.ro](https://www.anaf.ro) |
-| Poliția Română | 112 sau [politiaromana.ro](https://www.politiaromana.ro) |
-| CERT-RO | [cert.ro](https://www.cert.ro) |
-| ANPC (magazine false) | [anpc.ro](https://www.anpc.ro) |
-
----
-
-## 📜 Licență
-
-Acest proiect este distribuit sub licența **Creative Commons CC0 1.0 Universal** — complet liber pentru orice utilizare, inclusiv comercială.
-
----
-
-## ⭐ Dacă acest proiect te-a ajutat, dă-i o stea!
-
-> Ajuți alți oameni să găsească resursa mai ușor.
-
-Open Fraud Intelligence-Research Support
-
-Acest depozit este administrat independent, în timpul liber. Dacă v-a economisit ore întregi de căutare, v-a învățat ceva sau pur și simplu doriți să susțineți cercetarea independentă cu acces liber și să păstrați această listă gratuită pentru toată lumea, puteți contribui direct prin oricare dintre canalele de mai jos.
-### 🇪🇺 European Payment — SEPA / EUR <sub>· CEA · AES-256</sub>
-
-| Field | Detail |
-|---|---|
-| Recipient | Ciprian Stefan Plesca |
-| IBAN | `BE83 9679 1975 8915` |
-| SWIFT / BIC | `TRWIBEB1XXX` |
-| Bank | Wise, Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium |
-
-</td></tr>
-<tr><td colspan="2">
-
-### 🇬🇧 United Kingdom Payment — Faster Payments / GBP <sub>· AIA · SHA-3</sub>
-
-| Field | Detail |
-|---|---|
-| Recipient | Ciprian Stefan Plesca |
-| Account number | `92055372` |
-| Sort code | `23-14-70` |
-| IBAN | `GB68 TRWI 2314 7092 0553 72` |
-| SWIFT / BIC | `TRWIGB2LXXX` |
-| Bank | Wise Payments Limited, 1st Floor, Worship Square, 65 Clifton Street, London, EC2A 4JE, United Kingdom |
-
-</td></tr>
-<tr><td colspan="2">
-
-### 🇺🇸 United States Payment — ACH / Wire / USD <sub>· ICA · RSA-4096</sub>
-
-| Field | Detail |
-|---|---|
-| Recipient | Ciprian Stefan Plesca |
-| Account type | Checking |
-| Routing number | `026073150` |
-| Account number | `8314225367` |
-| SWIFT / BIC | `CMFGUS33` |
-| Bank | Community Federal Savings Bank, 89-16 Jamaica Ave, Woodhaven, NY, 11421, United States |
-
-</td></tr>
-</table>
-
-<div align="center">
-
-| ₿ Bitcoin (BTC) | Ξ Ethereum (ETH) | PP PayPal |
-|---|---|---|
-| `bc1qf3yy0w8z37rwavxpu38wem3yffpanw7wzj32qj` | `0x27d9a6a5b8507e6031bb044319410da96222d402` | [paypal.me/agentflowenterprise](https://paypal.me/agentflowenterprise) |
-
-</div>
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — codul de conduită al comunității
+- [GOVERNANCE.md](GOVERNANCE.md) — structura de guvernanță a proiectului
+- [SECURITY.md](SECURITY.md) — politica de raportare a vulnerabilităților
+- [LEGAL.md](LEGAL.md) — cadrul legal și politica de date
+- [CONTRIBUTING.md](CONTRIBUTING.md) — cum contribui cu o intrare nouă

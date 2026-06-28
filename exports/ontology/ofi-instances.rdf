@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:ofi="https://open-fraud-intelligence.github.io/ontology#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#crypto-0003">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#ScamReport"/>
+    <rdfs:label xml:lang="ro">TXEX &amp; Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok</rdfs:label>
+    <ofi:report_platform>telegram</ofi:report_platform>
+    <ofi:report_severity>High</ofi:report_severity>
+    <ofi:report_severityScore rdf:datatype="http://www.w3.org/2001/XMLSchema#double">7.6</ofi:report_severityScore>
+    <ofi:report_country>Romania</ofi:report_country>
+    <ofi:report_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</ofi:report_year>
+    <ofi:report_active rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ofi:report_active>
+    <dcterms:description xml:lang="ro">Sub denumirea "TXEX" și variante similare, escrocii promovează platforme de investiții care par legitime, dar simulează profituri fictive pe ecran, în timp ce fondurile depuse de victime sunt colectate direct. Victimele sunt introduse în grupuri private pe WhatsApp, Telegram sau Signal, coordonate de pretinși "mentori" sau experți, și recrutate inclusiv prin clipuri pe TikTok. Fenomenul nu este limitat la România — autorități din Noua Zeelandă, Australia și Albania au emis avertismente similare privind aceleași platforme.</dcterms:description>
+    <ofi:report_tag>crypto</ofi:report_tag>
+    <ofi:report_tag>platforma-falsa</ofi:report_tag>
+    <ofi:report_tag>grup-privat</ofi:report_tag>
+    <ofi:report_tag>mentor-fals</ofi:report_tag>
+    <ofi:report_tag>txex</ofi:report_tag>
+    <ofi:exploitsTechnique rdf:resource="https://open-fraud-intelligence.github.io/data#technique-crypto-0003"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#olx-0001">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#ScamReport"/>
+    <rdfs:label xml:lang="ro">Fals cumpărător OLX — transport plătit în avans</rdfs:label>
+    <ofi:report_platform>olx</ofi:report_platform>
+    <ofi:report_severity>High</ofi:report_severity>
+    <ofi:report_severityScore rdf:datatype="http://www.w3.org/2001/XMLSchema#double">7.8</ofi:report_severityScore>
+    <ofi:report_country>Romania</ofi:report_country>
+    <ofi:report_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</ofi:report_year>
+    <ofi:report_active rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ofi:report_active>
+    <dcterms:description xml:lang="ro">Escrocul contactează vânzătorul pe OLX, exprimă interes pentru produs și solicită mutarea conversației pe WhatsApp. Odată acolo, pretinde că a efectuat plata și trimite un link fals care imită Fan Courier sau OLX Pay, solicitând datele de card ale vânzătorului pentru 'confirmarea primirii banilor'.</dcterms:description>
+    <ofi:report_tag>marketplace</ofi:report_tag>
+    <ofi:report_tag>olx</ofi:report_tag>
+    <ofi:report_tag>phishing</ofi:report_tag>
+    <ofi:report_tag>whatsapp</ofi:report_tag>
+    <ofi:report_tag>social-engineering</ofi:report_tag>
+    <ofi:report_tag>curier-fals</ofi:report_tag>
+    <ofi:exploitsTechnique rdf:resource="https://open-fraud-intelligence.github.io/data#technique-olx-0001"/>
+    <ofi:hasIndicator rdf:resource="https://open-fraud-intelligence.github.io/data#domain-fancourier-plata.ro"/>
+    <ofi:hasIndicator rdf:resource="https://open-fraud-intelligence.github.io/data#domain-olx-confirmare.ro"/>
+    <ofi:hasIndicator rdf:resource="https://open-fraud-intelligence.github.io/data#domain-olx-pay-secure.com"/>
+    <ofi:memberOfCampaign rdf:resource="https://open-fraud-intelligence.github.io/data#CAMP-OLX-2024-001"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#CAMP-OLX-2024-001">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="ro">Operation Fake Courier Romania</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#crypto-0002">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#ScamReport"/>
+    <rdfs:label xml:lang="ro">Fals "program de investiții susținut de stat" — uzurpare a imaginii Ministerului Finanțelor</rdfs:label>
+    <ofi:report_platform>facebook</ofi:report_platform>
+    <ofi:report_severity>High</ofi:report_severity>
+    <ofi:report_severityScore rdf:datatype="http://www.w3.org/2001/XMLSchema#double">7.5</ofi:report_severityScore>
+    <ofi:report_country>Romania</ofi:report_country>
+    <ofi:report_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</ofi:report_year>
+    <ofi:report_active rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ofi:report_active>
+    <dcterms:description xml:lang="ro">Pe rețele sociale circulă reclame care promovează o pretinsă "platformă de investiții susținută de stat", asociată abuziv cu Ministerul Finanțelor, promițând câștiguri garantate de până la 150%. Reclamele conduc către pagini care imită identitatea vizuală a unor instituții oficiale și solicită date de contact și, ulterior, o investiție inițială care nu mai poate fi recuperată.</dcterms:description>
+    <ofi:report_tag>investitii-false</ofi:report_tag>
+    <ofi:report_tag>uzurpare-institutie</ofi:report_tag>
+    <ofi:report_tag>facebook-ads</ofi:report_tag>
+    <ofi:report_tag>randament-garantat</ofi:report_tag>
+    <ofi:exploitsTechnique rdf:resource="https://open-fraud-intelligence.github.io/data#technique-crypto-0002"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#crypto-0004">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#ScamReport"/>
+    <rdfs:label xml:lang="ro">Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții</rdfs:label>
+    <ofi:report_platform>web</ofi:report_platform>
+    <ofi:report_severity>Medium</ofi:report_severity>
+    <ofi:report_severityScore rdf:datatype="http://www.w3.org/2001/XMLSchema#double">6.5</ofi:report_severityScore>
+    <ofi:report_country>Romania</ofi:report_country>
+    <ofi:report_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2026</ofi:report_year>
+    <ofi:report_active rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ofi:report_active>
+    <dcterms:description xml:lang="ro">Un val de pagini false imită identitatea unor branduri media cunoscute (printre care Digi24) pentru a promova platforme fictive de investiții. Anunțurile sunt amplificate prin spațiile publicitare ale site-urilor de știri reale, fapt care le crește credibilitatea. Campania vizează în special persoanele vârstnice sau pe cele interesate de suplimentarea veniturilor.</dcterms:description>
+    <ofi:report_tag>uzurpare-brand-media</ofi:report_tag>
+    <ofi:report_tag>publicitate-falsa</ofi:report_tag>
+    <ofi:report_tag>investitii-false</ofi:report_tag>
+    <ofi:report_tag>varstnici</ofi:report_tag>
+    <ofi:exploitsTechnique rdf:resource="https://open-fraud-intelligence.github.io/data#technique-crypto-0004"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#technique-crypto-0003">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">Fake trading platform with simulated profits, promoted via private social-media groups</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#whatsapp-0002">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#ScamReport"/>
+    <rdfs:label xml:lang="ro">Smishing "Votează-o pe Adeline" — deturnare de conturi WhatsApp printr-un sondaj fals</rdfs:label>
+    <ofi:report_platform>sms</ofi:report_platform>
+    <ofi:report_severity>High</ofi:report_severity>
+    <ofi:report_severityScore rdf:datatype="http://www.w3.org/2001/XMLSchema#double">7.0</ofi:report_severityScore>
+    <ofi:report_country>Romania</ofi:report_country>
+    <ofi:report_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</ofi:report_year>
+    <ofi:report_active rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ofi:report_active>
+    <dcterms:description xml:lang="ro">Atacatorii trimit un mesaj SMS care imită un mesaj personal, cerând destinatarului să voteze 'Adeline' într-un sondaj fals, pretins legat de o bursă de studii în Franța. Linkul din mesaj conduce la o pagină care solicită codul de autentificare WhatsApp al victimei. Introducerea codului permite atacatorilor să compromită contul, pe care îl folosesc apoi pentru a propaga același mesaj către lista de contacte a victimei și pentru a cere bani 'urgent' celor din lista de contacte, dându-se drept victima inițială.</dcterms:description>
+    <ofi:report_tag>smishing</ofi:report_tag>
+    <ofi:report_tag>whatsapp</ofi:report_tag>
+    <ofi:report_tag>deturnare-cont</ofi:report_tag>
+    <ofi:report_tag>sondaj-fals</ofi:report_tag>
+    <ofi:report_tag>social-engineering</ofi:report_tag>
+    <ofi:exploitsTechnique rdf:resource="https://open-fraud-intelligence.github.io/data#technique-whatsapp-0002"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#technique-olx-0001">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">Marketplace redirect phishing with fake payment confirmation</rdfs:label>
+    <ofi:technique_mitreAttackId>T1566</ofi:technique_mitreAttackId>
+    <ofi:technique_mitreAttackId>T1586</ofi:technique_mitreAttackId>
+    <ofi:technique_mitreAttackId>T1056</ofi:technique_mitreAttackId>
+    <ofi:technique_capecId>CAPEC-98</ofi:technique_capecId>
+    <ofi:technique_capecId>CAPEC-194</ofi:technique_capecId>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#crypto-0005">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#ScamReport"/>
+    <rdfs:label xml:lang="ro">Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive</rdfs:label>
+    <ofi:report_platform>email</ofi:report_platform>
+    <ofi:report_severity>High</ofi:report_severity>
+    <ofi:report_severityScore rdf:datatype="http://www.w3.org/2001/XMLSchema#double">7.2</ofi:report_severityScore>
+    <ofi:report_country>Romania</ofi:report_country>
+    <ofi:report_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</ofi:report_year>
+    <ofi:report_active rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ofi:report_active>
+    <dcterms:description xml:lang="ro">Românii care dețin criptomonede sunt vizați de o escrocherie care circulă sub forma unei pretinse citații oficiale, folosind abuziv însemnele DNSC, sigla Uniunii Europene și logo-urile Europol/EC3. Documentul fals pretinde că oferă informații despre o procedură de returnare a fondurilor în criptoactive, dar nu are nicio legătură reală cu vreo instituție europeană sau națională, scopul fiind obținerea de date personale sau financiare.</dcterms:description>
+    <ofi:report_tag>uzurpare-institutie</ofi:report_tag>
+    <ofi:report_tag>crypto</ofi:report_tag>
+    <ofi:report_tag>document-fals</ofi:report_tag>
+    <ofi:report_tag>europol</ofi:report_tag>
+    <ofi:report_tag>recuperare-fonduri</ofi:report_tag>
+    <ofi:exploitsTechnique rdf:resource="https://open-fraud-intelligence.github.io/data#technique-crypto-0005"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#sms-0002">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#ScamReport"/>
+    <rdfs:label xml:lang="ro">Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto</rdfs:label>
+    <ofi:report_platform>sms</ofi:report_platform>
+    <ofi:report_severity>Medium</ofi:report_severity>
+    <ofi:report_severityScore rdf:datatype="http://www.w3.org/2001/XMLSchema#double">6.0</ofi:report_severityScore>
+    <ofi:report_country>Romania</ofi:report_country>
+    <ofi:report_year rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2022</ofi:report_year>
+    <ofi:report_active rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ofi:report_active>
+    <dcterms:description xml:lang="ro">Victima primește un SMS nesolicitat care anunță că a fost selectată pentru un loc de muncă part-time sau full-time, cu mențiunea unei durate neobișnuite ('peste 900 de zile'). Mesajul conține un link care redirecționează către o conversație WhatsApp cu un cont necunoscut. Acolo, atacatorii promit câștiguri rapide din comisioane pentru 'comenzi virtuale' menite să crească artificial vânzările unor comercianți cunoscuți. Victima este îndrumată să creeze un cont pe un site care cere date personale, apoi este redirecționată către un canal de Telegram (cu aproape 50.000 de urmăritori la momentul alertei) unde i se explică pas cu pas mecanismul, care se dovedește a fi o schemă piramidală cu o componentă de investiții în criptomonede.</dcterms:description>
+    <ofi:report_tag>fake-jobs</ofi:report_tag>
+    <ofi:report_tag>sms</ofi:report_tag>
+    <ofi:report_tag>telegram</ofi:report_tag>
+    <ofi:report_tag>piramidal</ofi:report_tag>
+    <ofi:report_tag>crypto</ofi:report_tag>
+    <ofi:report_tag>comision-fals</ofi:report_tag>
+    <ofi:exploitsTechnique rdf:resource="https://open-fraud-intelligence.github.io/data#technique-sms-0002"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#domain-olx-confirmare.ro">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Indicator"/>
+    <ofi:indicator_kind>domain</ofi:indicator_kind>
+    <ofi:indicator_value>olx-confirmare.ro</ofi:indicator_value>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#technique-crypto-0002">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">Fake government-backed investment scheme via social media ads</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#technique-crypto-0005">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">Fake official document impersonating multiple institutions to phish crypto holders</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#domain-fancourier-plata.ro">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Indicator"/>
+    <ofi:indicator_kind>domain</ofi:indicator_kind>
+    <ofi:indicator_value>fancourier-plata.ro</ofi:indicator_value>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#technique-sms-0002">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">Job-offer smishing funneling into multi-platform pyramid/crypto scheme</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#domain-olx-pay-secure.com">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Indicator"/>
+    <ofi:indicator_kind>domain</ofi:indicator_kind>
+    <ofi:indicator_value>olx-pay-secure.com</ofi:indicator_value>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#technique-crypto-0004">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">Fake media-branded ads promoting fictitious investment platforms</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/data#technique-whatsapp-0002">
+    <rdf:type rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">Account-takeover smishing via emotional pretext and 2FA code phishing</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

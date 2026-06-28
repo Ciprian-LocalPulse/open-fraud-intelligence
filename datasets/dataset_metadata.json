@@ -1,0 +1,92 @@
+{
+  "dataset_name": "Open Fraud Intelligence",
+  "dataset_id": "ofi-romania",
+  "dataset_version": "2.0.0",
+  "schema_version": "2.0.0",
+  "created_at": "2025-01-01T00:00:00Z",
+  "last_updated": "2026-06-28T00:00:00Z",
+  "maintainers": [
+    "open-fraud-intelligence-community"
+  ],
+  "license": "CC0-1.0",
+  "language": [
+    "ro",
+    "en"
+  ],
+  "coverage": {
+    "countries": [
+      "Romania"
+    ],
+    "regions": [
+      "Europa de Est",
+      "UE"
+    ],
+    "platforms": [
+      "crypto",
+      "email",
+      "facebook",
+      "fake-jobs",
+      "fake-shops",
+      "instagram",
+      "olx",
+      "sms",
+      "telefon",
+      "telegram",
+      "vinted",
+      "web",
+      "whatsapp"
+    ],
+    "years": {
+      "from": 2020,
+      "to": 2026
+    }
+  },
+  "statistics": {
+    "total_entries": 7,
+    "scam_entries": 7,
+    "legitimate_entries": 0,
+    "verified_entries": 7,
+    "ioc_count": 1,
+    "unique_platforms": 6,
+    "unique_campaigns": 1
+  },
+  "citation": {
+    "doi": "10.5281/zenodo.PLACEHOLDER",
+    "bibtex": "@dataset{ofi2025,\n  title={Open Fraud Intelligence},\n  author={OFI Community},\n  year={2025},\n  publisher={Zenodo},\n  doi={10.5281/zenodo.PLACEHOLDER}\n}",
+    "apa": "OFI Community. (2025). Open Fraud Intelligence (Version 2.0.0) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.PLACEHOLDER",
+    "ieee": "OFI Community, \"Open Fraud Intelligence,\" Version 2.0.0, Zenodo, 2025. [Online]. Available: https://doi.org/10.5281/zenodo.PLACEHOLDER"
+  },
+  "changelog": [
+    {
+      "version": "2.1.0",
+      "date": "2026-06-28",
+      "changes": [
+        "Adăugate 6 intrări noi, bazate pe alerte oficiale DNSC verificabile (Votează pe Adeline, TXEX & Co, fals program de stat, joburi false prin SMS, document fals DNSC/Europol, reclame false cu branduri media)",
+        "Corectate referințe moarte în campaign.related_ids (olx-0001)",
+        "Recalculate statisticile dataset-ului (anterior placeholder 0)",
+        "Restructurat repository în pachet Python ofi_sdk/ valid (fix bug import în fraud_cli.py)",
+        "Adăugate README.md, LICENSE, CONTRIBUTING.md la rădăcina proiectului"
+      ]
+    },
+    {
+      "version": "2.0.0",
+      "date": "2025-07-01",
+      "changes": [
+        "Schema v2 cu UUID, Severity Matrix completă, IOC, MITRE ATT&CK, CAPEC",
+        "Scam DNA fingerprinting",
+        "Dataset multilingual (RO, EN, FR, DE, IT, ES, PL)",
+        "Quality scoring automat",
+        "Verification status complet",
+        "Timeline evoluție fraude",
+        "Campaign tracking"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2025-01-01",
+      "changes": [
+        "Lansare inițială cu 66 intrări documentate"
+      ]
+    }
+  ]
+}

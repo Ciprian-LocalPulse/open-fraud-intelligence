@@ -1,0 +1,746 @@
+{
+  "type": "bundle",
+  "id": "bundle--f3565be7-7a08-47d9-ad48-d8b6be3a721a",
+  "spec_version": "2.1",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2025-01-01T00:00:00.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Open Fraud Intelligence",
+      "description": "Open-source fraud intelligence database for Romania and Eastern Europe",
+      "identity_class": "organization",
+      "sectors": [
+        "technology",
+        "financial-services"
+      ],
+      "contact_information": "https://github.com/open-fraud-intelligence"
+    },
+    {
+      "type": "marking-definition",
+      "spec_version": "2.1",
+      "id": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9",
+      "created": "2017-01-20T00:00:00.000Z",
+      "definition_type": "tlp",
+      "definition": {
+        "tlp": "white"
+      }
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--f47ac10b-58cc-4372-a567-0e02b2c3d479",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2025-01-15T10:00:00Z",
+      "modified": "2025-07-01T12:00:00Z",
+      "name": "Fals cumpărător OLX — transport plătit în avans",
+      "description": "Escrocul contactează vânzătorul pe OLX, exprimă interes pentru produs și solicită mutarea conversației pe WhatsApp. Odată acolo, pretinde că a efectuat plata și trimite un link fals care imită Fan Courier sau OLX Pay, solicitând datele de card ale vânzătorului pentru 'confirmarea primirii banilor'.",
+      "report_types": [
+        "threat-report",
+        "indicator"
+      ],
+      "published": "2025-01-15T10:00:00Z",
+      "object_refs": [
+        "indicator--9783e87a-11c7-5d6d-967a-b32dc69d9000",
+        "domain-name--2d59489a-4448-58ed-8338-32b1f4baee88",
+        "indicator--e31e3765-1d1f-5815-8a4d-d02152157cbc",
+        "domain-name--0ff438fe-8efa-5010-89f7-7cf958d63514",
+        "indicator--7ac42b6b-8488-51c4-b5b3-21fe270da253",
+        "domain-name--9889d458-fb66-59c7-9802-8fe4ec0ad7cf",
+        "indicator--04089248-8917-50cd-96e2-f266ab46ecc4",
+        "url--ef524423-2a3d-5bf9-8726-14bfaa238e3d",
+        "url--470c4ec7-babe-5de6-aaab-6f196a947b2e",
+        "attack-pattern--56d03be3-538f-5735-aae7-dfb5c27db839",
+        "attack-pattern--8e61cceb-ee5d-5460-8bd8-48fc4ca796f3",
+        "attack-pattern--f905a497-e89d-5080-a1f3-eaac8ee7898d",
+        "course-of-action--3c8573b9-2191-5ff6-8af6-36906249cab4"
+      ],
+      "confidence": 98,
+      "labels": [
+        "marketplace",
+        "olx",
+        "phishing",
+        "whatsapp",
+        "social-engineering",
+        "curier-fals"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "olx-0001",
+          "url": "https://github.com/open-fraud-intelligence"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9783e87a-11c7-5d6d-967a-b32dc69d9000",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2025-01-15T10:00:00Z",
+      "modified": "2025-07-01T12:00:00Z",
+      "name": "Fals cumpărător OLX — transport plătit în avans",
+      "description": "Escrocul contactează vânzătorul pe OLX, exprimă interes pentru produs și solicită mutarea conversației pe WhatsApp. Odată acolo, pretinde că a efectuat plata și trimite un link fals care imită Fan Courier sau OLX Pay, solicitând datele de card ale vânzătorului pentru 'confirmarea primirii banilor'.",
+      "pattern": "[email-message:body MATCHES 'Am plătit deja produsul. Accesați acest link pentru a confirma și a primi suma.']",
+      "pattern_type": "stix",
+      "valid_from": "2025-01-15T10:00:00Z",
+      "indicator_types": [
+        "malicious-activity",
+        "compromised"
+      ],
+      "confidence": 98,
+      "labels": [
+        "marketplace",
+        "olx",
+        "phishing",
+        "whatsapp",
+        "social-engineering",
+        "curier-fals"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "olx-0001",
+          "url": "https://github.com/open-fraud-intelligence/blob/main/scams/olx/olx-0001.md"
+        }
+      ]
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--2d59489a-4448-58ed-8338-32b1f4baee88",
+      "value": "fancourier-plata.ro"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e31e3765-1d1f-5815-8a4d-d02152157cbc",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Phishing domain: fancourier-plata.ro",
+      "pattern": "[domain-name:value = 'fancourier-plata.ro']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T12:47:02.000Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "labels": [
+        "phishing-domain"
+      ]
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--0ff438fe-8efa-5010-89f7-7cf958d63514",
+      "value": "olx-confirmare.ro"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7ac42b6b-8488-51c4-b5b3-21fe270da253",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Phishing domain: olx-confirmare.ro",
+      "pattern": "[domain-name:value = 'olx-confirmare.ro']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T12:47:02.000Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "labels": [
+        "phishing-domain"
+      ]
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--9889d458-fb66-59c7-9802-8fe4ec0ad7cf",
+      "value": "olx-pay-secure.com"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--04089248-8917-50cd-96e2-f266ab46ecc4",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Phishing domain: olx-pay-secure.com",
+      "pattern": "[domain-name:value = 'olx-pay-secure.com']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T12:47:02.000Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "labels": [
+        "phishing-domain"
+      ]
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--ef524423-2a3d-5bf9-8726-14bfaa238e3d",
+      "value": "https://fancourier-plata.ro/confirmare"
+    },
+    {
+      "type": "url",
+      "spec_version": "2.1",
+      "id": "url--470c4ec7-babe-5de6-aaab-6f196a947b2e",
+      "value": "https://olx-confirmare.ro/plata"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--56d03be3-538f-5735-aae7-dfb5c27db839",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Phishing",
+      "description": "MITRE ATT&CK T1566: Phishing",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566",
+          "url": "https://attack.mitre.org/techniques/T1566/"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "initial-access"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8e61cceb-ee5d-5460-8bd8-48fc4ca796f3",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Compromise Accounts",
+      "description": "MITRE ATT&CK T1586: Compromise Accounts",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586",
+          "url": "https://attack.mitre.org/techniques/T1586/"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "resource-development"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--f905a497-e89d-5080-a1f3-eaac8ee7898d",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Input Capture",
+      "description": "MITRE ATT&CK T1056: Input Capture",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1056",
+          "url": "https://attack.mitre.org/techniques/T1056/"
+        }
+      ],
+      "kill_chain_phases": [
+        {
+          "kill_chain_name": "mitre-attack",
+          "phase_name": "collection"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--3c8573b9-2191-5ff6-8af6-36906249cab4",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Prevention: Fals cumpărător OLX — transport plătit în avans",
+      "description": "- Nu muta conversația în afara platformei OLX\n- Vânzătorul NU trebuie să confirme nimic printr-un link\n- Verifică URL-ul — paginile legitime OLX au domeniul strict olx.ro\n- Nu introduce datele cardului pe linkuri primite de la cumpărători\n- Fan Courier și DPD nu solicită date de card vânzătorului"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--91361c21-7aa1-4d18-be74-7a75f9500007",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto",
+      "description": "Victima primește un SMS nesolicitat care anunță că a fost selectată pentru un loc de muncă part-time sau full-time, cu mențiunea unei durate neobișnuite ('peste 900 de zile'). Mesajul conține un link care redirecționează către o conversație WhatsApp cu un cont necunoscut. Acolo, atacatorii promit câștiguri rapide din comisioane pentru 'comenzi virtuale' menite să crească artificial vânzările unor comercianți cunoscuți. Victima este îndrumată să creeze un cont pe un site care cere date personale, apoi este redirecționată către un canal de Telegram (cu aproape 50.000 de urmăritori la momentul alertei) unde i se explică pas cu pas mecanismul, care se dovedește a fi o schemă piramidală cu o componentă de investiții în criptomonede.",
+      "report_types": [
+        "threat-report",
+        "indicator"
+      ],
+      "published": "2026-06-28T00:00:00Z",
+      "object_refs": [
+        "indicator--43032549-8f83-544a-8176-078915a812c4",
+        "course-of-action--5a437344-1a17-58de-9065-6f02f9529a44"
+      ],
+      "confidence": 85,
+      "labels": [
+        "fake-jobs",
+        "sms",
+        "telegram",
+        "piramidal",
+        "crypto",
+        "comision-fals"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "sms-0002",
+          "url": "https://github.com/open-fraud-intelligence"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--43032549-8f83-544a-8176-078915a812c4",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto",
+      "description": "Victima primește un SMS nesolicitat care anunță că a fost selectată pentru un loc de muncă part-time sau full-time, cu mențiunea unei durate neobișnuite ('peste 900 de zile'). Mesajul conține un link care redirecționează către o conversație WhatsApp cu un cont necunoscut. Acolo, atacatorii promit câștiguri rapide din comisioane pentru 'comenzi virtuale' menite să crească artificial vânzările unor comercianți cunoscuți. Victima este îndrumată să creeze un cont pe un site care cere date personale, apoi este redirecționată către un canal de Telegram (cu aproape 50.000 de urmăritori la momentul alertei) unde i se explică pas cu pas mecanismul, care se dovedește a fi o schemă piramidală cu o componentă de investiții în criptomonede.",
+      "pattern": "[email-message:body MATCHES 'Buna, ati fost selectat pentru un job part-time/full time, mai mult de 900 de zile. Accesati acest l']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity",
+        "compromised"
+      ],
+      "confidence": 95,
+      "labels": [
+        "fake-jobs",
+        "sms",
+        "telegram",
+        "piramidal",
+        "crypto",
+        "comision-fals"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "sms-0002",
+          "url": "https://github.com/open-fraud-intelligence/blob/main/scams/sms/sms-0002.md"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--5a437344-1a17-58de-9065-6f02f9529a44",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Prevention: Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto",
+      "description": "- Ofertele legitime de angajare nu vin prin SMS de la necunoscuți\n- Nu accesați linkuri din SMS-uri nesolicitate despre joburi\n- Verificați orice ofertă pe canalele oficiale ale companiei menționate\n- Nu furnizați date personale sau bancare unor contacte necunoscute pe WhatsApp/Telegram\n- Raportați tentativa la DNSC (1911 sau alerts@dnsc.ro)"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--28081f4e-d67f-4b16-ae65-41224e5b225d",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Smishing \"Votează-o pe Adeline\" — deturnare de conturi WhatsApp printr-un sondaj fals",
+      "description": "Atacatorii trimit un mesaj SMS care imită un mesaj personal, cerând destinatarului să voteze 'Adeline' într-un sondaj fals, pretins legat de o bursă de studii în Franța. Linkul din mesaj conduce la o pagină care solicită codul de autentificare WhatsApp al victimei. Introducerea codului permite atacatorilor să compromită contul, pe care îl folosesc apoi pentru a propaga același mesaj către lista de contacte a victimei și pentru a cere bani 'urgent' celor din lista de contacte, dându-se drept victima inițială.",
+      "report_types": [
+        "threat-report",
+        "indicator"
+      ],
+      "published": "2026-06-28T00:00:00Z",
+      "object_refs": [
+        "indicator--5a3818e5-8aa5-5d8c-b7ad-b93016d3d920",
+        "course-of-action--afebf6a5-5a98-5a24-9f77-205ef7b3e1c4"
+      ],
+      "confidence": 97,
+      "labels": [
+        "smishing",
+        "whatsapp",
+        "deturnare-cont",
+        "sondaj-fals",
+        "social-engineering"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "whatsapp-0002",
+          "url": "https://github.com/open-fraud-intelligence"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5a3818e5-8aa5-5d8c-b7ad-b93016d3d920",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Smishing \"Votează-o pe Adeline\" — deturnare de conturi WhatsApp printr-un sondaj fals",
+      "description": "Atacatorii trimit un mesaj SMS care imită un mesaj personal, cerând destinatarului să voteze 'Adeline' într-un sondaj fals, pretins legat de o bursă de studii în Franța. Linkul din mesaj conduce la o pagină care solicită codul de autentificare WhatsApp al victimei. Introducerea codului permite atacatorilor să compromită contul, pe care îl folosesc apoi pentru a propaga același mesaj către lista de contacte a victimei și pentru a cere bani 'urgent' celor din lista de contacte, dându-se drept victima inițială.",
+      "pattern": "[email-message:body MATCHES 'Buna! Va rog sa o votati pe Adeline in acest sondaj, este fiica prietenei mele din Bucuresti, premiu']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity",
+        "compromised"
+      ],
+      "confidence": 97,
+      "labels": [
+        "smishing",
+        "whatsapp",
+        "deturnare-cont",
+        "sondaj-fals",
+        "social-engineering"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "whatsapp-0002",
+          "url": "https://github.com/open-fraud-intelligence/blob/main/scams/sms/whatsapp-0002.md"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--afebf6a5-5a98-5a24-9f77-205ef7b3e1c4",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Prevention: Smishing \"Votează-o pe Adeline\" — deturnare de conturi WhatsApp printr-un sondaj fals",
+      "description": "- Nu accesați linkuri din SMS-uri de la surse necunoscute\n- Nu introduceți niciun cod de autentificare primit prin SMS pe pagini externe\n- Verificați telefonic, pe alt canal, dacă un contact vă cere bani urgent\n- Activați autentificarea în doi factori pe WhatsApp cu PIN propriu\n- Raportați mesajele suspecte la DNSC (pnrisc.dnsc.ro) sau la operatorul telefonic"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--89592085-8882-4c73-b51c-2e190060dc30",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Fals \"program de investiții susținut de stat\" — uzurpare a imaginii Ministerului Finanțelor",
+      "description": "Pe rețele sociale circulă reclame care promovează o pretinsă \"platformă de investiții susținută de stat\", asociată abuziv cu Ministerul Finanțelor, promițând câștiguri garantate de până la 150%. Reclamele conduc către pagini care imită identitatea vizuală a unor instituții oficiale și solicită date de contact și, ulterior, o investiție inițială care nu mai poate fi recuperată.",
+      "report_types": [
+        "threat-report",
+        "indicator"
+      ],
+      "published": "2026-06-28T00:00:00Z",
+      "object_refs": [
+        "indicator--fc8e7cfb-c307-5acb-abb1-677e24b41a7c",
+        "course-of-action--3bc45bc2-8e7b-56cd-a634-cb37029ff6cd"
+      ],
+      "confidence": 93,
+      "labels": [
+        "investitii-false",
+        "uzurpare-institutie",
+        "facebook-ads",
+        "randament-garantat"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "crypto-0002",
+          "url": "https://github.com/open-fraud-intelligence"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--fc8e7cfb-c307-5acb-abb1-677e24b41a7c",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Fals \"program de investiții susținut de stat\" — uzurpare a imaginii Ministerului Finanțelor",
+      "description": "Pe rețele sociale circulă reclame care promovează o pretinsă \"platformă de investiții susținută de stat\", asociată abuziv cu Ministerul Finanțelor, promițând câștiguri garantate de până la 150%. Reclamele conduc către pagini care imită identitatea vizuală a unor instituții oficiale și solicită date de contact și, ulterior, o investiție inițială care nu mai poate fi recuperată.",
+      "pattern": "[email-message:body MATCHES 'Programul de investitii sustinut de statul roman va ofera un castig garantat de pana la 150%. Lasati']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity",
+        "compromised"
+      ],
+      "confidence": 95,
+      "labels": [
+        "investitii-false",
+        "uzurpare-institutie",
+        "facebook-ads",
+        "randament-garantat"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "crypto-0002",
+          "url": "https://github.com/open-fraud-intelligence/blob/main/scams/facebook/crypto-0002.md"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--3bc45bc2-8e7b-56cd-a634-cb37029ff6cd",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Prevention: Fals \"program de investiții susținut de stat\" — uzurpare a imaginii Ministerului Finanțelor",
+      "description": "- Nicio instituție publică nu promovează investiții prin reclame pe social media\n- Verificați orice anunț guvernamental direct pe site-ul oficial (.gov.ro)\n- Fiți sceptici la randamente garantate de orice procent\n- Nu transferați bani unor \"consultanți\" contactați în urma unei reclame\n- Raportați reclamele suspecte la DNSC (pnrisc.dnsc.ro)"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--8066574e-ae27-4cdf-9553-44534cdea8ce",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok",
+      "description": "Sub denumirea \"TXEX\" și variante similare, escrocii promovează platforme de investiții care par legitime, dar simulează profituri fictive pe ecran, în timp ce fondurile depuse de victime sunt colectate direct. Victimele sunt introduse în grupuri private pe WhatsApp, Telegram sau Signal, coordonate de pretinși \"mentori\" sau experți, și recrutate inclusiv prin clipuri pe TikTok. Fenomenul nu este limitat la România — autorități din Noua Zeelandă, Australia și Albania au emis avertismente similare privind aceleași platforme.",
+      "report_types": [
+        "threat-report",
+        "indicator"
+      ],
+      "published": "2026-06-28T00:00:00Z",
+      "object_refs": [
+        "indicator--27383384-ebbb-501f-a37b-03e5339afaae",
+        "course-of-action--fb4a83f3-7849-5cb0-bd5f-fcbe7ec1f23e"
+      ],
+      "confidence": 95,
+      "labels": [
+        "crypto",
+        "platforma-falsa",
+        "grup-privat",
+        "mentor-fals",
+        "txex"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "crypto-0003",
+          "url": "https://github.com/open-fraud-intelligence"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--27383384-ebbb-501f-a37b-03e5339afaae",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok",
+      "description": "Sub denumirea \"TXEX\" și variante similare, escrocii promovează platforme de investiții care par legitime, dar simulează profituri fictive pe ecran, în timp ce fondurile depuse de victime sunt colectate direct. Victimele sunt introduse în grupuri private pe WhatsApp, Telegram sau Signal, coordonate de pretinși \"mentori\" sau experți, și recrutate inclusiv prin clipuri pe TikTok. Fenomenul nu este limitat la România — autorități din Noua Zeelandă, Australia și Albania au emis avertismente similare privind aceleași platforme.",
+      "pattern": "[email-message:body MATCHES 'Te invit in grupul nostru privat de investitii. Cu mentoratul echipei noastre, platforma TXEX iti ga']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity",
+        "compromised"
+      ],
+      "confidence": 93,
+      "labels": [
+        "crypto",
+        "platforma-falsa",
+        "grup-privat",
+        "mentor-fals",
+        "txex"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "crypto-0003",
+          "url": "https://github.com/open-fraud-intelligence/blob/main/scams/telegram/crypto-0003.md"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--fb4a83f3-7849-5cb0-bd5f-fcbe7ec1f23e",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Prevention: TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok",
+      "description": "- Verificați dacă platforma este autorizată de ASF/autoritatea de reglementare relevantă\n- Nu investiți pe baza recomandării unui \"mentor\" cunoscut online, necunoscut în realitate\n- Tratați cu suspiciune orice platformă care nu permite retrageri fără condiții suplimentare\n- Nu vă bazați pe profitul afișat în interfață ca dovadă de legitimitate\n- Raportați platforma la DNSC și verificați avertismentele internaționale existente"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b14a73bb-f3c0-42ac-9466-5998b0723769",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții",
+      "description": "Un val de pagini false imită identitatea unor branduri media cunoscute (printre care Digi24) pentru a promova platforme fictive de investiții. Anunțurile sunt amplificate prin spațiile publicitare ale site-urilor de știri reale, fapt care le crește credibilitatea. Campania vizează în special persoanele vârstnice sau pe cele interesate de suplimentarea veniturilor.",
+      "report_types": [
+        "threat-report",
+        "indicator"
+      ],
+      "published": "2026-06-28T00:00:00Z",
+      "object_refs": [
+        "indicator--ddb2b26a-e447-52c9-9dcb-4271a0633ebe",
+        "course-of-action--37726fd5-956f-5fe1-8395-1fe292f7e777"
+      ],
+      "confidence": 90,
+      "labels": [
+        "uzurpare-brand-media",
+        "publicitate-falsa",
+        "investitii-false",
+        "varstnici"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "crypto-0004",
+          "url": "https://github.com/open-fraud-intelligence"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ddb2b26a-e447-52c9-9dcb-4271a0633ebe",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții",
+      "description": "Un val de pagini false imită identitatea unor branduri media cunoscute (printre care Digi24) pentru a promova platforme fictive de investiții. Anunțurile sunt amplificate prin spațiile publicitare ale site-urilor de știri reale, fapt care le crește credibilitatea. Campania vizează în special persoanele vârstnice sau pe cele interesate de suplimentarea veniturilor.",
+      "pattern": "[email-message:body MATCHES 'Articol exclusiv: o noua platforma de investitii permite oricui sa obtina un venit suplimentar sigur']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity",
+        "compromised"
+      ],
+      "confidence": 90,
+      "labels": [
+        "uzurpare-brand-media",
+        "publicitate-falsa",
+        "investitii-false",
+        "varstnici"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "crypto-0004",
+          "url": "https://github.com/open-fraud-intelligence/blob/main/scams/web/crypto-0004.md"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--37726fd5-956f-5fe1-8395-1fe292f7e777",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Prevention: Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții",
+      "description": "- Verificați întotdeauna domeniul real al articolului, nu doar aspectul vizual\n- Brandurile media nu promovează platforme de investiții în nume propriu\n- Discutați cu un membru al familiei înainte de a investi în urma unei reclame online\n- Raportați reclamele false către DNSC și către brandul media uzurpat"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b61f0354-e363-4b31-99f1-24afbffdd7b8",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive",
+      "description": "Românii care dețin criptomonede sunt vizați de o escrocherie care circulă sub forma unei pretinse citații oficiale, folosind abuziv însemnele DNSC, sigla Uniunii Europene și logo-urile Europol/EC3. Documentul fals pretinde că oferă informații despre o procedură de returnare a fondurilor în criptoactive, dar nu are nicio legătură reală cu vreo instituție europeană sau națională, scopul fiind obținerea de date personale sau financiare.",
+      "report_types": [
+        "threat-report",
+        "indicator"
+      ],
+      "published": "2026-06-28T00:00:00Z",
+      "object_refs": [
+        "indicator--f60cc4cd-5104-5802-8b4a-f201fd9b72af",
+        "course-of-action--e7e89848-78b7-53f6-b649-0f35cf30e378"
+      ],
+      "confidence": 92,
+      "labels": [
+        "uzurpare-institutie",
+        "crypto",
+        "document-fals",
+        "europol",
+        "recuperare-fonduri"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "crypto-0005",
+          "url": "https://github.com/open-fraud-intelligence"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f60cc4cd-5104-5802-8b4a-f201fd9b72af",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T00:00:00Z",
+      "modified": "2026-06-28T00:00:00Z",
+      "name": "Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive",
+      "description": "Românii care dețin criptomonede sunt vizați de o escrocherie care circulă sub forma unei pretinse citații oficiale, folosind abuziv însemnele DNSC, sigla Uniunii Europene și logo-urile Europol/EC3. Documentul fals pretinde că oferă informații despre o procedură de returnare a fondurilor în criptoactive, dar nu are nicio legătură reală cu vreo instituție europeană sau națională, scopul fiind obținerea de date personale sau financiare.",
+      "pattern": "[email-message:body MATCHES 'In urma plangerii dumneavoastra, ati fost selectat pentru procedura oficiala de returnare a fonduril']",
+      "pattern_type": "stix",
+      "valid_from": "2026-06-28T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity",
+        "compromised"
+      ],
+      "confidence": 90,
+      "labels": [
+        "uzurpare-institutie",
+        "crypto",
+        "document-fals",
+        "europol",
+        "recuperare-fonduri"
+      ],
+      "external_references": [
+        {
+          "source_name": "Open Fraud Intelligence",
+          "external_id": "crypto-0005",
+          "url": "https://github.com/open-fraud-intelligence/blob/main/scams/email/crypto-0005.md"
+        }
+      ]
+    },
+    {
+      "type": "course-of-action",
+      "spec_version": "2.1",
+      "id": "course-of-action--e7e89848-78b7-53f6-b649-0f35cf30e378",
+      "created_by_ref": "identity--a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "created": "2026-06-28T12:47:02.000Z",
+      "modified": "2026-06-28T12:47:02.000Z",
+      "name": "Prevention: Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive",
+      "description": "- Verificați direct pe site-ul oficial DNSC (dnsc.ro) sau Europol orice document primit\n- Nicio instituție nu solicită date financiare prin email pentru \"recuperarea\" de fonduri\n- Nu răspundeți și nu furnizați date; raportați documentul la DNSC\n- Contactați direct instituția menționată printr-un canal oficial cunoscut, nu prin linkurile din document"
+    }
+  ]
+}

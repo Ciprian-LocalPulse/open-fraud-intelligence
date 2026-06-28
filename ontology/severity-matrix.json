@@ -1,0 +1,147 @@
+{
+  "$schema": "https://open-fraud-intelligence.github.io/schemas/severity-matrix.schema.json",
+  "version": "2.0.0",
+  "description": "Matricea de severitate OFI — extinsă pe 5 niveluri, inspirată din CVSS și DREAD",
+  "levels": [
+    {
+      "level": "Critical",
+      "code": "CR",
+      "score_range": { "min": 9.0, "max": 10.0 },
+      "color": "#DC2626",
+      "icon": "🔴",
+      "description": "Pierdere financiară imediată și substanțială sau furt de identitate complet. Afectează în mod tipic mii de victime simultan.",
+      "criteria": {
+        "financial_impact": "Pierdere > 10.000 RON sau golire completă cont bancar",
+        "data_impact": "Furt identitate completă (CNP, buletin, date bancare, cont)",
+        "scale": "Campanie organizată, sute-mii de victime",
+        "reversibility": "Practic ireversibil (crypto, Western Union, cash)",
+        "automation": "Complet automatizat, AI-powered sau botnet"
+      },
+      "examples": [
+        "Platforme crypto false (pig butchering) cu pierderi > 10.000 RON",
+        "Compromise bancară completă cu golire cont",
+        "Traficare prin oferte false de muncă",
+        "Campanii de phishing la scară largă cu infrastractură dedicată"
+      ],
+      "response_time": "Acțiune imediată — raportare în < 1 oră"
+    },
+    {
+      "level": "High",
+      "code": "HI",
+      "score_range": { "min": 7.0, "max": 8.9 },
+      "color": "#EA580C",
+      "icon": "🟠",
+      "description": "Pierdere financiară semnificativă sau compromiterea gravă a datelor personale. Fraudă activă și răspândită.",
+      "criteria": {
+        "financial_impact": "Pierdere 500 - 10.000 RON",
+        "data_impact": "Date bancare, credențiale internet banking, date card",
+        "scale": "Cazuri individuale frecvente, vector activ",
+        "reversibility": "Dificil reversibil (transfer bancar, Revolut)",
+        "automation": "Semi-automatizat sau manual la scară"
+      },
+      "examples": [
+        "Phishing bancar (BCR, BRD, ING)",
+        "Fals cumpărător OLX cu date de card furate",
+        "Smishing curier cu furt card",
+        "Vishing fals polițist / bancă"
+      ],
+      "response_time": "Acțiune urgentă — raportare în < 24 ore"
+    },
+    {
+      "level": "Medium",
+      "code": "ME",
+      "score_range": { "min": 4.0, "max": 6.9 },
+      "color": "#D97706",
+      "icon": "🟡",
+      "description": "Pierdere financiară moderată sau expunerea parțială a datelor personale. Fraudă comună dar cu impact limitat.",
+      "criteria": {
+        "financial_impact": "Pierdere 50 - 500 RON",
+        "data_impact": "Date de contact, date personale non-financiare",
+        "scale": "Cazuri individuale ocazionale",
+        "reversibility": "Parțial reversibil (card cu chargeback)",
+        "automation": "Predominant manual"
+      },
+      "examples": [
+        "Giveaway fals Facebook (taxă mică de expediere)",
+        "Job remote fals cu taxă de formare < 300 RON",
+        "Cont Instagram compromis, împrumut mic",
+        "Magazin fals cu produse ieftine"
+      ],
+      "response_time": "Acțiune în < 1 săptămână"
+    },
+    {
+      "level": "Low",
+      "code": "LO",
+      "score_range": { "min": 1.0, "max": 3.9 },
+      "color": "#65A30D",
+      "icon": "🟢",
+      "description": "Impact financiar minim sau risc preponderent de hărțuire și spam. Fraudă cu potențial de escaladare.",
+      "criteria": {
+        "financial_impact": "Pierdere < 50 RON sau nulă",
+        "data_impact": "Expunere email sau număr de telefon",
+        "scale": "Incidente izolate",
+        "reversibility": "Ușor reversibil sau fără pierdere",
+        "automation": "Manual, volum redus"
+      },
+      "examples": [
+        "One-ring scam (apel unic suprataxat)",
+        "Loterie falsă fără date financiare colectate",
+        "Spam cu oferte false fără link de phishing",
+        "Cerere de prietenie suspectă fără tentativă de fraudă imediată"
+      ],
+      "response_time": "Documentare și monitorizare"
+    },
+    {
+      "level": "Informational",
+      "code": "IN",
+      "score_range": { "min": 0.0, "max": 0.9 },
+      "color": "#6B7280",
+      "icon": "ℹ️",
+      "description": "Fără impact direct. Indicator de tendință, activitate suspectă în monitorizare sau fals pozitiv.",
+      "criteria": {
+        "financial_impact": "Nul",
+        "data_impact": "Neglijabil",
+        "scale": "Observație izolată",
+        "reversibility": "N/A",
+        "automation": "N/A"
+      },
+      "examples": [
+        "Cont suspect fără activitate dovedită",
+        "Site nou cu caracteristici de phishing dar fără victime raportate",
+        "Fals pozitiv în curs de investigare"
+      ],
+      "response_time": "Monitorizare"
+    }
+  ],
+  "scoring_dimensions": {
+    "description": "Scorul de severitate (0-10) se calculează pe baza a 5 dimensiuni, similar CVSS",
+    "dimensions": [
+      {
+        "name": "Financial Impact",
+        "weight": 0.30,
+        "values": { "none": 0, "minimal": 2, "moderate": 5, "significant": 8, "severe": 10 }
+      },
+      {
+        "name": "Data Impact",
+        "weight": 0.25,
+        "values": { "none": 0, "contact_only": 2, "personal": 5, "financial": 8, "identity_theft": 10 }
+      },
+      {
+        "name": "Scale",
+        "weight": 0.20,
+        "values": { "isolated": 1, "occasional": 3, "frequent": 6, "campaign": 8, "mass": 10 }
+      },
+      {
+        "name": "Reversibility",
+        "weight": 0.15,
+        "values": { "easy": 1, "partial": 4, "difficult": 7, "impossible": 10 }
+      },
+      {
+        "name": "Automation",
+        "weight": 0.10,
+        "values": { "manual": 1, "semi_auto": 5, "automated": 8, "ai_powered": 10 }
+      }
+    ],
+    "formula": "score = sum(dimension_value * dimension_weight) for each dimension"
+  }
+}

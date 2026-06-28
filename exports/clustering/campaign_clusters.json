@@ -1,0 +1,61 @@
+{
+  "threshold": 0.3,
+  "total_entries": 7,
+  "clusters_found": 2,
+  "entries_in_clusters": 4,
+  "singleton_entries": [
+    "olx-0001",
+    "whatsapp-0002",
+    "crypto-0005"
+  ],
+  "clusters": [
+    {
+      "cluster_id": "cluster-001",
+      "members": [
+        "crypto-0003",
+        "sms-0002"
+      ],
+      "size": 2,
+      "declared_campaign_ids": [],
+      "agrees_with_declared_campaign": true,
+      "evidence": [
+        {
+          "a": "sms-0002",
+          "b": "crypto-0003",
+          "combined_score": 0.3039,
+          "components": {
+            "text_similarity": 0.1347,
+            "psychology_overlap": 0.6667,
+            "payment_overlap": 1.0,
+            "brand_overlap": 0.0,
+            "infrastructure_overlap": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "cluster_id": "cluster-002",
+      "members": [
+        "crypto-0002",
+        "crypto-0004"
+      ],
+      "size": 2,
+      "declared_campaign_ids": [],
+      "agrees_with_declared_campaign": true,
+      "evidence": [
+        {
+          "a": "crypto-0002",
+          "b": "crypto-0004",
+          "combined_score": 0.3924,
+          "components": {
+            "text_similarity": 0.2309,
+            "psychology_overlap": 1.0,
+            "payment_overlap": 1.0,
+            "brand_overlap": 0.0,
+            "infrastructure_overlap": 0.0
+          }
+        }
+      ]
+    }
+  ]
+}

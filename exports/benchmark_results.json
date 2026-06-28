@@ -1,0 +1,148 @@
+{
+  "dataset_size": 7,
+  "scam_count": 7,
+  "legit_count": 0,
+  "timestamp": "2026-06-28T12:47:02.021537",
+  "classification": {
+    "metrics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "support": 7
+    },
+    "confusion_matrix": {
+      "labels": [
+        "scam"
+      ],
+      "matrix": {
+        "scam": {
+          "scam": 7
+        }
+      }
+    },
+    "details": [
+      {
+        "id": "olx-0001",
+        "message": "Am plătit deja produsul. Accesați acest link pentru a confirma și a primi suma.",
+        "true": "scam",
+        "pred": "scam",
+        "confidence": 0.84,
+        "correct": true
+      },
+      {
+        "id": "sms-0002",
+        "message": "Buna, ati fost selectat pentru un job part-time/full time, mai mult de 900 de zi",
+        "true": "scam",
+        "pred": "suspicious",
+        "confidence": 0.5,
+        "correct": false
+      },
+      {
+        "id": "whatsapp-0002",
+        "message": "Buna! Va rog sa o votati pe Adeline in acest sondaj, este fiica prietenei mele d",
+        "true": "scam",
+        "pred": "suspicious",
+        "confidence": 0.5,
+        "correct": false
+      },
+      {
+        "id": "crypto-0002",
+        "message": "Programul de investitii sustinut de statul roman va ofera un castig garantat de ",
+        "true": "scam",
+        "pred": "suspicious",
+        "confidence": 0.5,
+        "correct": false
+      },
+      {
+        "id": "crypto-0003",
+        "message": "Te invit in grupul nostru privat de investitii. Cu mentoratul echipei noastre, p",
+        "true": "scam",
+        "pred": "suspicious",
+        "confidence": 0.5,
+        "correct": false
+      },
+      {
+        "id": "crypto-0004",
+        "message": "Articol exclusiv: o noua platforma de investitii permite oricui sa obtina un ven",
+        "true": "scam",
+        "pred": "suspicious",
+        "confidence": 0.5,
+        "correct": false
+      },
+      {
+        "id": "crypto-0005",
+        "message": "In urma plangerii dumneavoastra, ati fost selectat pentru procedura oficiala de ",
+        "true": "scam",
+        "pred": "suspicious",
+        "confidence": 0.5,
+        "correct": false
+      }
+    ]
+  },
+  "entity_extraction": {
+    "accuracy": 0.1429,
+    "details": [
+      {
+        "id": "olx-0001",
+        "expected": [
+          "olx"
+        ],
+        "detected": [],
+        "correct": false
+      },
+      {
+        "id": "sms-0002",
+        "expected": [
+          "sms"
+        ],
+        "detected": [],
+        "correct": false
+      },
+      {
+        "id": "whatsapp-0002",
+        "expected": [
+          "sms"
+        ],
+        "detected": [],
+        "correct": false
+      },
+      {
+        "id": "crypto-0002",
+        "expected": [
+          "facebook"
+        ],
+        "detected": [],
+        "correct": false
+      },
+      {
+        "id": "crypto-0003",
+        "expected": [
+          "telegram"
+        ],
+        "detected": [],
+        "correct": false
+      },
+      {
+        "id": "crypto-0004",
+        "expected": [
+          "web"
+        ],
+        "detected": [],
+        "correct": true
+      },
+      {
+        "id": "crypto-0005",
+        "expected": [
+          "email"
+        ],
+        "detected": [],
+        "correct": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,361 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ofi: <https://open-fraud-intelligence.github.io/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://open-fraud-intelligence.github.io/ontology> a owl:Ontology ;
+    rdfs:label "Open Fraud Intelligence Ontology"@en ;
+    dcterms:description "Ontologia completă Open Fraud Intelligence — Knowledge Graph pentru fraude online"@ro ;
+    owl:versionInfo "2.0.0" .
+
+ofi:actor_actorId a owl:DatatypeProperty ;
+    rdfs:label "actor_id"@en ;
+    rdfs:domain ofi:Actor ;
+    rdfs:range xsd:string .
+
+ofi:actor_iocRefs a owl:DatatypeProperty ;
+    rdfs:label "ioc_refs"@en ;
+    rdfs:domain ofi:Actor ;
+    rdfs:range xsd:string .
+
+ofi:actor_knownAliases a owl:DatatypeProperty ;
+    rdfs:label "known_aliases"@en ;
+    rdfs:domain ofi:Actor ;
+    rdfs:range xsd:string .
+
+ofi:actor_originCountry a owl:DatatypeProperty ;
+    rdfs:label "origin_country"@en ;
+    rdfs:domain ofi:Actor ;
+    rdfs:range xsd:string .
+
+ofi:actor_sophistication a owl:DatatypeProperty ;
+    rdfs:label "sophistication"@en ;
+    rdfs:comment "enum: novice, intermediate, expert, nation_state"@en ;
+    rdfs:domain ofi:Actor ;
+    rdfs:range xsd:string .
+
+ofi:actor_type a owl:DatatypeProperty ;
+    rdfs:label "type"@en ;
+    rdfs:comment "enum: individual, organized_group, state_sponsored, unknown"@en ;
+    rdfs:domain ofi:Actor ;
+    rdfs:range xsd:string .
+
+ofi:asset_sensitivity a owl:DatatypeProperty ;
+    rdfs:label "sensitivity"@en ;
+    rdfs:comment "enum: low, medium, high, critical"@en ;
+    rdfs:domain ofi:Asset ;
+    rdfs:range xsd:string .
+
+ofi:asset_type a owl:DatatypeProperty ;
+    rdfs:label "type"@en ;
+    rdfs:comment "enum: money, personal_data, credentials, identity, property, crypto, intellectual_property"@en ;
+    rdfs:domain ofi:Asset ;
+    rdfs:range xsd:string .
+
+ofi:asset_valueRon a owl:DatatypeProperty ;
+    rdfs:label "value_ron"@en ;
+    rdfs:domain ofi:Asset ;
+    rdfs:range xsd:double .
+
+ofi:campaign_active a owl:DatatypeProperty ;
+    rdfs:label "active"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:boolean .
+
+ofi:campaign_actorId a owl:DatatypeProperty ;
+    rdfs:label "actor_id"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:string .
+
+ofi:campaign_campaignId a owl:DatatypeProperty ;
+    rdfs:label "campaign_id"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:string .
+
+ofi:campaign_countries a owl:DatatypeProperty ;
+    rdfs:label "countries"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:string .
+
+ofi:campaign_endDate a owl:DatatypeProperty ;
+    rdfs:label "end_date"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:string .
+
+ofi:campaign_name a owl:DatatypeProperty ;
+    rdfs:label "name"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:string .
+
+ofi:campaign_platforms a owl:DatatypeProperty ;
+    rdfs:label "platforms"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:string .
+
+ofi:campaign_startDate a owl:DatatypeProperty ;
+    rdfs:label "start_date"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:string .
+
+ofi:campaign_totalLossRon a owl:DatatypeProperty ;
+    rdfs:label "total_loss_ron"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:double .
+
+ofi:campaign_totalVictims a owl:DatatypeProperty ;
+    rdfs:label "total_victims"@en ;
+    rdfs:domain ofi:Campaign ;
+    rdfs:range xsd:integer .
+
+ofi:evidence_anonymized a owl:DatatypeProperty ;
+    rdfs:label "anonymized"@en ;
+    rdfs:domain ofi:Evidence ;
+    rdfs:range xsd:boolean .
+
+ofi:evidence_date a owl:DatatypeProperty ;
+    rdfs:label "date"@en ;
+    rdfs:domain ofi:Evidence ;
+    rdfs:range xsd:string .
+
+ofi:evidence_hash a owl:DatatypeProperty ;
+    rdfs:label "hash"@en ;
+    rdfs:domain ofi:Evidence ;
+    rdfs:range xsd:string .
+
+ofi:evidence_source a owl:DatatypeProperty ;
+    rdfs:label "source"@en ;
+    rdfs:domain ofi:Evidence ;
+    rdfs:range xsd:string .
+
+ofi:evidence_type a owl:DatatypeProperty ;
+    rdfs:label "type"@en ;
+    rdfs:comment "enum: screenshot, message_log, transaction, domain_record, victim_report, official_report"@en ;
+    rdfs:domain ofi:Evidence ;
+    rdfs:range xsd:string .
+
+ofi:infrastructure_ageDays a owl:DatatypeProperty ;
+    rdfs:label "age_days"@en ;
+    rdfs:domain ofi:Infrastructure ;
+    rdfs:range xsd:integer .
+
+ofi:infrastructure_domains a owl:DatatypeProperty ;
+    rdfs:label "domains"@en ;
+    rdfs:domain ofi:Infrastructure ;
+    rdfs:range xsd:string .
+
+ofi:infrastructure_hosting a owl:DatatypeProperty ;
+    rdfs:label "hosting"@en ;
+    rdfs:domain ofi:Infrastructure ;
+    rdfs:range xsd:string .
+
+ofi:infrastructure_ips a owl:DatatypeProperty ;
+    rdfs:label "ips"@en ;
+    rdfs:domain ofi:Infrastructure ;
+    rdfs:range xsd:string .
+
+ofi:infrastructure_registrationCountry a owl:DatatypeProperty ;
+    rdfs:label "registration_country"@en ;
+    rdfs:domain ofi:Infrastructure ;
+    rdfs:range xsd:string .
+
+ofi:infrastructure_ssl a owl:DatatypeProperty ;
+    rdfs:label "ssl"@en ;
+    rdfs:domain ofi:Infrastructure ;
+    rdfs:range xsd:boolean .
+
+ofi:outcome_dataCompromised a owl:DatatypeProperty ;
+    rdfs:label "data_compromised"@en ;
+    rdfs:domain ofi:Outcome ;
+    rdfs:range xsd:string .
+
+ofi:outcome_prosecution a owl:DatatypeProperty ;
+    rdfs:label "prosecution"@en ;
+    rdfs:domain ofi:Outcome ;
+    rdfs:range xsd:boolean .
+
+ofi:outcome_recoveredRon a owl:DatatypeProperty ;
+    rdfs:label "recovered_ron"@en ;
+    rdfs:domain ofi:Outcome ;
+    rdfs:range xsd:double .
+
+ofi:outcome_reportedTo a owl:DatatypeProperty ;
+    rdfs:label "reported_to"@en ;
+    rdfs:domain ofi:Outcome ;
+    rdfs:range xsd:string .
+
+ofi:outcome_victimLossRon a owl:DatatypeProperty ;
+    rdfs:label "victim_loss_ron"@en ;
+    rdfs:domain ofi:Outcome ;
+    rdfs:range xsd:double .
+
+ofi:payment_method a owl:DatatypeProperty ;
+    rdfs:label "method"@en ;
+    rdfs:domain ofi:Payment ;
+    rdfs:range xsd:string .
+
+ofi:payment_recoveryChance a owl:DatatypeProperty ;
+    rdfs:label "recovery_chance"@en ;
+    rdfs:comment "enum: high, medium, low, impossible"@en ;
+    rdfs:domain ofi:Payment ;
+    rdfs:range xsd:string .
+
+ofi:payment_reversible a owl:DatatypeProperty ;
+    rdfs:label "reversible"@en ;
+    rdfs:domain ofi:Payment ;
+    rdfs:range xsd:boolean .
+
+ofi:payment_traceability a owl:DatatypeProperty ;
+    rdfs:label "traceability"@en ;
+    rdfs:comment "enum: high, medium, low, none"@en ;
+    rdfs:domain ofi:Payment ;
+    rdfs:range xsd:string .
+
+ofi:payment_typicalAmount a owl:DatatypeProperty ;
+    rdfs:label "typical_amount"@en ;
+    rdfs:domain ofi:Payment ;
+    rdfs:range xsd:string .
+
+ofi:platform_country a owl:DatatypeProperty ;
+    rdfs:label "country"@en ;
+    rdfs:domain ofi:Platform ;
+    rdfs:range xsd:string .
+
+ofi:platform_moderated a owl:DatatypeProperty ;
+    rdfs:label "moderated"@en ;
+    rdfs:domain ofi:Platform ;
+    rdfs:range xsd:boolean .
+
+ofi:platform_name a owl:DatatypeProperty ;
+    rdfs:label "name"@en ;
+    rdfs:domain ofi:Platform ;
+    rdfs:range xsd:string .
+
+ofi:platform_reportingUrl a owl:DatatypeProperty ;
+    rdfs:label "reporting_url"@en ;
+    rdfs:domain ofi:Platform ;
+    rdfs:range xsd:string .
+
+ofi:platform_type a owl:DatatypeProperty ;
+    rdfs:label "type"@en ;
+    rdfs:comment "enum: social_media, marketplace, messaging, email, phone, web, physical"@en ;
+    rdfs:domain ofi:Platform ;
+    rdfs:range xsd:string .
+
+ofi:relatedto a owl:ObjectProperty ;
+    rdfs:comment "O campanie e operată de un actor"@ro,
+        "O campanie folosește una sau mai multe tehnici"@ro,
+        "O campanie produce un outcome"@ro,
+        "O campanie utilizează infrastructură tehnică"@ro,
+        "O campanie vizează un profil de victimă"@ro,
+        "O dovadă documentează o campanie"@ro,
+        "O tehnică implică o metodă de plată"@ro,
+        "O tehnică utilizează o platformă"@ro,
+        "O tehnică vizează un tip de activ"@ro,
+        "O victimă furnizează dovezi"@ro,
+        "O victimă pierde active"@ro,
+        "Un actor exploatează o platformă"@ro,
+        "Un actor fură active"@ro .
+
+ofi:technique_capecId a owl:DatatypeProperty ;
+    rdfs:label "capec_id"@en ;
+    rdfs:domain ofi:Technique ;
+    rdfs:range xsd:string .
+
+ofi:technique_category a owl:DatatypeProperty ;
+    rdfs:label "category"@en ;
+    rdfs:domain ofi:Technique ;
+    rdfs:range xsd:string .
+
+ofi:technique_description a owl:DatatypeProperty ;
+    rdfs:label "description"@en ;
+    rdfs:domain ofi:Technique ;
+    rdfs:range xsd:string .
+
+ofi:technique_mitreAttackId a owl:DatatypeProperty ;
+    rdfs:label "mitre_attack_id"@en ;
+    rdfs:domain ofi:Technique ;
+    rdfs:range xsd:string .
+
+ofi:technique_name a owl:DatatypeProperty ;
+    rdfs:label "name"@en ;
+    rdfs:domain ofi:Technique ;
+    rdfs:range xsd:string .
+
+ofi:technique_psychology a owl:DatatypeProperty ;
+    rdfs:label "psychology"@en ;
+    rdfs:domain ofi:Technique ;
+    rdfs:range xsd:string .
+
+ofi:victim_ageGroup a owl:DatatypeProperty ;
+    rdfs:label "age_group"@en ;
+    rdfs:comment "enum: <18, 18-25, 25-35, 35-50, 50-65, >65, unknown"@en ;
+    rdfs:domain ofi:Victim ;
+    rdfs:range xsd:string .
+
+ofi:victim_digitalLiteracy a owl:DatatypeProperty ;
+    rdfs:label "digital_literacy"@en ;
+    rdfs:comment "enum: low, medium, high"@en ;
+    rdfs:domain ofi:Victim ;
+    rdfs:range xsd:string .
+
+ofi:victim_location a owl:DatatypeProperty ;
+    rdfs:label "location"@en ;
+    rdfs:domain ofi:Victim ;
+    rdfs:range xsd:string .
+
+ofi:victim_lossAmountRon a owl:DatatypeProperty ;
+    rdfs:label "loss_amount_ron"@en ;
+    rdfs:domain ofi:Victim ;
+    rdfs:range xsd:double .
+
+ofi:victim_reported a owl:DatatypeProperty ;
+    rdfs:label "reported"@en ;
+    rdfs:domain ofi:Victim ;
+    rdfs:range xsd:boolean .
+
+ofi:victim_vulnerability a owl:DatatypeProperty ;
+    rdfs:label "vulnerability"@en ;
+    rdfs:domain ofi:Victim ;
+    rdfs:range xsd:string .
+
+ofi:Asset a owl:Class ;
+    rdfs:label "Asset"@en ;
+    rdfs:comment "Activele vizate sau compromise"@ro .
+
+ofi:Evidence a owl:Class ;
+    rdfs:label "Evidence"@en ;
+    rdfs:comment "Dovezile disponibile pentru documentarea fraudei"@ro .
+
+ofi:Outcome a owl:Class ;
+    rdfs:label "Outcome"@en ;
+    rdfs:comment "Rezultatul fraudei"@ro .
+
+ofi:Payment a owl:Class ;
+    rdfs:label "Payment"@en ;
+    rdfs:comment "Metoda de plată sau transferul financiar implicat"@ro .
+
+ofi:Platform a owl:Class ;
+    rdfs:label "Platform"@en ;
+    rdfs:comment "Platforma sau canalul utilizat pentru fraudă"@ro .
+
+ofi:Actor a owl:Class ;
+    rdfs:label "Actor"@en ;
+    rdfs:comment "Individul sau grupul care efectuează frauda"@ro .
+
+ofi:Infrastructure a owl:Class ;
+    rdfs:label "Infrastructure"@en ;
+    rdfs:comment "Infrastructura tehnică a escrocilor"@ro .
+
+ofi:Technique a owl:Class ;
+    rdfs:label "Technique"@en ;
+    rdfs:comment "Tehnica sau tactica de fraudă"@ro .
+
+ofi:Victim a owl:Class ;
+    rdfs:label "Victim"@en ;
+    rdfs:comment "Persoana sau organizația vizată de fraudă"@ro .
+
+ofi:Campaign a owl:Class ;
+    rdfs:label "Campaign"@en ;
+    rdfs:comment "O campanie de fraudă organizată"@ro .
+

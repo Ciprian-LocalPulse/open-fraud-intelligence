@@ -1,0 +1,955 @@
+[
+  {
+    "uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "id": "olx-0001",
+    "schema_version": "2.0.0",
+    "dataset_version": "2.0.0",
+    "created_at": "2025-01-15T10:00:00Z",
+    "last_updated": "2025-07-01T12:00:00Z",
+    "title": "Fals cumpărător OLX — transport plătit în avans",
+    "platform": "olx",
+    "vector": [
+      "whatsapp"
+    ],
+    "severity": "High",
+    "severity_score": 7.8,
+    "country": "Romania",
+    "regions": [
+      "Romania",
+      "Moldova"
+    ],
+    "year": 2025,
+    "active": true,
+    "tags": [
+      "marketplace",
+      "olx",
+      "phishing",
+      "whatsapp",
+      "social-engineering",
+      "curier-fals"
+    ],
+    "scenario": "Escrocul contactează vânzătorul pe OLX, exprimă interes pentru produs și solicită mutarea conversației pe WhatsApp. Odată acolo, pretinde că a efectuat plata și trimite un link fals care imită Fan Courier sau OLX Pay, solicitând datele de card ale vânzătorului pentru 'confirmarea primirii banilor'.",
+    "steps": [
+      "Escrocul găsește anunțul pe OLX și trimite mesaj de interes",
+      "Solicită numărul de WhatsApp pentru detalii",
+      "Pe WhatsApp, afirmă că a plătit prin curier sau OLX Pay",
+      "Trimite link fals: fancourier-plata.ro sau olx-confirmare.ro",
+      "Pagina falsă solicită IBAN sau date complete de card",
+      "Datele sunt folosite instant pentru tranzacții frauduloase"
+    ],
+    "red_flags": [
+      "Mută conversația de pe OLX pe WhatsApp sau Telegram",
+      "Pretinde că a plătit înainte de confirmare",
+      "Trimite link extern, nu de pe olx.ro",
+      "Urgentează tranzacția cu presiune de timp",
+      "Număr de telefon cu prefix internațional (+44, +39, +33)",
+      "Acceptă prețul fără nicio negociere"
+    ],
+    "prevention": [
+      "Nu muta conversația în afara platformei OLX",
+      "Vânzătorul NU trebuie să confirme nimic printr-un link",
+      "Verifică URL-ul — paginile legitime OLX au domeniul strict olx.ro",
+      "Nu introduce datele cardului pe linkuri primite de la cumpărători",
+      "Fan Courier și DPD nu solicită date de card vânzătorului"
+    ],
+    "verification": {
+      "status": "verified",
+      "verified_by": "CERT-RO",
+      "verified_at": "2025-03-10T09:00:00Z",
+      "official_source": "https://cert.ro/citeste/alerta-frauda-olx-2025",
+      "evidence_count": 47,
+      "reporter_count": 312
+    },
+    "confidence": {
+      "score": 0.98,
+      "method": "official_report",
+      "source": "CERT-RO + Poliția Română + raportări comunitate"
+    },
+    "ioc": {
+      "phones": [
+        "+44XXXXXXXX",
+        "+39XXXXXXXX"
+      ],
+      "emails": [],
+      "domains": [
+        "fancourier-plata.ro",
+        "olx-confirmare.ro",
+        "olx-pay-secure.com"
+      ],
+      "urls": [
+        "https://fancourier-plata.ro/confirmare",
+        "https://olx-confirmare.ro/plata"
+      ],
+      "wallets": [],
+      "usernames": [],
+      "ipv4": [],
+      "ipv6": [],
+      "hashes": []
+    },
+    "mitre_attack": [
+      {
+        "technique_id": "T1566",
+        "technique_name": "Phishing",
+        "tactic": "Initial Access",
+        "url": "https://attack.mitre.org/techniques/T1566/"
+      },
+      {
+        "technique_id": "T1586",
+        "technique_name": "Compromise Accounts",
+        "tactic": "Resource Development",
+        "url": "https://attack.mitre.org/techniques/T1586/"
+      },
+      {
+        "technique_id": "T1056",
+        "technique_name": "Input Capture",
+        "tactic": "Collection",
+        "url": "https://attack.mitre.org/techniques/T1056/"
+      }
+    ],
+    "capec": [
+      {
+        "capec_id": "CAPEC-98",
+        "name": "Phishing",
+        "url": "https://capec.mitre.org/data/definitions/98.html"
+      },
+      {
+        "capec_id": "CAPEC-194",
+        "name": "Fake the Source of Data",
+        "url": "https://capec.mitre.org/data/definitions/194.html"
+      }
+    ],
+    "scam_dna": {
+      "technique": "Marketplace redirect phishing with fake payment confirmation",
+      "psychology": [
+        "urgency",
+        "authority",
+        "social_proof"
+      ],
+      "payment_methods": [
+        "card",
+        "transfer_bancar"
+      ],
+      "target_profile": {
+        "age_group": [
+          "18-35",
+          "35-55"
+        ],
+        "vulnerability": [
+          "first_time_seller",
+          "inexperienced_online_user"
+        ],
+        "digital_literacy": "low"
+      },
+      "urgency_level": 4,
+      "language_markers": [
+        "am plătit deja",
+        "confirmați primirea",
+        "accesați linkul",
+        "urgent",
+        "azi trebuie"
+      ],
+      "brand_abuse": [
+        "Fan Courier",
+        "OLX",
+        "DPD",
+        "OLX Pay"
+      ],
+      "typical_loss_ron": {
+        "min": 500,
+        "max": 15000,
+        "median": 2500
+      },
+      "fingerprint": "a3f2c1d8e9b4567890abcdef1234567890abcdef1234567890abcdef12345678"
+    },
+    "campaign": {
+      "campaign_id": "CAMP-OLX-2024-001",
+      "campaign_name": "Operation Fake Courier Romania (notă: ID-urile de campanie raportate inițial — olx-0002, olx-0003, sms-0001 — nu corespundeau unor intrări reale din dataset; eliminate până la documentarea lor)",
+      "actor_id": null,
+      "first_seen": "2023-06-01",
+      "last_seen": "2025-07-01",
+      "related_ids": []
+    },
+    "quality": {
+      "completeness": 1.0,
+      "evidence": 0.95,
+      "verification": 1.0,
+      "freshness": 0.9,
+      "overall": 0.96
+    },
+    "ai_dataset": {
+      "message": "Am plătit deja produsul. Accesați acest link pentru a confirma și a primi suma.",
+      "label": "scam",
+      "confidence": 0.98,
+      "language": "ro",
+      "translations": {
+        "en": "I have already paid for the product. Please access this link to confirm and receive the amount.",
+        "fr": "J'ai déjà payé le produit. Accédez à ce lien pour confirmer et recevoir la somme.",
+        "de": "Ich habe bereits für das Produkt bezahlt. Bitte klicken Sie auf diesen Link, um den Betrag zu bestätigen und zu erhalten.",
+        "it": "Ho già pagato il prodotto. Accedi a questo link per confermare e ricevere l'importo.",
+        "es": "Ya pagué el producto. Accede a este enlace para confirmar y recibir el importe.",
+        "pl": "Zapłaciłem już za produkt. Kliknij ten link, aby potwierdzić i otrzymać kwotę."
+      }
+    },
+    "timeline": [
+      {
+        "date": "2023-06-01",
+        "event": "Prima documentare",
+        "description": "Primele raportări ale acestui tip de fraudă pe OLX România",
+        "source": null
+      },
+      {
+        "date": "2024-01-15",
+        "event": "Escaladare semnificativă",
+        "description": "Creștere cu 340% a raportărilor față de trimestrul anterior",
+        "source": "https://cert.ro/raport-anual-2024"
+      },
+      {
+        "date": "2024-09-01",
+        "event": "Variantă nouă detectată",
+        "description": "Escrocii au început să folosească domenii .eu și .de pentru a părea mai legitimi",
+        "source": null
+      },
+      {
+        "date": "2025-02-01",
+        "event": "Alertă oficială CERT-RO",
+        "description": "CERT-RO emite alertă publică și colaborează cu OLX pentru măsuri de prevenire",
+        "source": "https://cert.ro/alerta-olx-2025"
+      }
+    ],
+    "references": [
+      {
+        "title": "Alertă CERT-RO: Fraudă pe OLX cu fals curier",
+        "url": "https://cert.ro/alerta-olx-2025",
+        "source": "CERT-RO",
+        "date": "2025-02-01",
+        "type": "official"
+      },
+      {
+        "title": "Poliția Română: Recomandări pentru cumpărătorii și vânzătorii online",
+        "url": "https://www.politiaromana.ro/fraude-online",
+        "source": "Poliția Română",
+        "date": "2024-11-15",
+        "type": "official"
+      }
+    ]
+  },
+  {
+    "uuid": "91361c21-7aa1-4d18-be74-7a75f9500007",
+    "id": "sms-0002",
+    "schema_version": "2.0.0",
+    "dataset_version": "2.0.0",
+    "created_at": "2026-06-28T00:00:00Z",
+    "last_updated": "2026-06-28T00:00:00Z",
+    "title": "Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto",
+    "platform": "sms",
+    "vector": [
+      "whatsapp",
+      "telegram"
+    ],
+    "severity": "Medium",
+    "severity_score": 6.0,
+    "country": "Romania",
+    "regions": [
+      "Romania"
+    ],
+    "year": 2022,
+    "active": true,
+    "tags": [
+      "fake-jobs",
+      "sms",
+      "telegram",
+      "piramidal",
+      "crypto",
+      "comision-fals"
+    ],
+    "scenario": "Victima primește un SMS nesolicitat care anunță că a fost selectată pentru un loc de muncă part-time sau full-time, cu mențiunea unei durate neobișnuite ('peste 900 de zile'). Mesajul conține un link care redirecționează către o conversație WhatsApp cu un cont necunoscut. Acolo, atacatorii promit câștiguri rapide din comisioane pentru 'comenzi virtuale' menite să crească artificial vânzările unor comercianți cunoscuți. Victima este îndrumată să creeze un cont pe un site care cere date personale, apoi este redirecționată către un canal de Telegram (cu aproape 50.000 de urmăritori la momentul alertei) unde i se explică pas cu pas mecanismul, care se dovedește a fi o schemă piramidală cu o componentă de investiții în criptomonede.",
+    "steps": [
+      "Victima primește SMS: 'Ați fost selectat pentru un job part-time/full-time' cu link",
+      "Linkul redirecționează către o conversație WhatsApp cu un cont necunoscut",
+      "Atacatorul promite comisioane pentru 'comenzi virtuale' la comercianți cunoscuți",
+      "Victima e îndrumată să-și creeze cont pe un site, oferind date personale",
+      "Este redirecționată către un canal Telegram cu mecanism explicat pas cu pas",
+      "Mecanismul se transformă într-o schemă piramidală cu investiție cripto obligatorie"
+    ],
+    "red_flags": [
+      "Ofertă de angajare primită brut, prin SMS, fără proces de recrutare",
+      "Durată de angajare absurdă sau formulare neobișnuită ('900 de zile')",
+      "Mutarea conversației succesiv pe WhatsApp, apoi pe Telegram",
+      "Promisiunea de câștig rapid din 'comisioane' pe comenzi virtuale",
+      "Cerere de a investi bani proprii pentru a debloca comisioane mai mari",
+      "Structură de recrutare a altor 'clienți' (semn de schemă piramidală)"
+    ],
+    "prevention": [
+      "Ofertele legitime de angajare nu vin prin SMS de la necunoscuți",
+      "Nu accesați linkuri din SMS-uri nesolicitate despre joburi",
+      "Verificați orice ofertă pe canalele oficiale ale companiei menționate",
+      "Nu furnizați date personale sau bancare unor contacte necunoscute pe WhatsApp/Telegram",
+      "Raportați tentativa la DNSC (1911 sau alerts@dnsc.ro)"
+    ],
+    "verification": {
+      "status": "official_source",
+      "verified_by": "DNSC",
+      "verified_at": "2022-02-23T00:00:00Z",
+      "official_source": "https://www.dnsc.ro/"
+    },
+    "confidence": {
+      "score": 0.85,
+      "method": "official_report",
+      "source": "DNSC (comunicat) — relatat de alba24.ro și ziare.com"
+    },
+    "scam_dna": {
+      "technique": "Job-offer smishing funneling into multi-platform pyramid/crypto scheme",
+      "psychology": [
+        "greed",
+        "social_proof",
+        "greed"
+      ],
+      "payment_methods": [
+        "crypto",
+        "transfer_bancar"
+      ],
+      "target_profile": {
+        "age_group": [
+          "18-35"
+        ],
+        "vulnerability": [
+          "cauta_venit_suplimentar",
+          "somer_sau_subocupat"
+        ],
+        "digital_literacy": "low"
+      },
+      "urgency_level": 2,
+      "language_markers": [
+        "ați fost selectat",
+        "comision",
+        "câștigă bani rapid"
+      ],
+      "brand_abuse": [],
+      "typical_loss_ron": {
+        "min": 200,
+        "max": 8000,
+        "median": 1200
+      }
+    },
+    "quality": {
+      "completeness": 0.85,
+      "evidence": 0.6,
+      "verification": 0.8,
+      "freshness": 0.5,
+      "overall": 0.69
+    },
+    "ai_dataset": {
+      "message": "Buna, ati fost selectat pentru un job part-time/full time, mai mult de 900 de zile. Accesati acest link pentru a accepta postul vacant.",
+      "label": "scam",
+      "confidence": 0.95,
+      "language": "ro"
+    },
+    "references": [
+      {
+        "title": "DNSC: Atenție la propunerile de angajare/investiții prin SMS",
+        "url": "https://alba24.ro/dnsc-atentie-la-propunerile-primite-prin-mesaje-sau-sms-care-prezinta-oportunitati-de-angajare-sau-de-investitii-901508.html",
+        "source": "Alba24 (citând DNSC)",
+        "date": "2022-04-26",
+        "type": "news"
+      }
+    ]
+  },
+  {
+    "uuid": "28081f4e-d67f-4b16-ae65-41224e5b225d",
+    "id": "whatsapp-0002",
+    "schema_version": "2.0.0",
+    "dataset_version": "2.0.0",
+    "created_at": "2026-06-28T00:00:00Z",
+    "last_updated": "2026-06-28T00:00:00Z",
+    "title": "Smishing \"Votează-o pe Adeline\" — deturnare de conturi WhatsApp printr-un sondaj fals",
+    "platform": "sms",
+    "vector": [
+      "whatsapp"
+    ],
+    "severity": "High",
+    "severity_score": 7.0,
+    "country": "Romania",
+    "regions": [
+      "Romania"
+    ],
+    "year": 2025,
+    "active": true,
+    "tags": [
+      "smishing",
+      "whatsapp",
+      "deturnare-cont",
+      "sondaj-fals",
+      "social-engineering"
+    ],
+    "scenario": "Atacatorii trimit un mesaj SMS care imită un mesaj personal, cerând destinatarului să voteze 'Adeline' într-un sondaj fals, pretins legat de o bursă de studii în Franța. Linkul din mesaj conduce la o pagină care solicită codul de autentificare WhatsApp al victimei. Introducerea codului permite atacatorilor să compromită contul, pe care îl folosesc apoi pentru a propaga același mesaj către lista de contacte a victimei și pentru a cere bani 'urgent' celor din lista de contacte, dându-se drept victima inițială.",
+    "steps": [
+      "Victima primește SMS personalizat care cere votarea unei fete (\"Adeline\") într-un sondaj",
+      "Mesajul invocă un motiv emoțional (bursă de studii în străinătate)",
+      "Linkul conduce la o pagină falsă care cere codul de autentificare WhatsApp",
+      "Introducerea codului permite atacatorilor accesul la cont",
+      "Contul compromis este folosit pentru a trimite același mesaj la toate contactele",
+      "Contactele sunt apoi păcălite să trimită bani, crezând că vorbesc cu victima inițială"
+    ],
+    "red_flags": [
+      "Mesaj care pare personal, dar vine de la un număr necunoscut",
+      "Apel emoțional urgent (copil, bursă, situație disperată)",
+      "Cere accesarea unui link pentru o acțiune banală (\"votare\")",
+      "Pagina solicită un cod de autentificare/verificare în 2 pași",
+      "Ulterior, mesaje de cerere de bani \"urgent\" de la un contact cunoscut, dar cu exprimare neobișnuită"
+    ],
+    "prevention": [
+      "Nu accesați linkuri din SMS-uri de la surse necunoscute",
+      "Nu introduceți niciun cod de autentificare primit prin SMS pe pagini externe",
+      "Verificați telefonic, pe alt canal, dacă un contact vă cere bani urgent",
+      "Activați autentificarea în doi factori pe WhatsApp cu PIN propriu",
+      "Raportați mesajele suspecte la DNSC (pnrisc.dnsc.ro) sau la operatorul telefonic"
+    ],
+    "verification": {
+      "status": "official_source",
+      "verified_by": "DNSC",
+      "verified_at": "2025-01-15T00:00:00Z",
+      "official_source": "https://www.dnsc.ro/citeste/alerta-frauda-de-tip-voteaza-pe-adeline"
+    },
+    "confidence": {
+      "score": 0.97,
+      "method": "official_report",
+      "source": "DNSC — Alertă oficială, 15.01.2025"
+    },
+    "scam_dna": {
+      "technique": "Account-takeover smishing via emotional pretext and 2FA code phishing",
+      "psychology": [
+        "empathy",
+        "urgency",
+        "social_proof"
+      ],
+      "payment_methods": [
+        "transfer_bancar"
+      ],
+      "target_profile": {
+        "age_group": [
+          "35-55",
+          "55+"
+        ],
+        "vulnerability": [
+          "empatic",
+          "putin_familiarizat_cu_2fa"
+        ],
+        "digital_literacy": "medium"
+      },
+      "urgency_level": 3,
+      "language_markers": [
+        "vă rog să o votați",
+        "este foarte important pentru ea",
+        "urgent"
+      ],
+      "brand_abuse": [
+        "WhatsApp"
+      ],
+      "typical_loss_ron": {
+        "min": 0,
+        "max": 5000,
+        "median": 800
+      }
+    },
+    "quality": {
+      "completeness": 0.9,
+      "evidence": 0.85,
+      "verification": 0.95,
+      "freshness": 0.95,
+      "overall": 0.91
+    },
+    "ai_dataset": {
+      "message": "Buna! Va rog sa o votati pe Adeline in acest sondaj, este fiica prietenei mele din Bucuresti, premiul principal este o bursa pentru invatamant gratuit in Franta, asta este foarte important pentru ea.",
+      "label": "scam",
+      "confidence": 0.97,
+      "language": "ro"
+    },
+    "references": [
+      {
+        "title": "ALERTĂ: Frauda de tip \"Votează pe Adeline\"",
+        "url": "https://www.dnsc.ro/citeste/alerta-frauda-de-tip-voteaza-pe-adeline",
+        "source": "DNSC",
+        "date": "2025-01-15",
+        "type": "official"
+      }
+    ]
+  },
+  {
+    "uuid": "89592085-8882-4c73-b51c-2e190060dc30",
+    "id": "crypto-0002",
+    "schema_version": "2.0.0",
+    "dataset_version": "2.0.0",
+    "created_at": "2026-06-28T00:00:00Z",
+    "last_updated": "2026-06-28T00:00:00Z",
+    "title": "Fals \"program de investiții susținut de stat\" — uzurpare a imaginii Ministerului Finanțelor",
+    "platform": "facebook",
+    "vector": [
+      "web"
+    ],
+    "severity": "High",
+    "severity_score": 7.5,
+    "country": "Romania",
+    "regions": [
+      "Romania"
+    ],
+    "year": 2025,
+    "active": true,
+    "tags": [
+      "investitii-false",
+      "uzurpare-institutie",
+      "facebook-ads",
+      "randament-garantat"
+    ],
+    "scenario": "Pe rețele sociale circulă reclame care promovează o pretinsă \"platformă de investiții susținută de stat\", asociată abuziv cu Ministerul Finanțelor, promițând câștiguri garantate de până la 150%. Reclamele conduc către pagini care imită identitatea vizuală a unor instituții oficiale și solicită date de contact și, ulterior, o investiție inițială care nu mai poate fi recuperată.",
+    "steps": [
+      "Victima vede pe Facebook/Instagram o reclamă cu o pretinsă platformă de stat",
+      "Reclama promite randamente garantate de până la 150%",
+      "Pagina folosește abuziv sigla sau numele Ministerului Finanțelor",
+      "Victima introduce date de contact pe un formular",
+      "Este contactată telefonic de un \"consultant\" care cere o investiție inițială",
+      "Banii sunt transferați, iar contul \"de investiții\" arată profit fictiv, fără posibilitate de retragere"
+    ],
+    "red_flags": [
+      "Randamente garantate, fără risc — nicio investiție reală nu garantează asta",
+      "Asociere cu o instituție de stat într-o reclamă pe social media",
+      "Presiune pentru a investi rapid \"cât mai e valabilă oferta\"",
+      "Contact inițial prin reclamă, nu printr-un canal oficial guvernamental",
+      "Solicitare de transfer bancar direct către un cont sau wallet privat"
+    ],
+    "prevention": [
+      "Nicio instituție publică nu promovează investiții prin reclame pe social media",
+      "Verificați orice anunț guvernamental direct pe site-ul oficial (.gov.ro)",
+      "Fiți sceptici la randamente garantate de orice procent",
+      "Nu transferați bani unor \"consultanți\" contactați în urma unei reclame",
+      "Raportați reclamele suspecte la DNSC (pnrisc.dnsc.ro)"
+    ],
+    "verification": {
+      "status": "official_source",
+      "verified_by": "DNSC",
+      "verified_at": "2025-07-28T00:00:00Z",
+      "official_source": "https://www.dnsc.ro/"
+    },
+    "confidence": {
+      "score": 0.93,
+      "method": "official_report",
+      "source": "DNSC — Alertă, 28.07.2025"
+    },
+    "scam_dna": {
+      "technique": "Fake government-backed investment scheme via social media ads",
+      "psychology": [
+        "authority",
+        "greed",
+        "authority"
+      ],
+      "payment_methods": [
+        "transfer_bancar",
+        "card"
+      ],
+      "target_profile": {
+        "age_group": [
+          "35-55",
+          "55+"
+        ],
+        "vulnerability": [
+          "interesat_de_economii",
+          "increzator_in_institutii"
+        ],
+        "digital_literacy": "medium"
+      },
+      "urgency_level": 3,
+      "language_markers": [
+        "randament garantat",
+        "program de stat",
+        "câștig de până la 150%"
+      ],
+      "brand_abuse": [
+        "Ministerul Finanțelor"
+      ],
+      "typical_loss_ron": {
+        "min": 1000,
+        "max": 50000,
+        "median": 6000
+      }
+    },
+    "quality": {
+      "completeness": 0.85,
+      "evidence": 0.6,
+      "verification": 0.85,
+      "freshness": 0.9,
+      "overall": 0.8
+    },
+    "ai_dataset": {
+      "message": "Programul de investitii sustinut de statul roman va ofera un castig garantat de pana la 150%. Lasati-va datele de contact pentru a fi contactat de un consultant.",
+      "label": "scam",
+      "confidence": 0.95,
+      "language": "ro"
+    },
+    "references": [
+      {
+        "title": "DNSC avertizează: Escrocheriile cu \"platforme de investiții de stat\" continuă să înșele românii",
+        "url": "https://www.dailybusiness.ro/stiri-interne/dnsc-avertizeaza-escrocheriile-cu-platforme-de-investitii-de-stat-continua-sa-insele-romanii-online-503078/",
+        "source": "DailyBusiness.ro (citând DNSC)",
+        "date": "2025-07-28",
+        "type": "news"
+      }
+    ]
+  },
+  {
+    "uuid": "8066574e-ae27-4cdf-9553-44534cdea8ce",
+    "id": "crypto-0003",
+    "schema_version": "2.0.0",
+    "dataset_version": "2.0.0",
+    "created_at": "2026-06-28T00:00:00Z",
+    "last_updated": "2026-06-28T00:00:00Z",
+    "title": "TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok",
+    "platform": "telegram",
+    "vector": [
+      "whatsapp",
+      "tiktok"
+    ],
+    "severity": "High",
+    "severity_score": 7.6,
+    "country": "Romania",
+    "regions": [
+      "Romania"
+    ],
+    "year": 2025,
+    "active": true,
+    "tags": [
+      "crypto",
+      "platforma-falsa",
+      "grup-privat",
+      "mentor-fals",
+      "txex"
+    ],
+    "scenario": "Sub denumirea \"TXEX\" și variante similare, escrocii promovează platforme de investiții care par legitime, dar simulează profituri fictive pe ecran, în timp ce fondurile depuse de victime sunt colectate direct. Victimele sunt introduse în grupuri private pe WhatsApp, Telegram sau Signal, coordonate de pretinși \"mentori\" sau experți, și recrutate inclusiv prin clipuri pe TikTok. Fenomenul nu este limitat la România — autorități din Noua Zeelandă, Australia și Albania au emis avertismente similare privind aceleași platforme.",
+    "steps": [
+      "Victima e abordată via TikTok, WhatsApp sau Telegram de un pretins \"mentor\" de trading",
+      "Este invitată într-un grup privat care promovează platforma TXEX (sau variante)",
+      "Platforma arată o interfață profesională cu profituri simulate în timp real",
+      "Victima depune fonduri inițiale, văzând creșteri fictive de cont",
+      "La solicitarea de retragere apar comisioane sau cerințe suplimentare bruște",
+      "Contactul cu \"mentorul\" se rupe, iar fondurile devin irecuperabile"
+    ],
+    "red_flags": [
+      "Platformă de tranzacționare necunoscută, nereglementată, promovată pe rețele sociale",
+      "Grup privat coordonat de un \"mentor\" sau \"expert\" anonim",
+      "Profituri afișate care cresc constant, fără volatilitate reală",
+      "Domenii care se schimbă frecvent sub nume similare",
+      "Comisioane neașteptate apărute exact la momentul retragerii"
+    ],
+    "prevention": [
+      "Verificați dacă platforma este autorizată de ASF/autoritatea de reglementare relevantă",
+      "Nu investiți pe baza recomandării unui \"mentor\" cunoscut online, necunoscut în realitate",
+      "Tratați cu suspiciune orice platformă care nu permite retrageri fără condiții suplimentare",
+      "Nu vă bazați pe profitul afișat în interfață ca dovadă de legitimitate",
+      "Raportați platforma la DNSC și verificați avertismentele internaționale existente"
+    ],
+    "verification": {
+      "status": "official_source",
+      "verified_by": "DNSC",
+      "verified_at": "2025-09-28T00:00:00Z",
+      "official_source": "https://www.dnsc.ro/citeste/alerta-investitii-sau-capcana-modelul-fraudulos-txex-co"
+    },
+    "confidence": {
+      "score": 0.95,
+      "method": "official_report",
+      "source": "DNSC — Alertă, 28.09.2025; confirmat și de autorități din Noua Zeelandă, Australia, Albania"
+    },
+    "scam_dna": {
+      "technique": "Fake trading platform with simulated profits, promoted via private social-media groups",
+      "psychology": [
+        "greed",
+        "social_proof",
+        "authority"
+      ],
+      "payment_methods": [
+        "crypto",
+        "transfer_bancar"
+      ],
+      "target_profile": {
+        "age_group": [
+          "18-35",
+          "35-55"
+        ],
+        "vulnerability": [
+          "interesat_de_trading",
+          "doreste_castig_rapid"
+        ],
+        "digital_literacy": "medium"
+      },
+      "urgency_level": 2,
+      "language_markers": [
+        "mentor",
+        "profit garantat",
+        "grup privat de investiții"
+      ],
+      "brand_abuse": [
+        "TXEX"
+      ],
+      "typical_loss_ron": {
+        "min": 2000,
+        "max": 80000,
+        "median": 10000
+      }
+    },
+    "quality": {
+      "completeness": 0.85,
+      "evidence": 0.65,
+      "verification": 0.9,
+      "freshness": 0.95,
+      "overall": 0.84
+    },
+    "ai_dataset": {
+      "message": "Te invit in grupul nostru privat de investitii. Cu mentoratul echipei noastre, platforma TXEX iti garanteaza profit constant lunar.",
+      "label": "scam",
+      "confidence": 0.93,
+      "language": "ro"
+    },
+    "references": [
+      {
+        "title": "ALERTĂ: Investiții sau capcană — Modelul fraudulos TXEX și Co.",
+        "url": "https://www.dnsc.ro/citeste/alerta-investitii-sau-capcana-modelul-fraudulos-txex-co",
+        "source": "DNSC",
+        "date": "2025-09-28",
+        "type": "official"
+      }
+    ]
+  },
+  {
+    "uuid": "b14a73bb-f3c0-42ac-9466-5998b0723769",
+    "id": "crypto-0004",
+    "schema_version": "2.0.0",
+    "dataset_version": "2.0.0",
+    "created_at": "2026-06-28T00:00:00Z",
+    "last_updated": "2026-06-28T00:00:00Z",
+    "title": "Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții",
+    "platform": "web",
+    "vector": [
+      "facebook"
+    ],
+    "severity": "Medium",
+    "severity_score": 6.5,
+    "country": "Romania",
+    "regions": [
+      "Romania"
+    ],
+    "year": 2026,
+    "active": true,
+    "tags": [
+      "uzurpare-brand-media",
+      "publicitate-falsa",
+      "investitii-false",
+      "varstnici"
+    ],
+    "scenario": "Un val de pagini false imită identitatea unor branduri media cunoscute (printre care Digi24) pentru a promova platforme fictive de investiții. Anunțurile sunt amplificate prin spațiile publicitare ale site-urilor de știri reale, fapt care le crește credibilitatea. Campania vizează în special persoanele vârstnice sau pe cele interesate de suplimentarea veniturilor.",
+    "steps": [
+      "Victima vede o reclamă, pe un site de știri real, care pare un articol Digi24",
+      "Articolul fals promovează o platformă de investiții cu randamente atractive",
+      "Pagina copiază identitatea vizuală a brandului media pentru credibilitate",
+      "Victima lasă date de contact și este apoi contactată telefonic",
+      "Este convinsă să depună o sumă inițială într-un cont de \"trading\""
+    ],
+    "red_flags": [
+      "Articol care pare să provină de la un brand media cunoscut, dar link-ul nu duce pe domeniul oficial",
+      "Conținut sponsorizat care promovează o platformă de investiții necunoscută",
+      "Vizare explicită a persoanelor vârstnice prin tonul și formatul anunțului",
+      "Promisiuni de venit pasiv suplimentar, fără explicarea reală a riscurilor"
+    ],
+    "prevention": [
+      "Verificați întotdeauna domeniul real al articolului, nu doar aspectul vizual",
+      "Brandurile media nu promovează platforme de investiții în nume propriu",
+      "Discutați cu un membru al familiei înainte de a investi în urma unei reclame online",
+      "Raportați reclamele false către DNSC și către brandul media uzurpat"
+    ],
+    "verification": {
+      "status": "official_source",
+      "verified_by": "DNSC",
+      "verified_at": "2026-01-29T00:00:00Z",
+      "official_source": "https://www.dnsc.ro/"
+    },
+    "confidence": {
+      "score": 0.9,
+      "method": "official_report",
+      "source": "DNSC — Alertă, 29.01.2026"
+    },
+    "scam_dna": {
+      "technique": "Fake media-branded ads promoting fictitious investment platforms",
+      "psychology": [
+        "authority",
+        "authority",
+        "greed"
+      ],
+      "payment_methods": [
+        "transfer_bancar",
+        "card"
+      ],
+      "target_profile": {
+        "age_group": [
+          "55+"
+        ],
+        "vulnerability": [
+          "varstnic",
+          "venit_fix_redus"
+        ],
+        "digital_literacy": "low"
+      },
+      "urgency_level": 2,
+      "language_markers": [
+        "venit suplimentar",
+        "randament sigur",
+        "oportunitate exclusivă"
+      ],
+      "brand_abuse": [
+        "Digi24"
+      ],
+      "typical_loss_ron": {
+        "min": 1000,
+        "max": 30000,
+        "median": 4000
+      }
+    },
+    "quality": {
+      "completeness": 0.8,
+      "evidence": 0.6,
+      "verification": 0.85,
+      "freshness": 0.95,
+      "overall": 0.8
+    },
+    "ai_dataset": {
+      "message": "Articol exclusiv: o noua platforma de investitii permite oricui sa obtina un venit suplimentar sigur, fara riscuri. Lasa-ti datele pentru a fi contactat.",
+      "label": "scam",
+      "confidence": 0.9,
+      "language": "ro"
+    },
+    "references": [
+      {
+        "title": "DNSC: Un nou val de tentative de fraudă — pagini false care imită identitatea unor entități media",
+        "url": "https://financialintelligence.ro/dnsc-un-nou-val-de-tentative-de-frauda-pagini-false-care-imita-identitatea-unor-entitati-media-si-promoveaza-platforme-fictive-de-investitii/",
+        "source": "Financial Intelligence (citând DNSC)",
+        "date": "2026-01-29",
+        "type": "news"
+      }
+    ]
+  },
+  {
+    "uuid": "b61f0354-e363-4b31-99f1-24afbffdd7b8",
+    "id": "crypto-0005",
+    "schema_version": "2.0.0",
+    "dataset_version": "2.0.0",
+    "created_at": "2026-06-28T00:00:00Z",
+    "last_updated": "2026-06-28T00:00:00Z",
+    "title": "Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive",
+    "platform": "email",
+    "vector": [
+      "web"
+    ],
+    "severity": "High",
+    "severity_score": 7.2,
+    "country": "Romania",
+    "regions": [
+      "Romania"
+    ],
+    "year": 2025,
+    "active": true,
+    "tags": [
+      "uzurpare-institutie",
+      "crypto",
+      "document-fals",
+      "europol",
+      "recuperare-fonduri"
+    ],
+    "scenario": "Românii care dețin criptomonede sunt vizați de o escrocherie care circulă sub forma unei pretinse citații oficiale, folosind abuziv însemnele DNSC, sigla Uniunii Europene și logo-urile Europol/EC3. Documentul fals pretinde că oferă informații despre o procedură de returnare a fondurilor în criptoactive, dar nu are nicio legătură reală cu vreo instituție europeană sau națională, scopul fiind obținerea de date personale sau financiare.",
+    "steps": [
+      "Victima primește un document (de regulă prin email) care imită o citație oficială",
+      "Documentul folosește siglele DNSC, UE, Europol și EC3 pentru credibilitate",
+      "Pretinde că victima are dreptul la o procedură de recuperare a fondurilor în cripto",
+      "Pentru a iniția procedura, victima trebuie să furnizeze date personale sau financiare",
+      "Datele sunt folosite pentru fraudă financiară ulterioară"
+    ],
+    "red_flags": [
+      "Document oficial primit prin email, neasociat unui canal guvernamental verificabil",
+      "Combinație de sigle ale mai multor instituții (DNSC + UE + Europol) — semn tipic de fals",
+      "Promisiunea unei recuperări de fonduri în schimbul unor date personale",
+      "Limbaj juridic ornamentat, dar fără referințe verificabile la un dosar real"
+    ],
+    "prevention": [
+      "Verificați direct pe site-ul oficial DNSC (dnsc.ro) sau Europol orice document primit",
+      "Nicio instituție nu solicită date financiare prin email pentru \"recuperarea\" de fonduri",
+      "Nu răspundeți și nu furnizați date; raportați documentul la DNSC",
+      "Contactați direct instituția menționată printr-un canal oficial cunoscut, nu prin linkurile din document"
+    ],
+    "verification": {
+      "status": "official_source",
+      "verified_by": "DNSC",
+      "verified_at": "2025-06-10T00:00:00Z",
+      "official_source": "https://www.dnsc.ro/"
+    },
+    "confidence": {
+      "score": 0.92,
+      "method": "official_report",
+      "source": "Relatat de Playtech.ro, citând avertismentul DNSC, 10.06.2025"
+    },
+    "scam_dna": {
+      "technique": "Fake official document impersonating multiple institutions to phish crypto holders",
+      "psychology": [
+        "authority",
+        "fear",
+        "fear"
+      ],
+      "payment_methods": [
+        "crypto"
+      ],
+      "target_profile": {
+        "age_group": [
+          "18-35",
+          "35-55"
+        ],
+        "vulnerability": [
+          "detinator_de_criptomonede",
+          "victima_anterioara_a_unei_fraude"
+        ],
+        "digital_literacy": "medium"
+      },
+      "urgency_level": 3,
+      "language_markers": [
+        "procedură oficială",
+        "recuperare fonduri",
+        "citație"
+      ],
+      "brand_abuse": [
+        "DNSC",
+        "Europol",
+        "EC3",
+        "Uniunea Europeană"
+      ],
+      "typical_loss_ron": {
+        "min": 500,
+        "max": 20000,
+        "median": 3000
+      }
+    },
+    "quality": {
+      "completeness": 0.85,
+      "evidence": 0.6,
+      "verification": 0.85,
+      "freshness": 0.9,
+      "overall": 0.8
+    },
+    "ai_dataset": {
+      "message": "In urma plangerii dumneavoastra, ati fost selectat pentru procedura oficiala de returnare a fondurilor in criptoactive. Pentru a continua, va rugam sa furnizati datele contului dvs.",
+      "label": "scam",
+      "confidence": 0.9,
+      "language": "ro"
+    },
+    "references": [
+      {
+        "title": "O nouă escrocherie face valuri printre români, frauda profită de numele DNSC",
+        "url": "https://playtech.ro/2025/o-noua-escrocherie-face-valuri-printre-romanii-frauda-profita-de-numele-dnsc-care-sunt-primii-vizati/",
+        "source": "Playtech.ro (citând DNSC)",
+        "date": "2025-06-10",
+        "type": "news"
+      }
+    ]
+  }
+]

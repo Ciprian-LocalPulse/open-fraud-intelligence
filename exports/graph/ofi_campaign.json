@@ -1,0 +1,101 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "kind": "entry",
+      "label": "olx-0001",
+      "color": "#7c3aed",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "title": "Fals cumpărător OLX — transport plătit în avans",
+      "severity": "High",
+      "id": "entry:olx-0001"
+    },
+    {
+      "kind": "campaign",
+      "label": "CAMP-OLX-2024-001",
+      "color": "#92400e",
+      "shape": "hexagon",
+      "fontcolor": "white",
+      "style": "filled",
+      "name": "Operation Fake Courier Romania",
+      "id": "campaign:CAMP-OLX-2024-001"
+    },
+    {
+      "kind": "entry",
+      "label": "sms-0002",
+      "color": "#7c3aed",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "title": "Ofertă falsă de angajare prin SMS — redirecționare spre Telegram și schemă piramidală cu cripto",
+      "severity": "Medium",
+      "id": "entry:sms-0002"
+    },
+    {
+      "kind": "entry",
+      "label": "whatsapp-0002",
+      "color": "#7c3aed",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "title": "Smishing \"Votează-o pe Adeline\" — deturnare de conturi WhatsApp printr-un sondaj fals",
+      "severity": "High",
+      "id": "entry:whatsapp-0002"
+    },
+    {
+      "kind": "entry",
+      "label": "crypto-0002",
+      "color": "#7c3aed",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "title": "Fals \"program de investiții susținut de stat\" — uzurpare a imaginii Ministerului Finanțelor",
+      "severity": "High",
+      "id": "entry:crypto-0002"
+    },
+    {
+      "kind": "entry",
+      "label": "crypto-0003",
+      "color": "#7c3aed",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "title": "TXEX & Co — platforme false de tranzacționare promovate pe WhatsApp, Telegram și TikTok",
+      "severity": "High",
+      "id": "entry:crypto-0003"
+    },
+    {
+      "kind": "entry",
+      "label": "crypto-0004",
+      "color": "#7c3aed",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "title": "Reclame false care imită branduri media (ex. Digi24) și promovează platforme fictive de investiții",
+      "severity": "Medium",
+      "id": "entry:crypto-0004"
+    },
+    {
+      "kind": "entry",
+      "label": "crypto-0005",
+      "color": "#7c3aed",
+      "shape": "ellipse",
+      "fontcolor": "white",
+      "style": "filled",
+      "title": "Document fals DNSC/EUROPOL — pretinsă procedură de recuperare a fondurilor în criptoactive",
+      "severity": "High",
+      "id": "entry:crypto-0005"
+    }
+  ],
+  "links": [
+    {
+      "relation": "member_of",
+      "source": "entry:olx-0001",
+      "target": "campaign:CAMP-OLX-2024-001"
+    }
+  ]
+}

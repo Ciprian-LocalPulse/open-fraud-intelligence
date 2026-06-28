@@ -1,0 +1,250 @@
+{
+  "metadata": {
+    "version": "2.0.0",
+    "languages": ["ro", "en", "fr", "de", "it", "es", "pl"],
+    "description": "Dataset multilingual OFI — aceleași tipare de fraudă traduse în 7 limbi europene",
+    "note": "Mesajele sunt traduse/adaptate pentru contextul cultural al fiecărei țări"
+  },
+  "entries": [
+    {
+      "ofi_id": "olx-0001",
+      "pattern_type": "marketplace_redirect_phishing",
+      "translations": {
+        "ro": {
+          "message": "Am plătit deja produsul. Accesați acest link pentru a confirma și a primi suma.",
+          "label": "scam",
+          "platform_local": "OLX.ro",
+          "confidence": 0.98
+        },
+        "en": {
+          "message": "I have already paid for the item. Please click this link to confirm receipt and receive your payment.",
+          "label": "scam",
+          "platform_local": "eBay / Gumtree / Facebook Marketplace",
+          "confidence": 0.97
+        },
+        "fr": {
+          "message": "J'ai déjà effectué le paiement. Veuillez accéder à ce lien pour confirmer la réception et recevoir votre argent.",
+          "label": "scam",
+          "platform_local": "Leboncoin / Vinted",
+          "confidence": 0.97
+        },
+        "de": {
+          "message": "Ich habe bereits bezahlt. Bitte klicken Sie auf diesen Link, um den Empfang zu bestätigen und Ihre Zahlung zu erhalten.",
+          "label": "scam",
+          "platform_local": "eBay Kleinanzeigen / Willhaben",
+          "confidence": 0.97
+        },
+        "it": {
+          "message": "Ho già effettuato il pagamento. Accedi a questo link per confermare e ricevere i tuoi soldi.",
+          "label": "scam",
+          "platform_local": "Subito.it / Vinted",
+          "confidence": 0.96
+        },
+        "es": {
+          "message": "Ya he realizado el pago. Accede a este enlace para confirmar y recibir tu dinero.",
+          "label": "scam",
+          "platform_local": "Wallapop / Milanuncios",
+          "confidence": 0.96
+        },
+        "pl": {
+          "message": "Zapłaciłem już za przedmiot. Proszę kliknąć ten link, aby potwierdzić odbiór i otrzymać płatność.",
+          "label": "scam",
+          "platform_local": "OLX.pl / Allegro",
+          "confidence": 0.97
+        }
+      }
+    },
+    {
+      "ofi_id": "whatsapp-0001",
+      "pattern_type": "verification_code_theft",
+      "translations": {
+        "ro": {
+          "message": "Salut, mi-a venit din greșeală un cod pe numărul tău. Poți să mi-l trimiți? E urgent.",
+          "label": "scam",
+          "platform_local": "WhatsApp",
+          "confidence": 0.96
+        },
+        "en": {
+          "message": "Hey, I accidentally sent a verification code to your number. Can you send it back to me? It's urgent.",
+          "label": "scam",
+          "platform_local": "WhatsApp",
+          "confidence": 0.96
+        },
+        "fr": {
+          "message": "Salut, j'ai envoyé par erreur un code de vérification à ton numéro. Tu peux me le renvoyer ? C'est urgent.",
+          "label": "scam",
+          "platform_local": "WhatsApp",
+          "confidence": 0.96
+        },
+        "de": {
+          "message": "Hallo, ich habe versehentlich einen Bestätigungscode an deine Nummer geschickt. Kannst du ihn mir zurückschicken? Es ist dringend.",
+          "label": "scam",
+          "platform_local": "WhatsApp",
+          "confidence": 0.96
+        },
+        "it": {
+          "message": "Ciao, ho inviato per errore un codice di verifica al tuo numero. Puoi rimandarmelo? È urgente.",
+          "label": "scam",
+          "platform_local": "WhatsApp",
+          "confidence": 0.95
+        },
+        "es": {
+          "message": "Hola, accidentalmente envié un código de verificación a tu número. ¿Puedes devolvérmelo? Es urgente.",
+          "label": "scam",
+          "platform_local": "WhatsApp",
+          "confidence": 0.95
+        },
+        "pl": {
+          "message": "Hej, przypadkowo wysłałem kod weryfikacyjny na twój numer. Czy możesz mi go odesłać? To pilne.",
+          "label": "scam",
+          "platform_local": "WhatsApp",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "ofi_id": "sms-0001",
+      "pattern_type": "courier_smishing",
+      "translations": {
+        "ro": {
+          "message": "Coletul dvs nu a putut fi livrat. Achitați taxa de 2.99 RON: [link]",
+          "label": "scam",
+          "platform_local": "Fan Courier / DPD / DHL",
+          "confidence": 0.97
+        },
+        "en": {
+          "message": "Your parcel could not be delivered. Pay the £1.99 redelivery fee: [link]",
+          "label": "scam",
+          "platform_local": "Royal Mail / DPD / Evri",
+          "confidence": 0.97
+        },
+        "fr": {
+          "message": "Votre colis n'a pas pu être livré. Payez les frais de réexpédition de 1,99€: [lien]",
+          "label": "scam",
+          "platform_local": "La Poste / Chronopost / DHL",
+          "confidence": 0.97
+        },
+        "de": {
+          "message": "Ihr Paket konnte nicht zugestellt werden. Zahlen Sie die Nachsendegebühr von 1,99€: [Link]",
+          "label": "scam",
+          "platform_local": "DHL / DPD / Hermes",
+          "confidence": 0.97
+        },
+        "it": {
+          "message": "Il tuo pacco non ha potuto essere consegnato. Paga la tariffa di riconsegna di €1,99: [link]",
+          "label": "scam",
+          "platform_local": "Poste Italiane / DHL / BRT",
+          "confidence": 0.96
+        },
+        "es": {
+          "message": "Tu paquete no pudo ser entregado. Paga la tarifa de reenvío de 1,99€: [enlace]",
+          "label": "scam",
+          "platform_local": "Correos / MRW / DHL",
+          "confidence": 0.96
+        },
+        "pl": {
+          "message": "Twoja paczka nie mogła zostać dostarczona. Zapłać opłatę za ponowne dostarczenie 4,99 zł: [link]",
+          "label": "scam",
+          "platform_local": "InPost / DPD / DHL",
+          "confidence": 0.97
+        }
+      }
+    },
+    {
+      "ofi_id": "crypto-0001",
+      "pattern_type": "crypto_investment_fraud",
+      "translations": {
+        "ro": {
+          "message": "Te pot ajuta să câștigi 2000 EUR pe lună din crypto. Profit garantat, fără risc.",
+          "label": "scam",
+          "platform_local": "Instagram / Telegram",
+          "confidence": 0.99
+        },
+        "en": {
+          "message": "I can help you earn £2000 per month from crypto. Guaranteed profit, zero risk. DM me now.",
+          "label": "scam",
+          "platform_local": "Instagram / Telegram",
+          "confidence": 0.99
+        },
+        "fr": {
+          "message": "Je peux vous aider à gagner 2000€ par mois grâce aux cryptos. Profit garanti, sans risque.",
+          "label": "scam",
+          "platform_local": "Instagram / Telegram",
+          "confidence": 0.99
+        },
+        "de": {
+          "message": "Ich kann Ihnen helfen, 2000€ pro Monat mit Krypto zu verdienen. Garantierter Gewinn, kein Risiko.",
+          "label": "scam",
+          "platform_local": "Instagram / Telegram",
+          "confidence": 0.99
+        },
+        "it": {
+          "message": "Posso aiutarti a guadagnare 2000€ al mese con le criptovalute. Profitto garantito, zero rischi.",
+          "label": "scam",
+          "platform_local": "Instagram / Telegram",
+          "confidence": 0.99
+        },
+        "es": {
+          "message": "Puedo ayudarte a ganar 2000€ al mes con crypto. Ganancia garantizada, sin riesgo.",
+          "label": "scam",
+          "platform_local": "Instagram / Telegram",
+          "confidence": 0.99
+        },
+        "pl": {
+          "message": "Mogę pomóc Ci zarabiać 2000 zł miesięcznie na kryptowalutach. Gwarantowany zysk, zero ryzyka.",
+          "label": "scam",
+          "platform_local": "Instagram / Telegram",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "ofi_id": "legit-0001",
+      "pattern_type": "legitimate_marketplace_contact",
+      "translations": {
+        "ro": {
+          "message": "Bună ziua, sunt interesat de produsul dvs. Mai este disponibil? Putem discuta prețul?",
+          "label": "legitimate",
+          "platform_local": "OLX.ro",
+          "confidence": 0.97
+        },
+        "en": {
+          "message": "Hi, I'm interested in your listing. Is it still available? Can we discuss the price?",
+          "label": "legitimate",
+          "platform_local": "eBay / Gumtree",
+          "confidence": 0.97
+        },
+        "fr": {
+          "message": "Bonjour, je suis intéressé par votre annonce. Est-elle toujours disponible ? Peut-on discuter du prix ?",
+          "label": "legitimate",
+          "platform_local": "Leboncoin",
+          "confidence": 0.97
+        },
+        "de": {
+          "message": "Hallo, ich interessiere mich für Ihr Inserat. Ist es noch verfügbar? Können wir über den Preis reden?",
+          "label": "legitimate",
+          "platform_local": "eBay Kleinanzeigen",
+          "confidence": 0.97
+        },
+        "it": {
+          "message": "Salve, sono interessato al vostro annuncio. È ancora disponibile? Possiamo discutere il prezzo?",
+          "label": "legitimate",
+          "platform_local": "Subito.it",
+          "confidence": 0.97
+        },
+        "es": {
+          "message": "Hola, estoy interesado en tu anuncio. ¿Sigue disponible? ¿Podemos hablar del precio?",
+          "label": "legitimate",
+          "platform_local": "Wallapop",
+          "confidence": 0.97
+        },
+        "pl": {
+          "message": "Dzień dobry, jestem zainteresowany Pana/Pani ogłoszeniem. Czy jest jeszcze dostępne? Czy możemy porozmawiać o cenie?",
+          "label": "legitimate",
+          "platform_local": "OLX.pl",
+          "confidence": 0.97
+        }
+      }
+    }
+  ]
+}

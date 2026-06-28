@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#infrastructure_ageDays">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Infrastructure"/>
+    <rdfs:label xml:lang="en">age_days</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#infrastructure_hosting">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Infrastructure"/>
+    <rdfs:label xml:lang="en">hosting</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#actor_knownAliases">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Actor"/>
+    <rdfs:label xml:lang="en">known_aliases</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#technique_category">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">category</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#platform_moderated">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Platform"/>
+    <rdfs:label xml:lang="en">moderated</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#payment_typicalAmount">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Payment"/>
+    <rdfs:label xml:lang="en">typical_amount</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">Open Fraud Intelligence Ontology</rdfs:label>
+    <dcterms:description xml:lang="ro">Ontologia completă Open Fraud Intelligence — Knowledge Graph pentru fraude online</dcterms:description>
+    <owl:versionInfo>2.0.0</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_totalLossRon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">total_loss_ron</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#victim_vulnerability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Victim"/>
+    <rdfs:label xml:lang="en">vulnerability</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#evidence_source">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Evidence"/>
+    <rdfs:label xml:lang="en">source</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#victim_ageGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Victim"/>
+    <rdfs:label xml:lang="en">age_group</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: &lt;18, 18-25, 25-35, 35-50, 50-65, &gt;65, unknown</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#outcome_reportedTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Outcome"/>
+    <rdfs:label xml:lang="en">reported_to</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#payment_recoveryChance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Payment"/>
+    <rdfs:label xml:lang="en">recovery_chance</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: high, medium, low, impossible</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#evidence_anonymized">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Evidence"/>
+    <rdfs:label xml:lang="en">anonymized</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#relatedto">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="ro">O campanie folosește una sau mai multe tehnici</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O campanie vizează un profil de victimă</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O campanie e operată de un actor</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O campanie utilizează infrastructură tehnică</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O campanie produce un outcome</rdfs:comment>
+    <rdfs:comment xml:lang="ro">Un actor exploatează o platformă</rdfs:comment>
+    <rdfs:comment xml:lang="ro">Un actor fură active</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O tehnică utilizează o platformă</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O tehnică vizează un tip de activ</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O tehnică implică o metodă de plată</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O victimă pierde active</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O victimă furnizează dovezi</rdfs:comment>
+    <rdfs:comment xml:lang="ro">O dovadă documentează o campanie</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#asset_sensitivity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Asset"/>
+    <rdfs:label xml:lang="en">sensitivity</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: low, medium, high, critical</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#platform_country">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Platform"/>
+    <rdfs:label xml:lang="en">country</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#outcome_prosecution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Outcome"/>
+    <rdfs:label xml:lang="en">prosecution</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Campaign">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Campaign</rdfs:label>
+    <rdfs:comment xml:lang="ro">O campanie de fraudă organizată</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#outcome_dataCompromised">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Outcome"/>
+    <rdfs:label xml:lang="en">data_compromised</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Asset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Asset</rdfs:label>
+    <rdfs:comment xml:lang="ro">Activele vizate sau compromise</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#technique_psychology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">psychology</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#evidence_date">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Evidence"/>
+    <rdfs:label xml:lang="en">date</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#actor_iocRefs">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Actor"/>
+    <rdfs:label xml:lang="en">ioc_refs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#asset_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Asset"/>
+    <rdfs:label xml:lang="en">type</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: money, personal_data, credentials, identity, property, crypto, intellectual_property</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Victim">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Victim</rdfs:label>
+    <rdfs:comment xml:lang="ro">Persoana sau organizația vizată de fraudă</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Platform">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Platform</rdfs:label>
+    <rdfs:comment xml:lang="ro">Platforma sau canalul utilizat pentru fraudă</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#infrastructure_domains">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Infrastructure"/>
+    <rdfs:label xml:lang="en">domains</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#infrastructure_registrationCountry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Infrastructure"/>
+    <rdfs:label xml:lang="en">registration_country</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#platform_reportingUrl">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Platform"/>
+    <rdfs:label xml:lang="en">reporting_url</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#payment_reversible">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Payment"/>
+    <rdfs:label xml:lang="en">reversible</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Infrastructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Infrastructure</rdfs:label>
+    <rdfs:comment xml:lang="ro">Infrastructura tehnică a escrocilor</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Payment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Payment</rdfs:label>
+    <rdfs:comment xml:lang="ro">Metoda de plată sau transferul financiar implicat</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_countries">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">countries</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#technique_capecId">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">capec_id</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#asset_valueRon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Asset"/>
+    <rdfs:label xml:lang="en">value_ron</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_endDate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">end_date</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#victim_digitalLiteracy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Victim"/>
+    <rdfs:label xml:lang="en">digital_literacy</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: low, medium, high</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_platforms">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">platforms</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#infrastructure_ssl">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Infrastructure"/>
+    <rdfs:label xml:lang="en">ssl</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#technique_mitreAttackId">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">mitre_attack_id</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_actorId">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">actor_id</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_startDate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">start_date</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#platform_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Platform"/>
+    <rdfs:label xml:lang="en">type</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: social_media, marketplace, messaging, email, phone, web, physical</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Actor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Actor</rdfs:label>
+    <rdfs:comment xml:lang="ro">Individul sau grupul care efectuează frauda</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#actor_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Actor"/>
+    <rdfs:label xml:lang="en">type</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: individual, organized_group, state_sponsored, unknown</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#outcome_victimLossRon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Outcome"/>
+    <rdfs:label xml:lang="en">victim_loss_ron</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#actor_originCountry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Actor"/>
+    <rdfs:label xml:lang="en">origin_country</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Technique">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Technique</rdfs:label>
+    <rdfs:comment xml:lang="ro">Tehnica sau tactica de fraudă</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#technique_name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#outcome_recoveredRon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Outcome"/>
+    <rdfs:label xml:lang="en">recovered_ron</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#infrastructure_ips">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Infrastructure"/>
+    <rdfs:label xml:lang="en">ips</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#actor_actorId">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Actor"/>
+    <rdfs:label xml:lang="en">actor_id</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#evidence_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Evidence"/>
+    <rdfs:label xml:lang="en">type</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: screenshot, message_log, transaction, domain_record, victim_report, official_report</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#payment_traceability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Payment"/>
+    <rdfs:label xml:lang="en">traceability</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: high, medium, low, none</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#evidence_hash">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Evidence"/>
+    <rdfs:label xml:lang="en">hash</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_campaignId">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">campaign_id</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#victim_lossAmountRon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Victim"/>
+    <rdfs:label xml:lang="en">loss_amount_ron</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#actor_sophistication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Actor"/>
+    <rdfs:label xml:lang="en">sophistication</rdfs:label>
+    <rdfs:comment xml:lang="en">enum: novice, intermediate, expert, nation_state</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Evidence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Evidence</rdfs:label>
+    <rdfs:comment xml:lang="ro">Dovezile disponibile pentru documentarea fraudei</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#technique_description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Technique"/>
+    <rdfs:label xml:lang="en">description</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_totalVictims">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">total_victims</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#platform_name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Platform"/>
+    <rdfs:label xml:lang="en">name</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#payment_method">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Payment"/>
+    <rdfs:label xml:lang="en">method</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#victim_reported">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Victim"/>
+    <rdfs:label xml:lang="en">reported</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#victim_location">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Victim"/>
+    <rdfs:label xml:lang="en">location</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#campaign_active">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="https://open-fraud-intelligence.github.io/ontology#Campaign"/>
+    <rdfs:label xml:lang="en">active</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://open-fraud-intelligence.github.io/ontology#Outcome">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Outcome</rdfs:label>
+    <rdfs:comment xml:lang="ro">Rezultatul fraudei</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>
